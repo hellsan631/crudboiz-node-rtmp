@@ -1,6 +1,6 @@
 {
   "name": "crudboiz-node-rtmp",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "server/server.js",
   "scripts": {
     "start": "node .",
