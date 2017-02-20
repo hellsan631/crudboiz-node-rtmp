@@ -1,0 +1,14 @@
+/* dialogs.scss */
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal-open ui-view, .modal-open trianglify, .modal-open .noise {
+  filter: blur(3px) grayscale(25%);
+  -webkit-filter: blur(3px) grayscale(25%);
+  -moz-filter: blur(3px) grayscale(25%);
+  -o-filter: blur(3px) grayscale(25%);
+  -ms-filter: blur(3px) grayscale(25%);
+  filter: url("data:image/svg+xml;utf9,<svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='3'%20/></filter></svg>#blur");
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+}

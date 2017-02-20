@@ -1,0 +1,16 @@
+@import "../../css/scss/partials/functions";
+
+crud-player {
+  display:block;
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  
+  .crud-player {
+    position: relative;
+    z-index: 1;
+    width: auto;
+    display: inline-block;
+    @include materialBounce(box-shadow, 2500ms);
+  }
+}

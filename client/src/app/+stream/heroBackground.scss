@@ -1,0 +1,62 @@
+@import "../../css/scss/partials/functions";
+
+hero-background {
+  display:block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  box-shadow: big-shadow(2, 6, rgba(0,0,0,0));
+
+  top: 0;
+
+  z-index: 1000;
+  overflow:hidden;
+
+  @include materialBounce(box-shadow, 800ms);
+
+  &.init {
+    box-shadow: big-shadow(2, 6, rgba(0,0,0,0.125));
+  }
+
+  .hero-container {
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    left: auto;
+    right: auto;
+
+    .not-live {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      top: 50%;
+      margin-top: -2em;
+
+      padding: 1em;
+      font-size: 2em;
+      line-height: 1em;
+      font-weight: 400;
+
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+
+    img {
+      opacity: 1;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+
+      @include materialBounce(opacity, 800ms);
+
+      &.faded {
+        opacity: 0.8;
+      }
+    }
+  }
+}

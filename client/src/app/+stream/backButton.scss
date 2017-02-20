@@ -1,0 +1,26 @@
+back-button {
+  position: absolute;
+  display: block;
+  top: 0;
+  left:0;
+  right:0;
+  width:100%;
+  z-index: 100;
+
+  .button-container {
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .back {
+    padding: 1em;
+    display: inline-block;
+    font-size: 1.2em;
+
+    i {
+      vertical-align: middle;
+      margin-top: -2px;
+      margin-right: 6px;
+    }
+  }
+}

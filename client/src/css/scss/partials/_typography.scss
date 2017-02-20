@@ -1,0 +1,117 @@
+.condensed {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2.5px;
+}
+
+.condensed-header {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.primary-action {
+  color: #fff !important;
+  background-color: $primary-color-action !important;
+
+  &:disabled {
+    background-color: $disabled-color !important;
+    color: rgba(0,0,0,0.26) !important;
+    box-shadow: none;
+  }
+}
+
+.primary-action-text {
+  color: $primary-color-action !important;
+}
+
+.secondary-action {
+  color: #fff !important;
+  background-color: $secondary-color-action !important;
+
+  &:disabled {
+    background-color: $disabled-color !important;
+    color: rgba(0,0,0,0.26) !important;
+  }
+}
+
+.waves-effect.waves-primary .waves-ripple {
+  background-color: rgba($primary-color-action, 0.65);
+}
+
+.primary-black {
+  color: #f1f1f1;
+  background-color: $primary-color-dark !important;
+}
+
+.primary-blue {
+  color: #f1f1f1;
+  background-color: $primary-color-blue !important;
+}
+
+.primary-black-text {
+  color: $primary-color-dark !important;
+}
+
+.primary-white-background {
+  color: $white-background !important;
+}
+
+.waves-effect.waves-white .waves-ripple {
+  background-color: rgba($white-background, 0.75);
+}
+
+.primary-white {
+  background-color: $primary-color-light !important;
+}
+
+.primary-white-text {
+  color: $primary-color-light !important;
+}
+
+// Header Styles
+$h1-fontsize: 4.00rem !default;
+$h2-fontsize: 3.20rem !default;
+$h3-fontsize: 2.64rem !default;
+$h4-fontsize: 2.15rem !default;
+$h5-fontsize: 1.315rem !default;
+$h6-fontsize: 1.125rem !default;
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Roboto', sans-serif;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a { font-weight: inherit; }
+.h1, h1 { font-size: $h1-fontsize; line-height: 110%; margin: ($h1-fontsize / 2) 0 ($h1-fontsize / 2.5) 0;}
+.h2, h2 { font-size: $h2-fontsize; line-height: 110%; margin: ($h2-fontsize / 2) 0 ($h2-fontsize / 2.5) 0;}
+.h3, h3 { font-size: $h3-fontsize; line-height: 110%; margin: ($h3-fontsize / 2) 0 ($h3-fontsize / 2.5) 0;}
+.h4, h4 { font-size: $h4-fontsize; line-height: 110%; margin: ($h4-fontsize / 2) 0 ($h4-fontsize / 2.5) 0;}
+.h5, h5 { font-size: $h5-fontsize; line-height: 110%; margin: ($h5-fontsize / 2) 0 ($h5-fontsize / 2.5) 0;}
+.h6, h6 { font-size: $h6-fontsize; line-height: 110%; margin: ($h6-fontsize / 2) 0 ($h6-fontsize / 2.5) 0;}
+
+.flow-text {
+  font-weight: 300;
+  letter-spacing: 0;
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : 360 + ($i * $interval-size)) {
+      font-size: 1.05rem * (1 + (.02 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  // Handle below 360px screen
+  @media only screen and (max-width: 360px) {
+    font-size: 1.05rem;
+  }
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+  color: $secondary-color-action;
+}

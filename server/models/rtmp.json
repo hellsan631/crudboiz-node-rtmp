@@ -1,0 +1,14 @@
+{
+  "name": "rtmp",
+  "plural": "rtmp",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+  },
+  "properties": {
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

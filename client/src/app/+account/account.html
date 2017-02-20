@@ -1,0 +1,43 @@
+<div class="container anim-slide-below-fade">
+  <div class="row">
+    <div class="col s12 center-align"></div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6 center-text">
+      <div class="row">
+        <div class="col s12 center-align">
+          <player-select
+            member="vm.member"
+          >
+          </player-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center-align">
+          <color-picker
+            color="vm.member.color"
+          >
+          </color-picker>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 center-text">
+      <div class="row">
+        <div class="col s12">
+          <member-photo
+            member="vm.member"
+          >
+          </member-photo>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <channel-details
+            channel="vm.member.channel"
+          >
+          </channel-details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

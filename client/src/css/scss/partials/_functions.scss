@@ -1,0 +1,116 @@
+/* _functions.scss */
+@import "bourbon";
+@import "neat";
+
+/*** Global ***/
+// Media Query Ranges
+$small-screen-up: 601px !default;
+$medium-screen-up: 1101px !default;
+$large-screen-up: 1401px !default;
+$small-screen: 600px !default;
+$medium-screen: 1100px !default;
+$large-screen: 1400px !default;
+$extra-large-screen: 2100px !default;
+
+$medium-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+$extra-large-and-up: "only screen and (min-width : #{$extra-large-screen})" !default;
+$retna-and-up: "only screen and (min-width : #{$extra-large-screen})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$large-and-down: "only screen and (max-width : #{$large-screen-up})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+
+// Grid Variables
+$num-cols: 12 !default;
+$gutter-width: 2.6rem !default;
+$element-top-margin: $gutter-width/3 !default;
+$element-bottom-margin: ($gutter-width*2)/3 !default;
+
+// Flowtext
+$range : $large-screen - $small-screen !default;
+$intervals: 20 !default;
+$interval-size: $range / $intervals !default;
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+}
+
+@function big-shadow($px: 2, $count: 6, $color: rgba(0,0,0,0.1)) {
+  $i: 2;
+  $value: '0 #{pow($px, $i)}px #{pow($px, $i)}px #{$color}';
+  @while $i <= $count {
+    $value: '#{$value} , 0 #{pow($px, $i)}px #{pow($px, $i)}px #{$color}';
+    $i: $i + 1;
+  }
+
+  @return unquote($value);
+}
+
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+
+  @return $value;
+}
+
+@mixin truncateText($overflow: ellipsis){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}
+
+@mixin materialBounce($element: all, $duration: 600ms){
+  @include transition($element $duration cubic-bezier(0.620, -0.005, 0.260, 0.995));
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+  #{$property}: expression(#{$expression});
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+/*
+* Truncate Text
+*/
+@mixin truncateText($overflow: ellipsis){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}

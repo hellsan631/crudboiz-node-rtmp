@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+  <head>
+      <meta charset="UTF-8" />
+      <base href="/">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Crudboiz.tv</title>
+      <meta name="author" content="Mathew Kleppin" />
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link href="//vjs.zencdn.net/5.11/video-js.min.css" rel="stylesheet">
+
+      <!-- bower:css -->
+      <link rel="stylesheet" href="vendor/materialize/bin/materialize.css">
+      <link rel="stylesheet" href="vendor/animate.css/animate.css">
+      <link rel="stylesheet" href="vendor/Angular-Hero/angular-hero.css">
+      <link rel="stylesheet" href="vendor/trackpad-scroll-emulator/css/trackpad-scroll-emulator.css">
+      <link rel="stylesheet" href="vendor/ngEmbed/src/ng-embed.css">
+      <link rel="stylesheet" href="vendor/sweetalert2/dist/sweetalert2.css">
+      <!-- endinject -->
+
+      <!-- inject:css -->
+      <link rel="stylesheet" href="css/styles.css">
+      <link rel="stylesheet" href="css/+login/login.css">
+      <link rel="stylesheet" href="css/+account/account.css">
+      <link rel="stylesheet" href="css/+account/memberPhoto.css">
+      <link rel="stylesheet" href="css/+channels/channelCard.css">
+      <link rel="stylesheet" href="css/+channels/channels.css">
+      <link rel="stylesheet" href="css/+signup/signup.css">
+      <link rel="stylesheet" href="css/+stream/backButton.css">
+      <link rel="stylesheet" href="css/+stream/chat.css">
+      <link rel="stylesheet" href="css/+stream/crudDashPlayer.css">
+      <link rel="stylesheet" href="css/+stream/crudHlsPlayer.directive.css">
+      <link rel="stylesheet" href="css/+stream/crudPlayer.directive.css">
+      <link rel="stylesheet" href="css/+stream/crudRtmpPlayer.css">
+      <link rel="stylesheet" href="css/+stream/heroBackground.css">
+      <link rel="stylesheet" href="css/+stream/stream.css">
+      <link rel="stylesheet" href="css/+stream/streamMenu.css">
+      <link rel="stylesheet" href="css/widgets/actionButton.css">
+      <link rel="stylesheet" href="css/widgets/colorPicker.css">
+      <link rel="stylesheet" href="css/widgets/fillheight.css">
+      <link rel="stylesheet" href="css/widgets/materialInput.css">
+      <link rel="stylesheet" href="css/widgets/materialSelect.css">
+      <link rel="stylesheet" href="css/widgets/topBar.css">
+      <link rel="stylesheet" href="css/widgets/trianglify.css">
+      <link rel="stylesheet" href="css/widgets/userFab.css">
+      <!-- endinject -->
+  </head>
+
+  <body ng-style="$root.bgcolor" ng-class="$root.modalOpen ? 'modal-open' : ''" ng-cloak>
+
+    <trianglify></trianglify>
+    
+    <div class="noise"></div>
+
+    <ui-view
+      name="navbar"
+      class="anim-in-out"
+      data-anim-sync="true"
+      data-anim-speed="1000"
+    >
+    </ui-view>
+
+    <user-fab>
+    </user-fab>
+
+    <ui-view 
+      name="main"
+      class="anim-in-out page-transition hero-transition"
+      data-anim-sync="true"
+      data-anim-speed="1000"
+    >
+    </ui-view>
+    
+    <script src="//vjs.zencdn.net/5.11/video.min.js"></script>
+
+    <!-- bower:js -->
+    <script src="vendor/es6-promise/es6-promise.js"></script>
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/materialize/bin/materialize.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="vendor/angular-touch/angular-touch.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-ui-mask/dist/mask.js"></script>
+    <script src="vendor/angular-ui-router-anim-in-out/anim-in-out.js"></script>
+    <script src="vendor/angular-permission/dist/angular-permission.js"></script>
+    <script src="vendor/angular-permission/dist/angular-permission-ui.js"></script>
+    <script src="vendor/angular-permission/dist/angular-permission-ng.js"></script>
+    <script src="vendor/localforage/dist/localforage.js"></script>
+    <script src="vendor/angular-materialize/src/angular-materialize.js"></script>
+    <script src="vendor/clappr/dist/clappr.min.js"></script>
+    <script src="vendor/vibrant/dist/Vibrant.js"></script>
+    <script src="vendor/trianglify/dist/trianglify.min.js"></script>
+    <script src="vendor/deepstream.io-client-js/dist/deepstream.min.js"></script>
+    <script src="vendor/Angular-Hero/angular-hero.js"></script>
+    <script src="vendor/raven-js/dist/raven.js"></script>
+    <script src="vendor/raven-js/dist/plugins/angular.js"></script>
+    <script src="vendor/trackpad-scroll-emulator/jquery.trackpad-scroll-emulator.min.js"></script>
+    <script src="vendor/ngEmbed/src/ng-embed.js"></script>
+    <script src="vendor/randomcolor/randomColor.js"></script>
+    <script src="vendor/ng-file-upload/ng-file-upload.js"></script>
+    <script src="vendor/sweetalert2/dist/sweetalert2.js"></script>
+    <script src="vendor/angular-localforage/dist/angular-localForage.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="app/blocks/logger/logger.module.js"></script>
+    <script src="app/blocks/logger/logger.service.js"></script>
+    <script src="app/blocks/logger/logger.constants.js"></script>
+    <script src="app/blocks/logger/dialog.service.js"></script>
+    <script src="app/widgets/widgets.module.js"></script>
+    <script src="app/widgets/widgets.service.js"></script>
+    <script src="app/widgets/widgets.constants.js"></script>
+    <script src="app/widgets/userFab.directive.js"></script>
+    <script src="app/widgets/trianglify.directive.js"></script>
+    <script src="app/widgets/topBar.directive.js"></script>
+    <script src="app/widgets/style.service.js"></script>
+    <script src="app/widgets/ngPlaceholder.directive.js"></script>
+    <script src="app/widgets/ngHtmlPattern.directive.js"></script>
+    <script src="app/widgets/materialTime.directive.js"></script>
+    <script src="app/widgets/materialSelect.directive.js"></script>
+    <script src="app/widgets/materialInput.directive.js"></script>
+    <script src="app/widgets/materialDate.directive.js"></script>
+    <script src="app/widgets/materialColors.service.js"></script>
+    <script src="app/widgets/materialAvatar.directive.js"></script>
+    <script src="app/widgets/fillheight.directive.js"></script>
+    <script src="app/widgets/element.service.js"></script>
+    <script src="app/widgets/colorPicker.directive.js"></script>
+    <script src="app/widgets/actionButton.directive.js"></script>
+    <script src="app/core/window.resize.trigger.js"></script>
+    <script src="app/core/volume.rtmp.js"></script>
+    <script src="app/core/raf.polyfill.js"></script>
+    <script src="app/core/lb-services.js"></script>
+    <script src="app/core/jquery.easings.js"></script>
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/httpLoader.service.js"></script>
+    <script src="app/core/deep.service.js"></script>
+    <script src="app/core/core.router.config.js"></script>
+    <script src="app/core/core.roles.js"></script>
+    <script src="app/core/core.raven.config.js"></script>
+    <script src="app/core/core.permissions.js"></script>
+    <script src="app/core/core.constants.js"></script>
+    <script src="app/core/core.config.js"></script>
+    <script src="app/core/account.service.js"></script>
+    <script src="app/vendor/dash.all.min.js"></script>
+    <script src="app/+stream/stream.module.js"></script>
+    <script src="app/+stream/streamMenu.directive.js"></script>
+    <script src="app/+stream/stream.route.js"></script>
+    <script src="app/+stream/stream.controller.js"></script>
+    <script src="app/+stream/heroBackground.directive.js"></script>
+    <script src="app/+stream/crudRtmpPlayer.directive.js"></script>
+    <script src="app/+stream/crudHlsPlayer.directive.js"></script>
+    <script src="app/+stream/crudDashPlayer.directive.js"></script>
+    <script src="app/+stream/chat.directive.js"></script>
+    <script src="app/+stream/backButton.directive.js"></script>
+    <script src="app/+signup/signup.module.js"></script>
+    <script src="app/+signup/validateUsername.directive.js"></script>
+    <script src="app/+signup/validateEmail.directive.js"></script>
+    <script src="app/+signup/signup.route.js"></script>
+    <script src="app/+signup/signup.controller.js"></script>
+    <script src="app/+login/login.module.js"></script>
+    <script src="app/+login/newPasswordForm.directive.js"></script>
+    <script src="app/+login/loginForm.directive.js"></script>
+    <script src="app/+login/login.routes.js"></script>
+    <script src="app/+login/login.controller.js"></script>
+    <script src="app/+login/forgotForm.directive.js"></script>
+    <script src="app/+account/account.module.js"></script>
+    <script src="app/+account/playerSelect.directive.js"></script>
+    <script src="app/+account/memberPhoto.service.js"></script>
+    <script src="app/+account/memberPhoto.directive.js"></script>
+    <script src="app/+account/channelDetails.directive.js"></script>
+    <script src="app/+account/account.route.js"></script>
+    <script src="app/+account/account.controller.js"></script>
+    <script src="app/+channels/channels.module.js"></script>
+    <script src="app/+channels/channels.route.js"></script>
+    <script src="app/+channels/channels.controller.js"></script>
+    <script src="app/+channels/channelCard.directive.js"></script>
+    <script src="app/app.module.js"></script>
+    <!-- endinject -->
+  </body>
+
+</html>

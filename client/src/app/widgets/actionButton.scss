@@ -1,0 +1,87 @@
+@import "../../css/scss/partials/functions";
+
+action-button {
+  button {
+    &:disabled {
+      box-shadow: none !important;
+    }
+
+    &:not(.btn-full) {
+      .loading-image {
+        width: 4em;
+        height: auto;
+        margin-top: 0.8em
+      }
+    }
+  }
+
+  &.backing-button {
+    .preloader-svg-wrapper {
+      margin-top: -1.0em;
+
+      img {
+        height:0.8em;
+      }
+    }
+  }
+
+  &.small {
+    display: inline-block;
+
+    button {
+      font-size: 1em;
+      line-height: 0;
+      letter-spacing: 0.07em;
+      border-radius: 3px;
+      padding: 1.1em 1.8em;
+      margin: 0.5em;
+
+      @media #{$small-and-down} {
+        font-size: 0.9em;
+        padding: 0.75em 1.5em;
+      }
+    }
+  }
+
+  .btn {
+    font-size: 1.2em;
+    line-height: 0;
+    letter-spacing: 0.1em;
+    border-radius: 3px;
+    padding: 1.5em 3em;
+    white-space: nowrap;
+  }
+
+  .btn-large {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .btn-full {
+    width:100%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-weight: 500;
+    font-size: 1.25em;
+    line-height: 0;
+    letter-spacing: 0.15em;
+    border-radius: 3px;
+    padding: 2em;
+
+    .preloader-svg-wrapper {
+      position: absolute;
+      left:0;
+      right:0;
+      width:100%;
+      margin-top: -0.5em;
+
+      img {
+        height:1em;
+      }
+    }
+  }
+}

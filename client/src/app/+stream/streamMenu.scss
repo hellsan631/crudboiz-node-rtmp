@@ -1,0 +1,14 @@
+stream-menu {
+  display: block;
+  position: absolute;
+  top:0;
+  right: 2em;
+
+  .dropdown-content {
+    min-width: 160px;
+  }
+}
+
+.stream-menu-container {
+  position: relative;
+}

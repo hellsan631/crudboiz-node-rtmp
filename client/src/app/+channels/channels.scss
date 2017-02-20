@@ -1,0 +1,9 @@
+@import "../../css/scss/partials/functions";
+
+.extra-padding-top {
+  padding-top: 2em;
+
+  @media #{$small-and-down} {
+    padding-top: 0em;
+  }
+}

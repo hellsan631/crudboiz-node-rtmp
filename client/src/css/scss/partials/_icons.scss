@@ -1,0 +1,38 @@
+.category-icon {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &.cares {
+    background-image: url(../images/categories/cares.svg);
+  }
+  &.culture {
+    background-image: url(../images/categories/culture.svg);
+  }
+  &.live {
+    background-image: url(../images/categories/live.svg);
+  }
+  &.nightlife {
+    background-image: url(../images/categories/nightlife.svg);
+  }
+  &.professional {
+    background-image: url(../images/categories/professional.svg);
+  }
+  &.shopping {
+    background-image: url(../images/categories/shopping.svg);
+  }
+  &.sports {
+    background-image: url(../images/categories/sports.svg);
+  }
+  &.taste {
+    background-image: url(../images/categories/taste.svg);
+  }
+  &.travel {
+    background-image: url(../images/categories/travel.svg);
+  }
+  &.wellness {
+    background-image: url(../images/categories/wellness.svg);
+  }
+}

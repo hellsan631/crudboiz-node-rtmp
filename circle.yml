@@ -1,0 +1,17 @@
+machine:
+  environment:
+    NODE_ENV: development
+    DISABLE_RAVEN: true
+
+  node:
+    version: 6.9.3
+
+dependencies:
+  cache_directories:
+    - "client/src/vendor"
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: crudboiz-node-rtmp

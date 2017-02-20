@@ -1,0 +1,66 @@
+@import "../../css/scss/partials/functions";
+@import "../../css/scss/partials/colors";
+
+user-fab {
+ .user-fab-container {
+    position: absolute;
+    top: 0;
+    right: 1em;
+    z-index: 995;
+
+    @media #{$small-and-down} {
+      top: 2px;
+      right: 0.4em;
+    }
+  }
+
+  .dropdown-button.btn-floating {
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+
+    background-position: center;
+    background-size: cover;
+    //background-color: transparent;
+    box-shadow: none;
+
+    @media #{$small-and-down} {
+      width: 40px;
+      height: 40px;
+      line-height: 34px;
+    }
+  }
+
+  .dropdown-content {
+    margin-top: 60px;
+    min-width: 160px;
+
+    a{
+      text-align: left;
+    }
+  }
+
+  .spend-amount {
+    position: absolute;
+    top: 23px;
+    right: 4em;
+    color: #111;
+    text-align: right;
+    display: block;
+
+    @include materialBounce(all, 800ms);
+
+    @media #{$medium-and-down} {
+      top: 18px;
+      right: 0em;
+      font-size: 0.9em;
+
+      &:hover {
+        right: 3.5em;
+      }
+    }
+  }
+}
+
+
+

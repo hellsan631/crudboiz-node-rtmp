@@ -1,0 +1,26 @@
+{
+  "restApiRoot": "/api",
+  "host": "0.0.0.0",
+  "port": 3000,
+  "serverUrl": "http://crudboiz.tv",
+  "hlsUrl": "http://hls.crudboiz.tv",
+  "rtmpUrl": "rtmp://crudboiz.tv",
+  "rtmpKey": "U4vs3Niddn",
+  "remoting": {
+    "context": false,
+    "rest": {
+      "normalizeHttpPath": false,
+      "xml": false,
+      "handleErrors": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false
+  }
+}

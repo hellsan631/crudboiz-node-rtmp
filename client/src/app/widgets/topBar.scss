@@ -1,0 +1,15 @@
+top-bar {
+  display: block;
+  position: relative;
+  z-index: 1000;
+
+  .nav-wrapper {
+    position: relative;
+  }
+
+  li {
+    a {
+      color: #444;
+    }
+  }
+}

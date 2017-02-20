@@ -1,0 +1,39 @@
+@import "../../css/scss/partials/functions";
+
+channel-card {
+  display:block;
+  position: relative;
+  cursor: pointer;
+
+  
+
+  .game {
+    display: block;
+    font-size: 0.7em;
+  }
+
+  .material-icons {
+    vertical-align: middle;
+  }
+
+  .viewer-count {
+    vertical-align: middle;
+    padding: 0.3em;
+    padding-right: 0;
+  }
+
+  .card {
+    box-shadow: big-shadow();
+    
+    .card-image .card-title {
+      width: 100%;
+      font-size: 1.2em;
+      padding-top: 2em;
+      background: linear-gradient(to top, rgba(#000,1) 0%,rgba(#444,0.5) 33%, rgba(#fff,0.0) 100%);
+
+      small {
+        font-size: 0.8em;
+      }
+    }
+  }
+}

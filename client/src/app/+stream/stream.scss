@@ -1,0 +1,37 @@
+@import "../../css/scss/partials/functions";
+
+.padding-video-top {
+  padding: 3em;
+}
+
+.stream-container {
+  width: 98%;
+  display:block;
+  margin: 0 auto;
+
+  @media #{$small-and-down} {
+    width: 100%;
+  }
+}
+
+.stream-icon {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.player-area {
+  position: relative;
+}
+
+.stream-info {
+  .username {
+    font-size: 1.05em;
+    font-weight: 500;
+    //font-style: italic;
+  }
+  .game {
+    font-size: 1.05em;
+    font-weight: 400;
+    font-style: italic;
+  }
+}

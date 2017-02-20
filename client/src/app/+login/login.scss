@@ -1,0 +1,21 @@
+div.login-container {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  margin-top: -4em;
+}
+
+.login-form form {
+  display:inline-block;
+  text-align: left;
+  max-width: 450px;
+  width: 100%;
+}
+
+.login-form {
+  text-align: center;
+}
+
+.login-wrapper {
+  padding: 2em 0;
+}

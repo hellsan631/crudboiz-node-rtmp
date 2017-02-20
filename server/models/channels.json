@@ -1,0 +1,32 @@
+{
+  "name": "Channel",
+  "plural": "channels",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+  },
+  "properties": {
+    "title": "string",
+    "game": "string",
+    "description": "string",
+    "color": "string",
+    "username": {
+      "type":"string",
+      "index": {"unique": true}
+    },
+    "rtmpKey": {
+      "type":"string",
+      "index": {"unique": true}
+    }
+  },
+  "hidden": ["rtmpKey"],
+  "validations": [],
+  "relations": {
+    "member": {
+      "model": "Member",
+      "type": "belongsTo"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

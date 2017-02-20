@@ -1,0 +1,46 @@
+{
+  "name": "Member",
+  "plural": "members",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+  },
+  "properties": {
+    "rtmpKey": "string",
+    "color": "string",
+    "profileImage": "string",
+    "player": {
+      "type": "string",
+      "default": "rtmp"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "channel": {
+      "model": "Channel",
+      "type": "hasOne"
+    }
+  },
+  "protected": ["rtmpKey"],
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "principalType":"ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "rtmpKey"
+    },
+    {
+      "principalType":"ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "rtmpKey"
+    }
+  ],
+  "methods": {}
+}

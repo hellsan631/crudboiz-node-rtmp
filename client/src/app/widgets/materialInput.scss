@@ -1,0 +1,6 @@
+material-input {
+  input.valid,
+  input:focus.valid {
+    border-bottom: 2px solid #4CAF50 !important;
+  }
+}

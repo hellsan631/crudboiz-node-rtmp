@@ -1,0 +1,82 @@
+.btn {
+  font-weight: 500;
+  font-size: 1.25em;
+  line-height: 0;
+  letter-spacing: 0.15em;
+  border-radius: 3px;
+  padding: 2em;
+}
+
+.btn-small {
+  font-size: 1.2em;
+  line-height: 0;
+  letter-spacing: 0.1em;
+  border-radius: 3px;
+  padding: 1.5em 3em;
+}
+
+.btn-large {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.btn-full {
+  width:100%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+
+  .preloader-svg-wrapper {
+    position: absolute;
+    left:0;
+    right:0;
+    width:100%;
+    margin-top: -0.5em;
+
+    img {
+      height:1em;
+    }
+  }
+}
+
+.referral-btn {
+  font-size: 1.8em;
+  line-height: 0;
+  padding: 0.8em 3.6em;
+  width: 70%;
+  color: #fff;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+@media (max-width: 767px) {
+  .btn.referral-btn {
+    padding: 0.8em 3.6em;
+    margin-bottom: 15px;
+    width: 90%;
+  }
+}
+
+.facebookButton {
+  display: none;
+}
+
+.btn.referral-btn.focus, .btn.referral-btn:focus, .btn.referral-btn:hover {
+  color:#fff;
+  text-decoration: none;
+  opacity: .7;
+}
+
+email-referral a {
+  background: #555;
+}
+
+facebook-referral a {
+  background: #3b5998;
+}
+
+twitter-referral a {
+  background: #55acee;
+}

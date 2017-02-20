@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col s12 m12 l9">
+    <div class="stream-container">
+      <div class="row player-area">
+        <hero-background
+          ng-if="!vm.streamInit || !vm.stream.active"
+          class="animate-fade"
+          stream="vm.stream"
+        >
+        </hero-background>
+        <div ng-if="vm.streamInit && vm.stream.active">
+          <crud-hls-player
+            ng-if="vm.selectedPlayer === 'hls'"
+            stream="vm.stream"
+          >
+          </crud-hls-player>
+          <crud-rtmp-player
+            ng-if="vm.selectedPlayer === 'rtmp'"
+            stream="vm.stream"
+          >
+          </crud-rtmp-player>
+          <!--
+          <crud-dash-player
+            ng-if="vm.selectedPlayer === 'dash'"
+            stream="vm.stream"
+          >
+          </crud-dash-player>
+          -->
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col s1 right-align">
+          <img class="responsive-img stream-icon" ng-src="{{ vm.host.profileImage }}" />
+        </div>
+        <div class="col s11 no-padding">
+          <div class="col s12 no-padding stream-menu-container">
+            <h5 class="left">{{ vm.channel.title }}</h5>
+            <stream-menu player="vm.selectedPlayer"></stream-menu>
+          </div>
+          <div class="col s12 no-padding stream-info">
+            <span class="username" ng-bind="vm.channel.username"></span> {{ vm.stream.active ? 'is' : 'was' }} playing <span class="game" ng-bind="vm.channel.game"></span>
+          </div>
+        </div>
+        <div class="col s12">
+          <p 
+            class="flow-text"
+            ng-bind="vm.channel.description"
+          >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m12 l3">
+    <div class="stream-container">
+      <chat
+        ng-if="::vm.streamInit"
+        stream-name="vm.stream.name"
+        member="vm.member"
+      >
+      </chat>
+    </div>
+  </div>
+</div>
+

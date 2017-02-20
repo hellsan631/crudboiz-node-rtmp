@@ -1,0 +1,25 @@
+@import "../../css/scss/partials/functions";
+
+trianglify {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  display: block;
+  z-index: 0;
+
+  .animate-fade-long {
+    &.ng-enter, &.ng-hide-remove {
+      @include animation(fadeIn 1250ms);
+    }
+    &.ng-leave, &.ng-hide-add {
+      @include animation(fadeOut 1250ms);
+    }
+  }
+}
+
+ui-view {
+  position: relative;
+  z-index: 1;
+}
