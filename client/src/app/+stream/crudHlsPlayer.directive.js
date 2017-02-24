@@ -63,45 +63,43 @@
 
     dm.playerLoaded = false;
 
-    $timeout(() => initPlayer(), 2000);
+    player = new Clappr.Player({
+      source: dm.stream.hlsUrl,
+      poster: Widgets.getFreshUrl(dm.stream.poster),
+      autoPlay: false,
+      width: '100%'
+    });
 
-    function initPlayer() {
-      player = new Clappr.Player({
-        source: dm.stream.hlsUrl,
-        poster: Widgets.getFreshUrl(dm.stream.poster),
-        autoPlay: true,
-        width: '100%'
+    $timeout(() => player.play(), 3000);
+
+    player.on(Clappr.Events.PLAYER_PLAY, function() {
+      $timeout(() => {
+        dm.playerLoaded = true;
+      }, 300);
+    });
+
+    player.attachTo(playerElement);
+
+    resizePlayer();
+    
+    $(window).on('window:resize', resizePlayer);
+
+    if ($scope.$on) {
+      $scope.$on('$destroy', function() {
+        $(window).off('window:resize', resizePlayer);
       });
+    }
 
-      player.on(Clappr.Events.PLAYER_PLAY, function() {
-        $timeout(() => {
-          dm.playerLoaded = true;
-        }, 300);
+    function resizePlayer() {
+      let width = playerParent.innerWidth();
+      let height = 2 * Math.round(width * ASPECT_RATIO/2);
+
+      player.resize({ 
+        width: width, 
+        height: height 
       });
-
-      player.attachTo(playerElement);
-
-      resizePlayer();
       
-      $(window).on('window:resize', resizePlayer);
-
-      if ($scope.$on) {
-        $scope.$on('$destroy', function() {
-          $(window).off('window:resize', resizePlayer);
-        });
-      }
-
-      function resizePlayer() {
-        let width = playerParent.innerWidth();
-        let height = 2 * Math.round(width * ASPECT_RATIO/2);
-
-        player.resize({ 
-          width: width, 
-          height: height 
-        });
-        
-        playerParent.css('height', height);
-      }
+      playerParent.css('height', height);
     }
 
   }
