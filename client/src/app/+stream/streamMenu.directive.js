@@ -20,14 +20,21 @@
         </a>
 
         <ul id="more-stream" class="dropdown-content">
-          <li ng-click="dm.player = 'rtmp'"><a>RTMP Player</a></li>
-          <li ng-click="dm.player = 'hls'"><a>HLS Player</a></li>
+          <li ng-click="dm.player = 'rtmp'">
+            <a>
+              RTMP Player <i ng-show="dm.player === 'rtmp'" class="material-icons tiny">done</i> 
+            </a>
+          </li>
+          <li ng-click="dm.player = 'hls'">
+            <a> 
+              HLS Player <i ng-show="dm.player === 'hls'" class="material-icons tiny">done</i>
+            </a>
+          </li>
         </ul>
       `,
       scope: {},
       bindToController: {
-        player: '=',
-
+        player: '='
       },
       controller: Controller,
       controllerAs: 'dm'

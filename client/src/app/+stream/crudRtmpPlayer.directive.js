@@ -48,7 +48,6 @@
 
       let playerElement = element.find('#rtmp-player');
       let playerParent  = $('.player-area');
-      
 
       resizePlayer();
 
@@ -83,7 +82,7 @@
     let streamPlayer;
     let init = false;
 
-    let clearInterval = $interval(() => setBackgroundShadow(10000), 8000);
+    let clearInterval = $interval(() => setBackgroundShadow(2000), 8000);
 
     if ($scope.$on) {
       $scope.$on('$destroy', function() {
@@ -92,7 +91,6 @@
       });
     }
 
-
     $scope.$watch('dm.stream.poster', (poster) => {
       if (poster) {
         initPlayer();
@@ -100,6 +98,7 @@
     });
 
     function initPlayer() {
+      console.log(dm.stream);
       streamPlayer = videojs('rtmp-player', {
         techOrder: ['flash'],
         fluid: true,
@@ -110,6 +109,7 @@
         }],
       }, function onPlayerReady() {
         this.play();
+        console.log('play');
 
         init = true;
       });

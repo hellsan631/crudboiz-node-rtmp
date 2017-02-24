@@ -6,7 +6,7 @@
    .directive('crudHlsPlayer', crudHlsPlayer);
 
   /* @ngInject */
-  function crudHlsPlayer(Widgets, Clappr, $timeout) {
+  function crudHlsPlayer(Elements, $interval, $timeout) {
 
     var directive = {
       restrict: 'E',
@@ -25,16 +25,48 @@
     return directive;
 
     function link(scope, element) {
-      const ASPECT_RATIO = 9/16;
-
       let dm = scope.dm;
 
-      let playerElement = element.find('.crud-player')[0];
-      let playerParent  = $('.player-area');
-      
-      dm.playerLoaded = false;
+      let clearInterval = $interval(() => setBackgroundShadow(10000), 8000);
 
-      let player = new Clappr.Player({
+      if (scope.$on) {
+        scope.$on('$destroy', function() {
+          $interval.cancel(clearInterval);
+        });
+      }
+
+      setBackgroundShadow();
+
+      function setBackgroundShadow(timeout) {
+        Elements
+          .delightfulShadow(dm.stream.poster)
+          .then((shadow) => {
+            $timeout(() => {
+              dm.shadowStyle = {
+                'box-shadow': shadow
+              };
+            }, timeout);
+          });
+      }
+    }
+  }
+
+  /* @ngInject */
+  function Controller($scope, $timeout, Widgets, Clappr) {
+    let dm = this;
+
+    const ASPECT_RATIO = 9/16;
+
+    let playerElement = $('.crud-player')[0];
+    let playerParent  = $('.player-area');
+    let player;
+
+    dm.playerLoaded = false;
+
+    $timeout(() => initPlayer(), 1000);
+
+    function initPlayer() {
+      player = new Clappr.Player({
         source: dm.stream.hlsUrl,
         poster: Widgets.getFreshUrl(dm.stream.poster),
         autoPlay: true,
@@ -47,21 +79,17 @@
         }, 300);
       });
 
-      requestAnimationFrame(() => {
-        player.attachTo(playerElement);
+      player.attachTo(playerElement);
 
-        resizePlayer();
-        
-        $(window).on('window:resize', resizePlayer);
+      resizePlayer();
+      
+      $(window).on('window:resize', resizePlayer);
 
-        $timeout(() => {
-          if (scope.$on) {
-            scope.$on('$destroy', function() {
-              $(window).off('window:resize', resizePlayer);
-            });
-          }
+      if ($scope.$on) {
+        $scope.$on('$destroy', function() {
+          $(window).off('window:resize', resizePlayer);
         });
-      });
+      }
 
       function resizePlayer() {
         let width = playerParent.innerWidth();
@@ -74,35 +102,6 @@
         
         playerParent.css('height', height);
       }
-    }
-  }
-
-  /* @ngInject */
-  function Controller($scope, $rootScope, $timeout, $interval, Elements) {
-    let dm = this;
-    
-    let timeout = 0;
-
-    let clearInterval = $interval(() => setBackgroundShadow(10000), 8000);
-
-    if ($scope.$on) {
-      $scope.$on('$destroy', function() {
-        $interval.cancel(clearInterval);
-      });
-    }
-
-    setBackgroundShadow();
-
-    function setBackgroundShadow(timeout = 1000) {
-      Elements
-        .delightfulShadow(dm.stream.poster)
-        .then((shadow) => {
-          $timeout(() => {
-            dm.shadowStyle = {
-              'box-shadow': shadow
-            };
-          }, timeout);
-        });
     }
 
   }

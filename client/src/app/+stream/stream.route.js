@@ -27,9 +27,18 @@
         resolve: {
           stream: streamResolver,
           member: memberResolver,
-          host: hostResolver
+          host: hostResolver,
+          previous: previous
         }
       });
+  }
+
+  function previous($state) {
+    return {
+      name: $state.current.name,
+      params: $state.params,
+      url: $state.href($state.current.name, $state.params)
+    };
   }
 
   /* @ngInject */
@@ -48,7 +57,9 @@
   }
 
   /* @ngInject */
-  function hostResolver(Member, $stateParams) {
+  function hostResolver($q, Member, Account, $stateParams) {
+    let deferred = $q.defer();
+
     let query = {
       filter: {
         where: $stateParams,
@@ -56,7 +67,15 @@
       }
     };
     
-    return Member.findOne(query).$promise;
+    Member
+      .findOne(query)
+      .$promise
+      .then(deferred.resolve)
+      .catch((err) => {
+        deferred.resolve(Account.getDefaultStream($stateParams.username));
+      });
+
+    return deferred.promise;
   }
 
   /* @ngInject */
@@ -67,7 +86,6 @@
       .getStreamInfo($stateParams)
       .$promise
       .then((stream) => {
-        console.log(stream);
         deferred.resolve(stream);
       })
       .catch(deferred.reject);

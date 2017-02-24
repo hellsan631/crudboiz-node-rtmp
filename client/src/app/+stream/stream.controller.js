@@ -10,13 +10,15 @@
   /* @ngInject */
   function Controller(
     $scope, 
-    $stateParams, 
+    $stateParams,
     $localForage, 
     $timeout, 
     member, 
-    stream, 
+    stream,
+    previous,
     host, 
-    Deep
+    Deep,
+    Widgets
   ) {
     let vm = this;
     let client = Deep.getClient();
@@ -24,22 +26,19 @@
     vm.stream = stream;
     vm.member = member;
     vm.host   = host;
+    vm.host.profileImage = Widgets.getProfileImage(vm.host);
 
     let record = client.record.getRecord(`streams/${$stateParams.username}`);
 
     record.subscribe('info', (value) => {
-      $scope.$evalAsync(function () {
-        vm.stream = value;
-      });
+      $scope.$evalAsync(() => vm.stream = value);
     });
 
     record.subscribe('channel', (value) => {
-      $scope.$evalAsync(function () {
-        vm.channel = value;
-      });
+      $scope.$evalAsync(() => vm.channel = value);
     });
 
-    vm.selectedPlayer = member.player || 'hls';
+    vm.selectedPlayer = member.player || 'rtmp';
 
     $localForage
       .getItem('selectedPlayer')
@@ -50,25 +49,22 @@
       });
 
     $timeout(() => {
+
       //we time this out to give our hero animation time to finish
       vm.streamInit = true;
-    }, 800);
+    }, previous.url ? 800 : 100);
 
     if ($scope.$on) {
       $scope.$on('$destroy', function() {
-        record.unsubscribe(() => {
-          record.discard();
-        });
+        record.unsubscribe(() => record.discard());
         
-        setTimeout(() => {
-          client.close();
-        }, 50);
+        setTimeout(() => client.close(), 50);
       });
     }
 
     function watchPlayer() {
       $scope.$watch('vm.selectedPlayer', (player) => {
-        if (player && player !== vm.member.player) {
+        if (player) {
           $localForage.setItem('selectedPlayer', player);
         }
       });
