@@ -63,7 +63,7 @@
 
     dm.playerLoaded = false;
 
-    $timeout(() => initPlayer(), 1000);
+    $timeout(() => initPlayer(), 2000);
 
     function initPlayer() {
       player = new Clappr.Player({
