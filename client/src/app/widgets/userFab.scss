@@ -2,11 +2,15 @@
 @import "../../css/scss/partials/colors";
 
 user-fab {
+  position: relative;
+  display: block;
+  z-index: 1001;
+
  .user-fab-container {
     position: absolute;
     top: 0;
     right: 1em;
-    z-index: 995;
+    z-index: 1001;
 
     @media #{$small-and-down} {
       top: 2px;
@@ -44,7 +48,7 @@ user-fab {
     position: absolute;
     top: 23px;
     right: 4em;
-    color: #111;
+    color: #fff;
     text-align: right;
     display: block;
 

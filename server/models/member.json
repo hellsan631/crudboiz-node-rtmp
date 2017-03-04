@@ -21,7 +21,6 @@
       "type": "hasOne"
     }
   },
-  "protected": ["rtmpKey"],
   "acls": [
     {
       "principalType": "ROLE",

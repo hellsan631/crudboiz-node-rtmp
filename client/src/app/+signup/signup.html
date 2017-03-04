@@ -20,7 +20,7 @@
           <form class="left-align" name="submit" ng-submit="vm.signup()">
             <material-input
               name="username"
-              label="Username"
+              label="Username (case sensitive)"
               placeholder=" "
               min-length="3"
               validate="true"
@@ -45,7 +45,7 @@
                 label="Password*"
                 type="{{vm.pwtype}}"
                 placeholder=""
-                pattern=".{9,}"
+                pattern=".{8,}"
                 validate="true"
                 required="true"              
                 autocomplete="off"
@@ -53,7 +53,7 @@
               >
               </material-input>
               <div class="password-requirements">
-                <i>Passwords require a length of atleast 9 characters</i>
+                <i>Passwords require a length of atleast 8 characters</i>
               </div>
               
               <div class="show-pw btn btn-small secondary-action z-depth-0"

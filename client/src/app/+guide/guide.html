@@ -1,0 +1,37 @@
+<div class="container anim-slide-below-fade extra-padding-top">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card">
+        <div class="card-tabs">
+          <ul tabs class="tabs tabs-fixed-width">
+            <li class="tab"><a class="active" href="#obs">Streaming Setup</a></li>
+            <li class="tab disabled"><a href="#audio">Audio Setup</a></li>
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <div id="obs" class="guide">
+            <p>
+              Open <a href="https://obsproject.com" target="_blank">OBS Studio</a>, and click on <b>Settings</b>
+            </p>
+            <p>
+              Click on the Stream tab
+            </p>
+            <p>
+              For <b>Stream Type</b>, select <b>Custom Streaming Server</b> from the dropdown
+            </p>
+            <p>
+              For <b>Stream Key</b>, you must enter your current Display Name and Stream Key as follows:
+              <p class="center-align">
+                <span class="key">{{vm.member.username}}?key={{vm.member.rtmpKey}}</span>
+              </p>
+              <p>
+                Your ready to start streaming ^.^
+              </p>
+            </p>
+          </div>
+          <div id="audio">Test 2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

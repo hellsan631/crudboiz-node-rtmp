@@ -12,11 +12,11 @@
     "color": "string",
     "username": {
       "type":"string",
-      "index": {"unique": true}
+      "index": { "unique": true }
     },
     "rtmpKey": {
       "type":"string",
-      "index": {"unique": true}
+      "index": { "unique": true }
     }
   },
   "hidden": ["rtmpKey"],

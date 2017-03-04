@@ -18,7 +18,17 @@
 
           <div ng-if="dm.loadingState === 'loading' || dm.loadingState === true" 
             class="preloader-svg-wrapper animate-bounce">
-            <img class="loading-image" ng-src="images/svg-loaders/{{ dm.loaderAnimation || 'three-dots' }}.svg" />
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <span ng-if="dm.loadingState === 'error'">

@@ -9,7 +9,11 @@ top-bar {
 
   li {
     a {
-      color: #444;
+      color: #fff;
+    }
+
+    &.active {
+      background: #666 !important;
     }
   }
 }

@@ -13,11 +13,6 @@
         name: 'stream',
         url: '/stream/{username}',
         views: {
-          'navbar@':{
-            template: `<back-button></back-button>`,
-            controller: function() {},
-            controllerAs: 'vm'
-          },
           'main@': {
             templateUrl: 'app/+stream/stream.html',
             controller: 'StreamController',
@@ -33,6 +28,7 @@
       });
   }
 
+  /* @ngInject */
   function previous($state) {
     return {
       name: $state.current.name,

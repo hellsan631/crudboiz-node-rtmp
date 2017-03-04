@@ -54,7 +54,10 @@
     function link(scope, element) {
       let sm = scope.sm;
 
-      let cleanupSubscribeBinding = $rootScope.$on('loginEvent', loadCurrentMember);
+      let cleanupSubscribeBinding = $rootScope.$on(
+        'loginEvent', 
+        loadCurrentMember
+      );
 
       /**
        * Binds to the scope to clean up the event binding when no longer in use

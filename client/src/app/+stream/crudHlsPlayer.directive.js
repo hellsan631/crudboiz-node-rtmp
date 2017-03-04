@@ -70,7 +70,7 @@
       width: '100%'
     });
 
-    $timeout(() => player.play(), 3000);
+    $timeout(() => player.play(), 6000);
 
     player.on(Clappr.Events.PLAYER_PLAY, function() {
       $timeout(() => {

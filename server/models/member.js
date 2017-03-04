@@ -3,19 +3,21 @@ const randomColor = require('randomcolor');
 module.exports = (Member) => {
 
   Member.observe('before save', (ctx, next) => {
-    if (ctx.isNewInstance) {
-      return next();
-    }
-
-    const Channel = Member.app.models.Channel;
-
     let accessor = 'data';
 
     if (ctx.instance) {
       accessor = 'instance';
     }
 
-    Channel
+    if (ctx.isNewInstance) {
+      
+      const RTMP_KEY = generateKey();
+      ctx[accessor].rtmpKey = RTMP_KEY;
+
+      return next();
+    }
+
+    Member.app.models.Channel
       .findOne({ where: { memberId: ctx[accessor].id } })
       .then((channel) => {
         channel.color = ctx[accessor].color;
@@ -43,11 +45,10 @@ module.exports = (Member) => {
     }
 
     const Channel = Member.app.models.Channel;
-    const RTMP_KEY = generateKey();
     const COLOR = randomColor({ luminosity: 'dark' });
 
     const relatedChannel = {
-      rtmpKey: RTMP_KEY,
+      rtmpKey: ctx[accessor].rtmpKey,
       title: `${ctx[accessor].username}'s Channel`,
       game: 'A Generic Videogame',
       description: '',
@@ -56,7 +57,6 @@ module.exports = (Member) => {
       color: COLOR
     };
 
-    ctx[accessor].rtmpKey = RTMP_KEY;
     ctx[accessor].color = COLOR;
 
     Channel

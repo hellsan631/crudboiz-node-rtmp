@@ -11,7 +11,8 @@
       'app.stream',
       'app.login',
       'app.signup',
-      'app.account'
+      'app.account',
+      'app.guide'
     ]);
 
 })();

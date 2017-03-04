@@ -14,6 +14,7 @@
           <material-input
             name="email"
             label="Email"
+            placeholder=" "
             type="email"
             required="true"
             validate="true"
@@ -22,6 +23,7 @@
           <material-input
             name="password"
             label="Password"
+            placeholder=" "
             type="password"
             required="true"
             ng-model="sm.login.password">
