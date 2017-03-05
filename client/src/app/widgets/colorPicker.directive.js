@@ -97,11 +97,12 @@
       dm.initMemberColor = () => {
         for (let i = 0; i < dm.materialColors.length; i++) {
           let color = dm.materialColors[i];
+          let k = 0;
 
-          for (let k = 0; k < color.variations.length; k++) {
+          for (k = 0; k < color.variations.length; k++) {
             let variation = color.variations[k];
 
-            if (dm.color === variation.hex) {
+            if (!dm.selectedColor || dm.color === variation.hex) {
               dm.selectedVariation = variation;
               dm.selectedColor = color;
             }
