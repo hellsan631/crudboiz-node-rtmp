@@ -111,7 +111,6 @@
       };
 
       dm.initMemberColor();
-
     }
   }
 
