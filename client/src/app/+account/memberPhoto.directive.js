@@ -79,7 +79,7 @@
   /* @ngInject */
   function Controller($scope, Dialog, Upload, MemberPhoto) {
     var dm = this;
-    dm.loading = true;
+    dm.loading = false;
 
     if(dm.member.profileImage) {
       dm.placeholder = dm.member.profileImage;
