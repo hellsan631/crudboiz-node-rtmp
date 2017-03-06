@@ -20,9 +20,10 @@
           <form class="left-align" name="submit" ng-submit="vm.signup()">
             <material-input
               name="username"
-              label="Username (case sensitive)"
+              label="Username (case sensitive, no spaces)"
               placeholder=" "
               min-length="3"
+              pattern="[^\s]+"
               validate="true"
               required="true"
               ng-model="vm.member.username"
