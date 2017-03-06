@@ -106,7 +106,8 @@ module.exports = (Channel) => {
       if (
         stream.client[i].address.includes('127.0.0.1') || 
         stream.client[i].address.includes('localhost') ||
-        stream.client[i].address.includes('0.0.0.0')
+        stream.client[i].address.includes('0.0.0.0') ||
+        typeof stream.client[i].publishing !== 'undefined'
       ) {
         stream.client.splice(i, 1);
         break;
