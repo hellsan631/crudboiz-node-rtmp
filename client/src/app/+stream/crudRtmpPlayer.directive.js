@@ -82,7 +82,7 @@
     let streamPlayer;
     let init = false;
 
-    let clearInterval = $interval(() => setBackgroundShadow(2000), 8000);
+    let clearInterval = $interval(() => setBackgroundShadow(2000), 6000);
 
     if ($scope.$on) {
       $scope.$on('$destroy', function() {
@@ -98,7 +98,6 @@
     });
 
     function initPlayer() {
-      console.log(dm.stream);
       streamPlayer = videojs('rtmp-player', {
         techOrder: ['flash'],
         fluid: true,
@@ -109,14 +108,12 @@
         }],
       }, function onPlayerReady() {
         this.play();
-        console.log('play');
 
         init = true;
       });
 
       streamPlayer.on('ended', function() {
         this.dispose();
-        console.log('disposing');
       });
 
       streamPlayer

@@ -27,7 +27,7 @@
     function link(scope, element) {
       let dm = scope.dm;
 
-      let clearInterval = $interval(() => setBackgroundShadow(10000), 8000);
+      let clearInterval = $interval(() => setBackgroundShadow(10000), 6000);
 
       if (scope.$on) {
         scope.$on('$destroy', function() {
