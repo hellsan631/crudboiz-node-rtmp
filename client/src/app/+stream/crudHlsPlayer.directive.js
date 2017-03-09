@@ -15,7 +15,8 @@
       `,
       scope: {},
       bindToController: {
-        stream: '<'
+        stream: '<',
+        member: '<'
       },
       controller: Controller,
       controllerAs: 'dm',
@@ -70,17 +71,19 @@
       width: '100%'
     });
 
-    $timeout(() => player.play(), 6000);
-
     player.on(Clappr.Events.PLAYER_PLAY, function() {
-      $timeout(() => {
-        dm.playerLoaded = true;
-      }, 300);
+      $scope.$evalAsync(() => dm.playerLoaded = true);
+
+      if (dm.stream.name === dm.member.username) {
+        player.mute();
+      }
     });
 
     player.attachTo(playerElement);
 
-    resizePlayer();
+    $timeout(() => player.play(), 3000);
+    
+    $timeout(() => resizePlayer(), 200);
     
     $(window).on('window:resize', resizePlayer);
 

@@ -34,7 +34,8 @@
       `,
       scope: {},
       bindToController: {
-        stream: '<'
+        stream: '<',
+        member: '<'
       },
       controller: Controller,
       controllerAs: 'dm',
@@ -116,8 +117,12 @@
         this.dispose();
       });
 
-      streamPlayer
+      if (dm.stream.name !== dm.member.username) {
+        streamPlayer
           .persistvolume({ namespace: 'crudboiz-rtmp-volume' });
+      } else {
+        streamPlayer.muted(true);
+      }
 
       dm.streamPlayer = streamPlayer;
     }
