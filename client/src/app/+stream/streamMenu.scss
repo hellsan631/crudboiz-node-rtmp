@@ -11,6 +11,18 @@ stream-menu {
       vertical-align: middle;
     }
   }
+
+  .view-count {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 1em;
+    margin-top: 0.6em;
+
+    i {
+      margin-top: -3px;
+      vertical-align: middle;
+    }
+  }
 }
 
 .stream-menu-container {

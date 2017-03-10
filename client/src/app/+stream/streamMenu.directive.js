@@ -10,6 +10,13 @@
     return {
       restrict: 'E',
       template: `
+        <div ng-if="dm.stream.active" class="view-count">
+          <i class="material-icons">visibility</i> 
+          <span class="viewer-count">
+            {{ dm.stream.viewerCount }}
+          </span>
+        </div>
+
         <a 
           data-activates="more-stream" 
           dropdown 
@@ -34,7 +41,8 @@
       `,
       scope: {},
       bindToController: {
-        player: '='
+        player: '=',
+        stream: '<'
       },
       controller: Controller,
       controllerAs: 'dm'

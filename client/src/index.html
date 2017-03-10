@@ -24,13 +24,13 @@
 
       <!-- inject:css -->
       <link rel="stylesheet" href="css/styles.css">
+      <link rel="stylesheet" href="css/+channels/channelCard.css">
+      <link rel="stylesheet" href="css/+channels/channels.css">
       <link rel="stylesheet" href="css/+account/account.css">
       <link rel="stylesheet" href="css/+account/memberPhoto.css">
       <link rel="stylesheet" href="css/+guide/guide.css">
-      <link rel="stylesheet" href="css/+channels/channelCard.css">
-      <link rel="stylesheet" href="css/+channels/channels.css">
-      <link rel="stylesheet" href="css/+signup/signup.css">
       <link rel="stylesheet" href="css/+login/login.css">
+      <link rel="stylesheet" href="css/+signup/signup.css">
       <link rel="stylesheet" href="css/+stream/backButton.css">
       <link rel="stylesheet" href="css/+stream/chat.css">
       <link rel="stylesheet" href="css/+stream/crudDashPlayer.css">
@@ -40,6 +40,7 @@
       <link rel="stylesheet" href="css/+stream/heroBackground.css">
       <link rel="stylesheet" href="css/+stream/stream.css">
       <link rel="stylesheet" href="css/+stream/streamMenu.css">
+      <link rel="stylesheet" href="css/+team/team.css">
       <link rel="stylesheet" href="css/widgets/actionButton.css">
       <link rel="stylesheet" href="css/widgets/colorPicker.css">
       <link rel="stylesheet" href="css/widgets/fillheight.css">
@@ -128,6 +129,7 @@
     <script src="app/widgets/element.service.js"></script>
     <script src="app/widgets/colorPicker.directive.js"></script>
     <script src="app/widgets/actionButton.directive.js"></script>
+    <script src="app/vendor/dash.all.min.js"></script>
     <script src="app/core/window.resize.trigger.js"></script>
     <script src="app/core/volume.rtmp.js"></script>
     <script src="app/core/raf.polyfill.js"></script>
@@ -143,7 +145,13 @@
     <script src="app/core/core.constants.js"></script>
     <script src="app/core/core.config.js"></script>
     <script src="app/core/account.service.js"></script>
-    <script src="app/vendor/dash.all.min.js"></script>
+    <script src="app/+channels/channels.module.js"></script>
+    <script src="app/+channels/channels.route.js"></script>
+    <script src="app/+channels/channels.controller.js"></script>
+    <script src="app/+channels/channelCard.directive.js"></script>
+    <script src="app/+team/team.module.js"></script>
+    <script src="app/+team/team.route.js"></script>
+    <script src="app/+team/team.controller.js"></script>
     <script src="app/+stream/stream.module.js"></script>
     <script src="app/+stream/streamMenu.directive.js"></script>
     <script src="app/+stream/stream.route.js"></script>
@@ -168,10 +176,6 @@
     <script src="app/+guide/guide.module.js"></script>
     <script src="app/+guide/guide.route.js"></script>
     <script src="app/+guide/guide.controller.js"></script>
-    <script src="app/+channels/channels.module.js"></script>
-    <script src="app/+channels/channels.route.js"></script>
-    <script src="app/+channels/channels.controller.js"></script>
-    <script src="app/+channels/channelCard.directive.js"></script>
     <script src="app/+account/account.module.js"></script>
     <script src="app/+account/playerSelect.directive.js"></script>
     <script src="app/+account/memberPhoto.service.js"></script>

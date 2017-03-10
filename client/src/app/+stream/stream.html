@@ -41,7 +41,7 @@
         <div class="col s11 no-padding">
           <div class="col s12 no-padding stream-menu-container">
             <h5 class="left">{{ vm.channel.title || vm.stream.name }}</h5>
-            <stream-menu player="vm.selectedPlayer"></stream-menu>
+            <stream-menu stream="vm.stream" player="vm.selectedPlayer"></stream-menu>
           </div>
           <div class="col s12 no-padding stream-info" ng-if="::vm.channel.username">
             <span class="username" ng-bind="vm.channel.username"></span> {{ vm.stream.active ? 'is' : 'was' }} playing <span class="game" ng-bind="vm.channel.game"></span>
