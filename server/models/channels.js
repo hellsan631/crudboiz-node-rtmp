@@ -102,17 +102,23 @@ module.exports = (Channel) => {
     if (stream.client && !Array.isArray(stream.client))
       stream.client = [stream.client];
 
+    let goodClients = [];
+
     for (let i = 0; i < stream.client.length; i++) {
       if (
-        stream.client[i].address.includes('127.0.0.1') || 
-        stream.client[i].address.includes('localhost') ||
-        stream.client[i].address.includes('0.0.0.0') ||
-        typeof stream.client[i].publishing !== 'undefined'
+        stream.client[i].address === '127.0.0.1' || 
+        stream.client[i].address === 'localhost' ||
+        stream.client[i].address === '0.0.0.0' ||
+        typeof stream.client[i].publishing === 'string' ||
+        stream.client[i].swfurl.includes('rtmp://')
       ) {
-        stream.client.splice(i, 1);
-        break;
+        //dont do anything
+      } else {
+        goodClients.push(stream.client[i]);
       }
     }
+
+    stream.client = goodClients;
 
     returnStream.statistics = stream;
     
