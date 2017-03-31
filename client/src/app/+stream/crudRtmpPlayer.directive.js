@@ -117,6 +117,10 @@
         this.dispose();
       });
 
+      streamPlayer.on('error', function(e) {
+        console.log(e);
+      });   
+
       if (dm.stream.name !== dm.member.username) {
         streamPlayer
           .persistvolume({ namespace: 'crudboiz-rtmp-volume' });
