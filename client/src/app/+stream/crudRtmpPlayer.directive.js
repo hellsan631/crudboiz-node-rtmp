@@ -76,12 +76,19 @@
   }
 
   /* @ngInject */
-  function Controller($scope, $rootScope, $timeout, $interval, videojs, Elements) {
+  function Controller($scope, $rootScope, $timeout, $interval, videojs, Offline, Elements) {
     let dm = this;
     
     let timeout = 0;
-    let streamPlayer;
+    
     let init = false;
+    let source = {
+      src: dm.stream.rtmpUrl,
+      type: 'rtmp/flv',
+      label: 'Flash'
+    };
+    let streamPlayer;
+    let onlineState = Offline.state;
 
     let clearInterval = $interval(() => setBackgroundShadow(2000), 6000);
 
@@ -102,24 +109,10 @@
       streamPlayer = videojs('rtmp-player', {
         techOrder: ['flash'],
         fluid: true,
-        sources: [{
-          src: dm.stream.rtmpUrl,
-          type: 'rtmp/flv',
-          label: 'Flash'
-        }],
-      }, function onPlayerReady() {
-        this.play();
-
-        init = true;
+        sources: [source],
       });
 
-      streamPlayer.on('ended', function() {
-        this.dispose();
-      });
-
-      streamPlayer.on('error', function(e) {
-        console.log(e);
-      });   
+      initEvents(streamPlayer); 
 
       if (dm.stream.name !== dm.member.username) {
         streamPlayer
@@ -127,8 +120,45 @@
       } else {
         streamPlayer.muted(true);
       }
+    }
 
-      dm.streamPlayer = streamPlayer;
+    function initEvents(player) {
+      player.on('ready', function() {
+        this.play();
+        console.log('ready');
+      });
+
+      player.on('ended', function() {
+        this.dispose();
+        console.log('ended');
+      });
+
+      player.on('error', function(e) {
+        console.log('error');
+        console.log(e);
+      });
+
+      player.on('playing', function() {
+        console.log('playing');
+        init = true;
+      });
+
+      Offline.on('down', () => {
+        onlineState = 'down';
+        player.pause();
+      });
+
+      Offline.on('up', () => {
+        onlineState = 'up';
+        
+        player.src(source);
+        player.load();
+
+        setTimeout(() => {
+          console.log('playing again');
+          player.play();
+        }, 3000);
+      });
     }
 
     setBackgroundShadow();
@@ -137,11 +167,22 @@
       Elements
         .delightfulShadow(dm.stream.poster)
         .then((shadow) => {
-          $timeout(() => {
-            dm.shadowStyle = {
-              'box-shadow': shadow
-            };
+          setTimeout(() => {
+            $scope.$evalAsync(() => {
+              dm.shadowStyle = {
+                'box-shadow': shadow
+              };
+            });
           }, timeout);
+
+          if (onlineState === 'down') {
+            Offline.trigger('up');
+          }
+        })
+        .catch(() => {
+          if (onlineState === 'up') {
+            Offline.trigger('down');
+          }
         });
     }
 

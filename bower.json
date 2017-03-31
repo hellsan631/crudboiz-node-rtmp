@@ -27,7 +27,8 @@
     "trackpad-scroll-emulator": "^1.0.8",
     "ngEmbed": "ng-embed#^2.1.1",
     "randomcolor": "^0.4.4",
-    "ng-file-upload": "^12.2.13"
+    "ng-file-upload": "^12.2.13",
+    "offline": "^0.7.18"
   },
   "resolutions": {
     "angular": "1.5.11",

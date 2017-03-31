@@ -98,7 +98,8 @@
           deferred.resolve(
             generateShadowGradient(2, depth, color, opacity)
           );
-        });
+        })
+        .catch(deferred.reject);
       
       return deferred.promise;
     }
@@ -162,17 +163,7 @@
       });
 
       img.addEventListener('error', () => {
-
-        if (error === 0) {
-          error++;
-          requestAnimationFrame(() => {
-            if(!newCache)
-              img.src = url + '?' + (new Date()).getTime();
-          });
-        } else {
-          deferred.reject(new Error('Bad Image Detected'));
-          badImages.push(url);
-        }
+        deferred.reject(new Error('Bad Image Detected'));
       });
 
       requestAnimationFrame(() => {

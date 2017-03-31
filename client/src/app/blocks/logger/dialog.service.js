@@ -86,17 +86,12 @@
         showCancelButton: true,
         confirmButtonColor: '#ffc823',
         confirmButtonText: 'Yes!',
-        cancelButtonText: 'No',
-        closeOnConfirm: true
-      }, function confirmSuccess(confirm) {
-        if(typeof successFn === 'function') {
-          successFn(confirm);
-        }
+        cancelButtonText: 'No'
+      })
+      .then(deferred.resolve)
+      .catch(deferred.reject);
 
-        resolve(confirm);
-      });
-
-      _attachKeyDown(resolve);
+      _attachKeyDown(deferred.resolve);
 
       deferred.promise
         .then(() => { 
@@ -107,10 +102,6 @@
         });
 
       return deferred.promise;
-
-      function resolve(confirm) {
-        deferred.resolve(confirm || false);
-      }
     }
     
     function genericErrorDialog(err, title){

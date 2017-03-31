@@ -11,7 +11,8 @@
   deepstream: false,
   Raven: false,
   randomColor: false,
-  videojs: false
+  videojs: false,
+  Offline: false
 */
 
 ;(function() {
@@ -27,6 +28,7 @@
     .constant('Raven', Raven)
     .constant('randomColor', randomColor)
     .constant('swal', swal)
+    .constant('Offline', Offline)
     .constant('videojs', videojs);
 
 })();
