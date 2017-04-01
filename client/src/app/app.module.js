@@ -12,7 +12,8 @@
       'app.login',
       'app.signup',
       'app.account',
-      'app.guide'
+      'app.guide',
+      'app.team'
     ]);
 
 })();

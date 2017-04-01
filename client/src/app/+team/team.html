@@ -1,38 +1,44 @@
-<div class="container anim-slide-below-fade extra-padding-top">
-  <div class="row">
-    <div class="col s12 m6 offset-m3">
-      <div class="card">
-        <div class="card-tabs">
-          <ul tabs class="tabs tabs-fixed-width">
-            <li class="tab"><a class="active" href="#obs">Streaming Setup</a></li>
-            <li class="tab disabled"><a href="#audio">Audio Setup</a></li>
-          </ul>
-        </div>
-        <div class="card-content grey lighten-4">
-          <div id="obs" class="guide">
-            <p>
-              Open <a href="https://obsproject.com" target="_blank">OBS Studio</a>, and click on <b>Settings</b>
-            </p>
-            <p>
-              Click on the Stream tab
-            </p>
-            <p>
-              For <b>Stream Type</b>, select <b>Custom Streaming Server</b> from the dropdown
-            </p>
-            <p>
-              For <b>Stream Key</b>, you must enter your current Display Name and Stream Key as follows:
-              <p class="center-align">
-                <span class="key">{{vm.member.username}}?key={{vm.member.rtmpKey}}</span> <br/>
-                Use the key given to you on the main <a href="http://crudboiz.tv">crudboiz.tv</a> for now.
-              </p>
-              <p>
-                Your ready to start streaming ^.^
-              </p>
-            </p>
-          </div>
-          <div id="audio">Test 2</div>
-        </div>
+<div class="anim-slide-below-fade">
+  <div class="row" ng-if="vm.tempList">
+    <div class="col s12 m4 offset-m4" ng-if="!vm.noneLive">
+      <div class="select" input-field>
+        <select 
+          ng-model="vm.list" 
+          material-select 
+          multiple 
+          watch
+           ng-options="stream.channel.username for stream in vm.liveList(vm.streamList)"
+        >
+          <option disabled>Select Channels</option>
+        </select>
       </div>
+    </div>
+    <div class="col s12 m4 offset-m4" ng-if="vm.noneLive">
+      <div class="card-panel teal white-text center-align">
+        <span class="flow-text">
+          No Streams Online<br/>
+        </span>
+        <span>
+          Automatically Refreshing
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="!vm.tempList">
+    <div class="col s4 offset-s4">
+      <div class="card-panel teal white-text center-align">
+        <span class="flow-text">
+          Loading
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6" ng-repeat="stream in vm.list">
+      <team-view
+        stream="stream"
+        selected-player="vm.selectedPlayer">
+      </team-view>
     </div>
   </div>
 </div>

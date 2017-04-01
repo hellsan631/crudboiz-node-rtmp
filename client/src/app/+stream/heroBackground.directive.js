@@ -19,7 +19,6 @@
             Stream Is Not Live
           </div>
           <img
-            
             src="{{ ::dm.stream.poster }}"
             class="responsive-img"  
           />
@@ -64,7 +63,7 @@
         });
       }
 
-      $timeout(() => {
+      setTimeout(() => {
         element.addClass('init');
       }, 400);
     }

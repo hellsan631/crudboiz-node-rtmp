@@ -55,7 +55,7 @@
       requestAnimationFrame(() => {
         $(window).on('window:resize', resizePlayer);
 
-        $timeout(() => {
+        scope.$evalAsync(() => {
           if (scope.$on) {
             scope.$on('$destroy', function() {
               $(window).off('window:resize', resizePlayer);
@@ -114,7 +114,7 @@
 
       initEvents(streamPlayer); 
 
-      if (dm.stream.name !== dm.member.username) {
+      if (!dm.member || dm.stream.name !== dm.member.username) {
         streamPlayer
           .persistvolume({ namespace: 'crudboiz-rtmp-volume' });
       } else {
@@ -125,21 +125,17 @@
     function initEvents(player) {
       player.on('ready', function() {
         this.play();
-        console.log('ready');
       });
 
       player.on('ended', function() {
         this.dispose();
-        console.log('ended');
       });
 
       player.on('error', function(e) {
-        console.log('error');
         console.log(e);
       });
 
       player.on('playing', function() {
-        console.log('playing');
         init = true;
       });
 
@@ -155,7 +151,6 @@
         player.load();
 
         setTimeout(() => {
-          console.log('playing again');
           player.play();
         }, 3000);
       });

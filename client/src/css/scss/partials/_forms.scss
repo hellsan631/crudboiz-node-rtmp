@@ -59,6 +59,17 @@ textarea.medium-textarea {
   }
 }
 
+.select {
+  .input-field {
+    label:not(.select) {
+      top: 1px;
+      left: 0;
+      height: 18px;
+      color: #a69695;
+    }
+  }
+}
+
 .extra-margin-bottom {
   margin-bottom: 60px;
 }

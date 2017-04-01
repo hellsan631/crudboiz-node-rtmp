@@ -18,6 +18,9 @@
                 <li ui-sref-active="active">
                   <a ui-sref="channels">Channels</a>
                 </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="team">Team</a>
+                </li>
                 <li ng-if="dm.member" ui-sref-active="active">
                   <a ui-sref="guide">Guide</a>
                 </li>

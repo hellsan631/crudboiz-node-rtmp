@@ -81,9 +81,9 @@
 
     player.attachTo(playerElement);
 
-    $timeout(() => player.play(), 3000);
+    setTimeout(() => player.play(), 3000);
     
-    $timeout(() => resizePlayer(), 200);
+    setTimeout(() => resizePlayer(), 200);
     
     $(window).on('window:resize', resizePlayer);
 
