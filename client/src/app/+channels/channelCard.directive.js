@@ -11,7 +11,7 @@
     var directive = {
       restrict: 'E',
       template: `
-        <div class="card" ui-sref="stream({ username: dm.stream.info.name })">
+        <div class="card big-shadow" ui-sref="stream({ username: dm.stream.info.name })">
           <div class="card-image waves-effect waves-block waves-light">
             <img 
               class="poster hero" 
