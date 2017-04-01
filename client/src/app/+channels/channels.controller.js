@@ -49,21 +49,21 @@
       let channel = client.record.getRecord(streamId);
 
       channel.whenReady(() => {
-        $timeout(() => {
+        $scope.$evalAsync(() => {
           vm.streamList[streamId] = channel.get();
 
           cleanup.push(channel);
 
           channel
             .subscribe('info', function(value) {
-              $timeout(() => {
+              $scope.$evalAsync(() => {
                 vm.streamList[streamId].info = value;
               });
             });
             
           channel
             .subscribe('channel', function(value) {
-              $timeout(() => {
+              $scope.$evalAsync(() => {
                 vm.streamList[streamId].channel = value;
               });
             });
