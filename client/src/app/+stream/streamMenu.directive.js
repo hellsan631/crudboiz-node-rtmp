@@ -17,27 +17,14 @@
           </span>
         </div>
 
-        <a 
-          data-activates="more-stream" 
-          dropdown 
-          data-hover="true"
-          class="btn-floating btn-large waves-effect waves-light red"
-        >
-          <i class="material-icons">more_vert</i>
-        </a>
-
-        <ul id="more-stream" class="dropdown-content">
-          <li ng-click="dm.player = 'rtmp'">
-            <a>
-              RTMP Player <i ng-show="dm.player === 'rtmp'" class="material-icons tiny">done</i> 
-            </a>
-          </li>
-          <li ng-click="dm.player = 'hls'">
-            <a> 
-              HLS Player <i ng-show="dm.player === 'hls'" class="material-icons tiny">done</i>
-            </a>
-          </li>
-        </ul>
+        <div class="switch">
+          <label>
+            Flash
+            <input type="checkbox" ng-model="dm.html">
+            <span class="lever"></span>
+            HTML5
+          </label>
+        </div>
       `,
       scope: {},
       bindToController: {
@@ -50,8 +37,19 @@
   }
 
   /* @ngInject */
-  function Controller() {
+  function Controller($scope) {
     let dm = this;
+    
+    dm.html = dm.player === 'hls';
 
+    $scope.$watch('dm.html', (html) => {
+      if (typeof html !== 'undefined') {
+        let player = html ? 'hls' : 'rtmp';
+
+        if (player !== dm.player) {
+          dm.player = player;
+        }
+      }
+    });
   }
 })();

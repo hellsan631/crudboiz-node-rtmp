@@ -23,6 +23,34 @@ stream-menu {
       vertical-align: middle;
     }
   }
+
+  .switch {
+    display: inline-block;
+    vertical-align: middle;
+
+    margin-top: 0.5em;
+    padding: 1em;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.6);
+    
+
+    label {
+      color: #444;
+      
+      .lever:after {
+        background: #1976D2;
+      }
+
+      input[type=checkbox]:checked + .lever {
+        background: #FF8A65;
+
+        &:after {
+          background: #E64A19;
+        }
+      }
+    }
+  }
 }
 
 .stream-menu-container {

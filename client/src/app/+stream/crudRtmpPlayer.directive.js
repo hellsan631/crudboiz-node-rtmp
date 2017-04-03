@@ -132,6 +132,17 @@
       });
 
       player.on('error', function(e) {
+        console.log('error');
+        console.log(e);
+      });
+
+      player.on('emptied', function(e) {
+        console.log('emptied');
+        console.log(e);
+      });
+
+      player.on('stalled', function(e) {
+        console.log('stalled');
         console.log(e);
       });
 
