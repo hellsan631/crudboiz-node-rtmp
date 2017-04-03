@@ -37,5 +37,8 @@
   },
   "container": {
     "dataSource": "storage"
+  },
+  "Live": {
+    "dataSource": "db"
   }
 }
