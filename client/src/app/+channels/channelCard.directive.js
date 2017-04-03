@@ -16,7 +16,7 @@
             <img 
               class="poster hero" 
               hero-id="poster{{ ::dm.stream.info.name }}" 
-              src="{{ ::dm.stream.info.poster }}"
+              ng-src="{{ ::dm.stream.info.poster }}"
             />
             <span class="card-title">
               {{ dm.stream.channel.title }}

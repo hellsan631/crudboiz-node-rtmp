@@ -70,10 +70,14 @@ ui-view {
 ui-view[name="navbar"] {
   height:0;
   z-index: 2;
+  display:block;
+  position: absolute;
 }
 
 ui-view[name="main"] {
-  padding-top: 2em;
+  padding-top: 6em;
+  display:block;
+  position: relative;
 }
 
 .medium-logo {

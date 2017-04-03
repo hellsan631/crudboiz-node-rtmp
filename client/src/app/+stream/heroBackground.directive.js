@@ -19,8 +19,8 @@
             Stream Is Not Live
           </div>
           <img
-            src="{{ ::dm.stream.poster }}"
-            class="responsive-img"  
+            ng-src="{{ ::dm.stream.poster }}"
+            class="responsive-img"
           />
         </div>
       `,
@@ -37,6 +37,8 @@
 
     function link(scope, element) {
       const ASPECT_RATIO = 9/16;
+
+      let dm = scope.dm;
 
       let background = $(element.find('.hero-container')[0]);
       let heroArea = $('.player-area');
