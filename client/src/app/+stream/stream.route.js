@@ -59,7 +59,7 @@
     let query = {
       filter: {
         where: $stateParams,
-        fields: ['profileImage']
+        fields: ['username', 'id', 'profileImage']
       }
     };
     
