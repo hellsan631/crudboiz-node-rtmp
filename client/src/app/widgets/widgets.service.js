@@ -46,7 +46,7 @@
     function getProfileImage(member = {}) {
       let profileImage = member.profileImage || 'images/moose.jpg';
 
-      if (member.id)
+      if (member.id && !member.profileImage)
         profileImage = 'images/sans_512.jpg';
 
       return profileImage;
