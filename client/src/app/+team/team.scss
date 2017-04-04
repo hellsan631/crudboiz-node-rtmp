@@ -1,13 +1,2 @@
 @import "../../css/scss/partials/functions";
 
-.guide {
-  p:not(:last-child) {
-    padding-bottom: 1em;
-  }
-
-  .key {
-    font-weight: 500;
-    //font-size: 1.1em;
-    text-decoration: line-through;
-  }
-}

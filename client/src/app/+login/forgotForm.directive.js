@@ -20,7 +20,7 @@
           </material-input>
 
           <action-button
-            style="btn-full"
+            button-style="primary-action btn-full"
             default-message="Reset Password"
             loading-state="sm.loading">
           </action-button>

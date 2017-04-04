@@ -20,11 +20,27 @@
               For <b>Stream Type</b>, select <b>Custom Streaming Server</b> from the dropdown
             </p>
             <p>
+              For <b>Stream URL</b>, enter the following url:
+              <p class="center-align">
+                <material-input
+                  class="key"
+                  name="url"
+                  placeholder=" "
+                  ng-model="vm.liveUrl">
+                </material-input>
+              </p>
+            </p>
+            <p>
               For <b>Stream Key</b>, you must enter your current Display Name and Stream Key as follows:
               <p class="center-align">
-                <span class="key">{{vm.member.username}}?key={{vm.member.rtmpKey}}</span> <br/>
-                Use the key given to you on the main <a href="http://crudboiz.tv">crudboiz.tv</a> for now.
+                 <material-input
+                  class="key"
+                  name="key"
+                  placeholder=" "
+                  ng-model="vm.liveKey">
+                </material-input>
               </p>
+              <br/>
               <p>
                 Your ready to start streaming ^.^
               </p>

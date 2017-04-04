@@ -12,6 +12,8 @@
     let vm = this;
 
     vm.member = member;
+    vm.liveUrl = 'rtmp://crudboiz.tv/live';
+    vm.liveKey = `${vm.member.username}?key=${vm.member.rtmpKey}`;
 
   }
 })();
