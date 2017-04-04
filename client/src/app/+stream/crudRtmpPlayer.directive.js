@@ -49,7 +49,9 @@
       let dm = scope.dm;
 
       let playerElement = element.find('#rtmp-player');
-      let playerParent  = $('.player-area');
+      let playerParent  = element.parent().parent();
+      
+      console.log(playerParent);
 
       resizePlayer();
 

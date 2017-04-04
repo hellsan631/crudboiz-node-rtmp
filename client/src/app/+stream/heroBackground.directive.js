@@ -44,8 +44,18 @@
       let heroArea = $('.player-area');
 
       resize();
-
+      
       $(window).on('window:resize', resize);
+
+      if (scope.$on) {
+        scope.$on('$destroy', function() {
+          $(window).off('window:resize', resize);
+        });
+      }
+
+      setTimeout(() => {
+        element.addClass('init');
+      }, 400);
 
       function resize() {
         let height = 2 * Math.round(element.innerWidth() * ASPECT_RATIO/2);
@@ -58,16 +68,6 @@
         element.css('height', height);
         heroArea.css('height', height);
       }
-
-      if (scope.$on) {
-        scope.$on('$destroy', function() {
-          $(window).off('window:resize', resize);
-        });
-      }
-
-      setTimeout(() => {
-        element.addClass('init');
-      }, 400);
     }
   }
 

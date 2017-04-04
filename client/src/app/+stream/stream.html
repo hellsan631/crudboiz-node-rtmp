@@ -22,14 +22,7 @@
             player="vm.selectedPlayer"
           >
           </crud-rtmp-player>
-          <!--
-          <crud-dash-player
-            ng-if="vm.selectedPlayer === 'dash'"
-            stream="vm.stream"
-          >
-          </crud-dash-player>
-          -->
-        </div>        
+        </div>       
       </div>
       <div class="row">
         <div class="col s1 right-align">
@@ -47,7 +40,7 @@
           <div class="col s12 no-padding stream-info" ng-if="::vm.channel.username">
             <span class="username" ng-bind="vm.channel.username"></span> {{ vm.stream.active ? 'is' : 'was' }} playing <span class="game" ng-bind="vm.channel.game"></span>
           </div>
-          <div class="col s12 no-padding stream-info" ng-if="::!vm.channel.username">
+          <div class="col s12 no-padding stream-info" ng-if="!vm.channel.username">
             <span class="game">An Anonomoose User</span>
           </div>
         </div>
