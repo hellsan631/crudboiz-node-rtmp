@@ -24,13 +24,24 @@
   ) {
     let vm = this;
     let client = Deep.getClient();
+    let record = client.record.getRecord(`streams/${$stateParams.username}`);
 
     vm.stream = stream;
     vm.member = member;
     vm.host   = host;
     vm.host.profileImage = Widgets.getProfileImage(vm.host);
 
-    let record = client.record.getRecord(`streams/${$stateParams.username}`);
+    $localForage
+      .getItem('selectedPlayer')
+      .then((player) => {
+        if (player) {
+          vm.selectedPlayer = player;
+        } else {
+          vm.selectedPlayer = member.player;
+        }
+
+        watchPlayer();
+      });
 
     record.subscribe('info', (value) => {
       $scope.$evalAsync(() => vm.stream = value);
@@ -39,8 +50,6 @@
     record.subscribe('channel', (value) => {
       $scope.$evalAsync(() => vm.channel = value);
     });
-
-    vm.selectedPlayer = member.player || 'rtmp';
 
     Offline.on('down', () => {
       if (vm.selectedPlayer !== 'rtmp') return;
@@ -67,14 +76,6 @@
         });
     });
 
-    $localForage
-      .getItem('selectedPlayer')
-      .then((player) => {
-        if (player) vm.selectedPlayer = player;
-
-        watchPlayer();
-      });
-
     $timeout(() => {
 
       //we time this out to give our hero animation time to finish
@@ -94,6 +95,8 @@
         if (player) {
           $localForage.setItem('selectedPlayer', player);
         }
+
+        console.log('player', player);
       });
     }
   }

@@ -37,17 +37,30 @@
   }
 
   /* @ngInject */
-  function Controller($scope) {
+  function Controller($scope, $timeout) {
     let dm = this;
+
+    let player = JSON.parse(JSON.stringify(dm.player || ''));
     
-    dm.html = dm.player === 'hls';
+    dm.html = player === 'hls';
 
     $scope.$watch('dm.html', (html) => {
       if (typeof html !== 'undefined') {
-        let player = html ? 'hls' : 'rtmp';
+        let temp = html ? 'hls' : 'rtmp';
 
+        if (temp !== dm.player) {
+          player = JSON.parse(JSON.stringify(temp));
+          dm.player = temp;
+        }
+      }
+    });
+
+    $scope.$watch('dm.player', (watched) => {
+      if (typeof watched !== 'undefined') {
         if (player !== dm.player) {
-          dm.player = player;
+          player = JSON.parse(JSON.stringify(dm.player));
+
+          dm.html = player === 'hls';
         }
       }
     });

@@ -9,7 +9,7 @@
   function Controller($rootScope, $state, Dialog, Member, $timeout) {
     let vm = this;
     
-    vm.interfaceClass = 'signup-form col s12 m8 l8 xl6 offset-m2 offset-l2 offset-xl3';
+    vm.interfaceClass = 'signup-form col s12';
     vm.pwtype = 'password';
     vm.loading = false;
 

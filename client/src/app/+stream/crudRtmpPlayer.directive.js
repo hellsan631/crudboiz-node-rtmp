@@ -35,7 +35,8 @@
       scope: {},
       bindToController: {
         stream: '<',
-        member: '<'
+        member: '<',
+        player: '='
       },
       controller: Controller,
       controllerAs: 'dm',
@@ -76,7 +77,16 @@
   }
 
   /* @ngInject */
-  function Controller($scope, $rootScope, $timeout, $interval, videojs, Offline, Elements) {
+  function Controller(
+    $scope, 
+    $rootScope, 
+    $timeout, 
+    $interval, 
+    videojs, 
+    Offline, 
+    Elements,
+    Dialog
+  ) {
     let dm = this;
     
     let timeout = 0;
@@ -132,23 +142,25 @@
       });
 
       player.on('error', function(e) {
-        console.log('error');
         console.log(e);
-        throw e;
-      });
 
-      player.on('emptied', function(e) {
-        console.log('emptied');
-        console.log(e);
-        throw e;
-      });
+        if (e.code === 4) {
+          Dialog
+            .confirm(
+              'Switch to HLS Player?',
+              `
+                It looks like flash isn't supported in your browser.
+                <small>If you'd like to continue with flash, consider switching browsers to Firefox or Microsoft Edge.</small>
+              `
+            )
+            .then((confirm) => {
+              if (!confirm) return;
 
-      player.on('stalled', function(e) {
-        console.log('stalled');
-        console.log(e);
-        throw e;
+              $scope.$evalAsync(() => dm.player = 'hls');
+            });
+        }
       });
-
+     
       player.on('playing', function() {
         init = true;
       });

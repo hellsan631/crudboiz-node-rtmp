@@ -1,124 +1,132 @@
 <div fill-height class="login-container valign-wrapper">
   <div class="container slide-in anim-slide-below-fade">
-    <div class="valign login-wrapper">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card-panel white center-align big-shadow">
+          <div class="valign login-wrapper">
 
-      <div  
-        ng-if="vm.mode === 'login'"
-        class="row animate-zoom"
-      >
-        <div class="col s12">
-          <h1 class="center-align grey-text">Crudboiz.tv</h1>
-        </div>
-      </div>
+            <div  
+              ng-if="vm.mode === 'login'"
+              class="row animate-zoom"
+            >
+              <div class="col s12">
+                <h1 class="center-align grey-text">Crudboiz.tv</h1>
+              </div>
+            </div>
 
-      <div 
-        ng-if="vm.mode === 'forgot'"
-        class="row animate-zoom" 
-      >
-        <div class="col s12">
-          <h6 class="center-align grey-text">
-            To reset your password, enter your email address below.<br/>
-            We will send you a link to reset your password.
-          </h6>
-        </div>
-      </div>
+            <div 
+              ng-if="vm.mode === 'forgot'"
+              class="row animate-zoom" 
+            >
+              <div class="col s12">
+                <h6 class="center-align grey-text">
+                  To reset your password, enter your email address below.<br/>
+                  We will send you a link to reset your password.
+                </h6>
+              </div>
+            </div>
 
-      <div 
-        ng-if="vm.mode === 'new'"
-        class="row animate-zoom" 
-      >
-        <div class="col s12">
-          <h6 class="center-align grey-text">
-            Your new password must be 8 or more characters in length.
-          </h6>
-        </div>
-      </div>
+            <div 
+              ng-if="vm.mode === 'new'"
+              class="row animate-zoom" 
+            >
+              <div class="col s12">
+                <h6 class="center-align grey-text">
+                  Your new password must be 8 or more characters in length.
+                </h6>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="col s12">
-        </div>
-        <div class="col s12">
-        </div>
-      </div>
+            <div class="row">
+              <div class="col s12">
+              </div>
+              <div class="col s12">
+              </div>
+            </div>
 
-      <div 
-        ng-if="vm.mode === 'login'"
-        class="row animate-zoom" 
-      >
-        <div ng-class="vm.loginFormClass">
-          <login-form
-            on-login-success="vm.loginSuccess(user)"
-            on-login-failure="vm.loginFailure(e)">
-          </login-form>
-        </div>
-      </div>
+            <div 
+              ng-if="vm.mode === 'login'"
+              class="row animate-zoom" 
+            >
+              <div ng-class="vm.loginFormClass">
+                <login-form
+                  on-login-success="vm.loginSuccess(user)"
+                  on-login-failure="vm.loginFailure(e)">
+                </login-form>
+              </div>
+            </div>
 
-      <div 
-        ng-if="vm.mode === 'forgot'"
-        class="row animate-zoom" 
-      >
-        <div ng-class="vm.loginFormClass">
-          <forgot-form
-            on-forgot-success="vm.forgotSuccess(email)"
-            on-forgot-failure="vm.forgotFailure(e)">
-          </forgot-form>
-        </div>
-      </div>
+            <div 
+              ng-if="vm.mode === 'forgot'"
+              class="row animate-zoom" 
+            >
+              <div ng-class="vm.loginFormClass">
+                <forgot-form
+                  on-forgot-success="vm.forgotSuccess(email)"
+                  on-forgot-failure="vm.forgotFailure(e)">
+                </forgot-form>
+              </div>
+            </div>
 
-      <div  
-        ng-if="vm.mode === 'new'"
-        class="row animate-zoom"
-      >
-        <div ng-class="vm.loginFormClass">
-          <new-password-form
-            on-reset-success="vm.resetSuccess(email)"
-            on-reset-failure="vm.resetFailure(e)">
-          </new-password-form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 center-align grey-text">
-          <span class="h5 dashing">or</span>
-        </div>
-      </div>
+            <div  
+              ng-if="vm.mode === 'new'"
+              class="row animate-zoom"
+            >
+              <div ng-class="vm.loginFormClass">
+                <new-password-form
+                  on-reset-success="vm.resetSuccess(email)"
+                  on-reset-failure="vm.resetFailure(e)">
+                </new-password-form>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 center-align grey-text">
+                <span class="h5 dashing">or</span>
+              </div>
+            </div>
 
-      <div 
-        ng-if="vm.mode === 'login'"
-        class="row animate-zoom" 
-      >
-        <div class="col s12 m6 offset-m3">
-          <div 
-            class="col s6 center-align" 
-            ui-sref="signup"
-          >
-            <h5 class="grey-text text-darken-1">
-              <strong>Register</strong>
-            </h5>
+            <div 
+              ng-if="vm.mode === 'login'"
+              class="row animate-zoom" 
+            >
+              <div class="col s12">
+                <div 
+                  class="col s6 center-align" 
+                  ui-sref="signup"
+                >
+                  <h5 class="grey-text text-darken-1">
+                    <strong>Register</strong>
+                  </h5>
+                </div>
+                <div 
+                  class="col s6 center-align"
+                  ng-click="vm.toggleModes()"
+                >
+                  <h5 class="grey-text text-darken-1">
+                    <strong>Forgot Password</strong>
+                  </h5>
+                </div>
+              </div>
+              
+            </div>
+
+            <div 
+              ng-if="vm.mode === 'new' || vm.mode === 'forgot'" 
+              ng-click="vm.toggleModes()"
+              class="row animate-zoom" 
+            >
+              <div class="col s12 center-align">
+                <h5 class="grey-text text-darken-1">
+                  <strong>Want to login?</strong>
+                </h5>
+              </div>
+            </div>
+
           </div>
-          <div 
-            class="col s6 center-align"
-            ng-click="vm.toggleModes()"
-          >
-            <h5 class="grey-text text-darken-1">
-              <strong>Forgot Password</strong>
-            </h5>
-          </div>
-        </div>
-        
-      </div>
-
-      <div 
-        ng-if="vm.mode === 'new' || vm.mode === 'forgot'" 
-        ng-click="vm.toggleModes()"
-        class="row animate-zoom" 
-      >
-        <div class="col s12 center-align">
-          <h5 class="grey-text text-darken-1">
-            <strong>Want to login?</strong>
-          </h5>
         </div>
       </div>
-
     </div>
+    
+    
   </div>
 </div>

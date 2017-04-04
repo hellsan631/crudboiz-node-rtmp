@@ -6,7 +6,7 @@
     .controller('AccountController', Controller);
 
   /* @ngInject */
-  function Controller($rootScope, $scope, Member, Channel, member) {
+  function Controller($rootScope, $scope, $localForage, Member, Channel, member) {
     var vm = this;
 
     vm.mode = 'info';
@@ -18,10 +18,17 @@
 
     vm.member = member;
 
+    $localForage
+      .getItem('selectedPlayer')
+      .then((player) => {
+        if (player && player !== vm.member.player) {
+          vm.member.player = player;
+        }
+      });
+
     $scope.$watch('vm.member.profileImage', (image, old) => {
       if (typeof image === 'string' && image !== old) {
         updateMember();
-        console.log('bird', vm.member.profileImage);
       }
     });
 

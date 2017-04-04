@@ -3,81 +3,89 @@
     class="container slide-in anim-slide-below-fade"
     ng-model-options="{updateOn:'default blur', debounce: { 'default': 2000, 'blur': 0 }}"
   >
-    <div class="valign signup-wrapper">
-      <div class="row animate-zoom">
-        <div class="col s12">
-          <h3 class="center-align grey-text">Register For Streaming</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-        </div>
-        <div class="col s12">
-        </div>
-      </div>
-      <div class="row">
-        <div ng-class="vm.interfaceClass">
-          <form class="left-align" name="submit" ng-submit="vm.signup()">
-            <material-input
-              name="username"
-              label="Username (case sensitive, no spaces)"
-              placeholder=" "
-              min-length="3"
-              pattern="[^\s]+"
-              validate="true"
-              required="true"
-              ng-model="vm.member.username"
-            >
-            </material-input>
-            <material-input
-              name="email"
-              label="Email"
-              placeholder=" "
-              type="email"
-              validate="true"
-              required="true"
-              ng-model="vm.member.email"
-              validate-email
-            >
-            </material-input>
-            <div class="show-con">
-              <material-input
-                name="password"
-                label="Password*"
-                type="{{vm.pwtype}}"
-                placeholder=""
-                pattern=".{8,}"
-                validate="true"
-                required="true"              
-                autocomplete="off"
-                ng-model="vm.member.password"
-              >
-              </material-input>
-              <div class="password-requirements">
-                <i>Passwords require a length of atleast 8 characters</i>
-              </div>
-              
-              <div class="show-pw btn btn-small secondary-action z-depth-0"
-                ng-click="vm.switchType()">
-                {{ vm.pwtype === 'password' ? 'Show' : 'Hide' }}
-              </div>
-              
-            </div>
-            <div class="spacer">
-            </div>
-            <div class="col s12 m8 offset-m2">
-              <action-button
-                ng-disabled="submit.$invalid"
-                button-style="primary-action btn-full"
-                default-message="Sign Up"
-                loading-state="vm.loading">
-              </action-button>
-            </div>
-            
-          </form>
-        </div>
-      </div>
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel white center-align big-shadow">
 
+          <div class="valign signup-wrapper">
+            <div class="row animate-zoom">
+              <div class="col s12">
+                <h3 class="center-align grey-text">Don't be a Squid Kid</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+              </div>
+              <div class="col s12">
+              </div>
+            </div>
+            <div class="row">
+              <div ng-class="vm.interfaceClass">
+                <form class="left-align" name="submit" ng-submit="vm.signup()">
+                  <material-input
+                    name="username"
+                    label="Username (case sensitive, no spaces)"
+                    placeholder=" "
+                    min-length="3"
+                    pattern="[^\s]+"
+                    validate="true"
+                    required="true"
+                    ng-model="vm.member.username"
+                  >
+                  </material-input>
+                  <material-input
+                    name="email"
+                    label="Email"
+                    placeholder=" "
+                    type="email"
+                    validate="true"
+                    required="true"
+                    ng-model="vm.member.email"
+                    validate-email
+                  >
+                  </material-input>
+                  <div class="show-con">
+                    <material-input
+                      name="password"
+                      label="Password*"
+                      type="{{vm.pwtype}}"
+                      placeholder=""
+                      pattern=".{8,}"
+                      validate="true"
+                      required="true"              
+                      autocomplete="off"
+                      ng-model="vm.member.password"
+                    >
+                    </material-input>
+                    <div class="password-requirements">
+                      <i>Passwords require a length of atleast 8 characters</i>
+                    </div>
+                    
+                    <div class="show-pw btn btn-small secondary-action z-depth-0"
+                      ng-click="vm.switchType()">
+                      {{ vm.pwtype === 'password' ? 'Show' : 'Hide' }}
+                    </div>
+                    
+                  </div>
+                  <div class="spacer">
+                  </div>
+                  <div class="col s12 m8 offset-m2">
+                    <action-button
+                      ng-disabled="submit.$invalid"
+                      button-style="primary-action btn-full"
+                      default-message="Sign Up"
+                      loading-state="vm.loading">
+                    </action-button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
+    
   </div>
 </div>

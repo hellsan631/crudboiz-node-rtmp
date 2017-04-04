@@ -12,7 +12,7 @@
     vm.mode = $stateParams.token && $stateParams.email ? 'new' : 'login';
     vm.toggleModes = toggleModes;
 
-    vm.loginFormClass = 'login-form col s12 m8 l8 xl6 offset-m2 offset-l2 offset-xl3';
+    vm.loginFormClass = 'login-form col s12';
 
     vm.loginSuccess = loginSuccess;
     vm.loginFailure = loginFailure;
