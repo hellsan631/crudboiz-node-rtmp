@@ -97,10 +97,6 @@
       }
     });
 
-    body.on('click', '.lean-overlay', function() {
-      overlay.css('display', 'none');
-    });
-
     function startAnimations() {
       if (pageAnimation) return;
 
@@ -113,12 +109,12 @@
 
         animating = true;
         
-        $timeout(function() {
+        setTimeout(function() {
           if (pos > 10 && body.scrollTop() === pos) {
             body.animate({ scrollTop: 0 }, 100);
           }
 
-          $timeout(function() {
+          setTimeout(function() {
             animating = false;
           }, 100);
         }, 16);

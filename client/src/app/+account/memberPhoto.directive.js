@@ -89,11 +89,8 @@
 
     dm.resizing = false;
 
-
     $scope.$watchCollection('dm.finalPhoto', (image, old) => {
       if (image && !dm.loading) {
-        console.log(image);
-
         dm.loading = true;
 
         MemberPhoto
@@ -135,8 +132,6 @@
           dm.resizing = false;
         });
     };
-
-    
 
   }
 })();

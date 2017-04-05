@@ -50,8 +50,6 @@
 
       let playerElement = element.find('#rtmp-player');
       let playerParent  = element.parent().parent();
-      
-      console.log(playerParent);
 
       resizePlayer();
 

@@ -39,7 +39,7 @@
   }
 
   /* @ngInject */
-  function Controller($scope, $rootScope, Member) {
+  function Controller($scope, $rootScope, Widgets) {
     var dm = this;
 
     let cleanupSubscribeBinding = $rootScope.$on(
@@ -60,9 +60,8 @@
     setCurrentMember();
 
     function setCurrentMember() {
-      Member
-        .getCurrent()
-        .$promise
+      Widgets
+        .currentMember()
         .then((member) => {
           dm.member = member;
         });

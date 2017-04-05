@@ -162,82 +162,88 @@
   /* @ngInject */
   function Controller($scope, Widgets, Member, $timeout, Deep) {
     let sm = this;
-    let client = Deep.getClient();
-    let record;
     let firstLoad = false;
 
-    sm.messages = [];
-    sm.addChat = addChat;
+    Deep
+      .getClient()
+      .then(initClient);
 
-    record = client.record.getRecord(`streams/${sm.streamName}`);
+    function initClient(client) {
+       sm.messages = [];
+      sm.addChat = addChat;
 
-    record.subscribe('chat', (value) => {
-      $scope.$evalAsync(() => {
-        syncChat(value);
-      });    
-    });
+      let record = client.record.getRecord(`streams/${sm.streamName}`);
 
-    sm.keystroke = ($event) => {
-      if ($event.which === 13) {
-        $event.preventDefault();
-        addChat();
-      }
-    };
-
-    if ($scope.$on) {
-      $scope.$on('$destroy', function() {
-        record.unsubscribe(() => {
-          record.discard();
-        });
-
-        setTimeout(() => {
-          client.close();
-        }, 50);
-      });
-    }
-
-    function addChat() {
-      if (!sm.newMessage.length)
-        return;
-
-      sm.messages.push({
-        id: Widgets.getGuid(),
-        text: sm.newMessage,
-        username: sm.member.username,
-        timestamp: Math.floor((new Date()).getTime()),
-        color: sm.member.color,
-        avatar: Widgets.getProfileImage(sm.member),
-        host: sm.streamName === sm.member.username
+      record.subscribe('chat', (value) => {
+        $scope.$evalAsync(() => {
+          syncChat(value);
+        });    
       });
 
-      sm.newMessage = '';
+      sm.keystroke = ($event) => {
+        if ($event.which === 13) {
+          $event.preventDefault();
+          addChat();
+        }
+      };
 
-      record.set('chat', sm.messages);
-    }
-
-    function syncChat(value) {
-      sm.messages = value;
-
-      if (!firstLoad) {
-        firstLoad = true;
-
-        //wrap these in a timeout to allow for our dom to update
-        requestAnimationFrame(() => {
-          sm.scrollBottom(100);
-        });
-
-      } else {
-        if (sm.scroll && sm.scroll.current === sm.scroll.max) {
-          requestAnimationFrame(() => {
-            sm.scrollBottom(200);
+      if ($scope.$on) {
+        $scope.$on('$destroy', function() {
+          record.unsubscribe(() => {
+            record.discard();
           });
-        } else {
-          sm.bounceAlert = true;
 
-          $timeout(() => sm.bounceAlert = false, 2000);
+          setTimeout(() => {
+            client.close();
+          }, 50);
+        });
+      }
+
+      function addChat() {
+        if (!sm.newMessage.length)
+          return;
+
+        sm.messages.push({
+          id: Widgets.getGuid(),
+          text: sm.newMessage,
+          username: sm.member.username,
+          timestamp: Math.floor((new Date()).getTime()),
+          color: sm.member.color,
+          avatar: Widgets.getProfileImage(sm.member),
+          host: sm.streamName === sm.member.username
+        });
+
+        sm.newMessage = '';
+
+        record.set('chat', sm.messages);
+      }
+
+      function syncChat(value) {
+        sm.messages = value;
+
+        if (!firstLoad) {
+          firstLoad = true;
+
+          //wrap these in a timeout to allow for our dom to update
+          requestAnimationFrame(() => {
+            sm.scrollBottom(100);
+          });
+
+        } else {
+          if (sm.scroll && sm.scroll.current === sm.scroll.max) {
+            requestAnimationFrame(() => {
+              sm.scrollBottom(200);
+            });
+          } else {
+            sm.bounceAlert = true;
+
+            $timeout(() => sm.bounceAlert = false, 2000);
+          }
         }
       }
     }
+
+    
 
   }
 })();

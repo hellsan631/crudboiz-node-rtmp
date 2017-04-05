@@ -9,11 +9,6 @@
   function AppConfig($stateProvider) {
 
     const VIEWS = {
-      'navbar@': {
-        template: `<top-bar></top-bar>`,
-        controller: function() {},
-        controllerAs: 'vm'
-      },
       'main@': {
         templateUrl: 'app/+account/account.html',
         controller: 'AccountController',
@@ -43,12 +38,11 @@
   }
 
   /* @ngInject */
-  function getMember($q, Member) {
+  function getMember($q, Widgets, Member) {
     var deferred = $q.defer();
 
-    Member
-      .getCurrent()
-      .$promise
+    Widgets
+      .currentMember()
       .then((member) => {
         let query = {
           filter: {

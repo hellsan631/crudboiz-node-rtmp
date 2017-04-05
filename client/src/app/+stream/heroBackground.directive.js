@@ -55,13 +55,14 @@
 
       setTimeout(() => {
         element.addClass('init');
-      }, 400);
+      }, 100);
 
       function resize() {
-        let height = 2 * Math.round(element.innerWidth() * ASPECT_RATIO/2);
+        let width = element.innerWidth();
+        let height = 2 * Math.round(width * ASPECT_RATIO/2);
 
         background.css({
-          width: element.innerWidth(),
+          width: width,
           height: height
         });
         

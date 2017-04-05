@@ -8,17 +8,26 @@
     .controller('ChannelsController', Controller);
 
   /* @ngInject */
-  function Controller($scope, $timeout, Deep) {
+  function Controller($scope, $timeout, client, streamList, Deep) {
     let vm = this;
 
-    let client = Deep.getClient();
+    var t0 = performance.now();
+ 
+    let streams = client.record.getList('streams');
+
     let streamIds = [];
     let cleanup = [];
 
     vm.streamList = {};
-    vm.liveList = liveList;
+    vm.liveList = (list, offline) => {
+      let parsed = Deep.liveList(list, offline);
 
-    let streams = client.record.getList('streams');
+      vm.noneLive = parsed.noneLive;
+
+      return parsed.result;
+    };
+
+    streamList.forEach(subscribeStream);
 
     cleanup.push(streams);
 
@@ -48,9 +57,15 @@
 
       let channel = client.record.getRecord(streamId);
 
+      client.record.snapshot(streamId, (err, data) => {
+        vm.streamList[streamId] = data;
+
+        var t1 = performance.now();
+        console.log("Call took " + (t1 - t0) + " milliseconds.");
+      });
+
       channel.whenReady(() => {
         $scope.$evalAsync(() => {
-          vm.streamList[streamId] = channel.get();
 
           cleanup.push(channel);
 
@@ -70,30 +85,5 @@
         });
       });
     }
-
-    function liveList(list, offline = false) {
-      var result = {};
-      let foundLive = false;
-
-      angular.forEach(list, (stream, key) => {
-        if (!stream.info) return;
-
-        if (stream.info.active && !offline) {
-          result[key] = stream;
-          foundLive = true;
-        } else if (!stream.info.active && offline) {
-          result[key] = stream;
-        }
-      });
-
-      if (!foundLive && !offline) {
-        vm.noneLive = true;
-      } else if (foundLive && !offline){
-        vm.noneLive = false;
-      }
-      
-      return result;
-    }
-    
   }
 })();

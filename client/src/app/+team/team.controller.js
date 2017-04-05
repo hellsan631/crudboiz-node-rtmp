@@ -8,20 +8,19 @@
     .controller('TeamController', TeamController);
 
   /* @ngInject */
-  function TeamController($scope, $timeout, $localForage, Deep) {
+  function TeamController($scope, $timeout, $localForage, client, Deep) {
     let vm = this;
 
-    let client = Deep.getClient();
     let streamIds = [];
     let cleanup = [];
 
     vm.streamList = {};
     vm.liveList = (list) => {
-      let temp = Deep.liveList(list);
+      let parsed = Deep.liveList(list);
 
-      vm.noneLive = temp.noneLive;
+      vm.noneLive = parsed.noneLive;
 
-      return temp.result;
+      return parsed.result;
     };
 
     $localForage

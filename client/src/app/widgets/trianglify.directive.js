@@ -13,7 +13,7 @@
       template: `
         <div 
           ng-show="dm.finishedInit"
-          class="animate-fade pattern pattern--hidden"
+          class="pattern pattern--hidden"
         >
         </div>
       `,
@@ -28,7 +28,7 @@
   }
 
   /* @ngInject */
-  function Controller($window, $timeout, Trianglify) {
+  function Controller($scope, $window, Trianglify) {
     var dm = this;
     
     dm.finishedInit = false;
@@ -88,9 +88,9 @@
       requestAnimationFrame(() => {
         $(SELECTORS.pattern).append(pattern);
 
-        $timeout(() => {
+        $scope.$evalAsync(() => {
           dm.finishedInit = true;
-        }, 64);
+        });
 
         // All polygons are hidden now, display the pattern container.
         $(SELECTORS.pattern).removeClass(CLASSES.patternHidden);

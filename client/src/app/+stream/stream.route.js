@@ -8,24 +8,34 @@
   /* @ngInject */
   function RouteConfig($stateProvider) {
 
+    const VIEWS = {
+      'main@': {
+        templateUrl: 'app/+stream/stream.html',
+        controller: 'StreamController',
+        controllerAs: 'vm'
+      }
+    };
+
+    const RESOLVER = {
+      client: clientResolver,
+      stream: streamResolver,
+      member: memberResolver,
+      host: hostResolver,
+      previous: previous
+    };
+
     $stateProvider
       .state({
         name: 'stream',
         url: '/stream/{username}',
-        views: {
-          'main@': {
-            templateUrl: 'app/+stream/stream.html',
-            controller: 'StreamController',
-            controllerAs: 'vm'
-          }
-        },
-        resolve: {
-          stream: streamResolver,
-          member: memberResolver,
-          host: hostResolver,
-          previous: previous
-        }
+        views: VIEWS,
+        resolve: RESOLVER
       });
+  }
+
+ /* @ngInject */
+  function clientResolver(Deep) {
+    return Deep.getClient();
   }
 
   /* @ngInject */
@@ -38,12 +48,11 @@
   }
 
   /* @ngInject */
-  function memberResolver($q, Account, Member) {
+  function memberResolver($q, Account, Widgets) {
     let deferred = $q.defer();
 
-    Member
-      .getCurrent()
-      .$promise
+     Widgets
+      .currentMember()
       .then(deferred.resolve)
       .catch(() => {
         deferred.resolve(Account.getDefaultUser());
@@ -75,17 +84,7 @@
   }
 
   /* @ngInject */
-  function streamResolver($q, Channel, $stateParams) {
-    let deferred = $q.defer();
-
-    Channel
-      .getStreamInfo($stateParams)
-      .$promise
-      .then((stream) => {
-        deferred.resolve(stream);
-      })
-      .catch(deferred.reject);
-    
-    return deferred.promise;
+  function streamResolver(Channel, $stateParams) {
+    return Channel.getStreamInfo($stateParams).$promise;
   }
 })();

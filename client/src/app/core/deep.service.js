@@ -6,21 +6,45 @@
    .factory('Deep', Deep);
 
   /* @ngInject */
-  function Deep($window, deepstream) {
+  function Deep($localForage, $q, $window, deepstream) {
     return {
       getClient: getClient,
-      liveList: liveList
+      liveList: liveList,
+      stream: deepstream,
+      uuid: uuid
     };
 
+    function uuid(keyLength = 24) {
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let text = '';
+
+      for (let i = 0; i < keyLength; i++) {
+        text += possible.charAt(
+          Math.floor(Math.random() * possible.length)
+        );
+      }
+          
+      return text;
+    }
+
     function getClient() {
+      let deferred = $q.defer();
 
       let location = $window.location.hostname;
 
       if (location === 'localhost') {
         location += `:${$window.location.port}`;
       }
-        
-      return deepstream(location).login();
+
+      $localForage
+        .getItem('uuid')
+        .then((uuid) => {
+          let client = deepstream(location).login({ username: uuid });
+
+          deferred.resolve(client);
+        });
+      
+      return deferred.promise;
     }
 
     function liveList(list, offline = false) {

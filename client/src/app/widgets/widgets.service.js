@@ -6,14 +6,45 @@
    .factory('Widgets', Widgets);
 
   /* @ngInject */
-  function Widgets() {
+  function Widgets($q, $localForage, Member) {
 
     return {
+      currentMember: currentMember, 
       getGuid: getGuid,
       getFreshUrl: getFreshUrl,
       generateKey: generateKey,
       getProfileImage: getProfileImage
     };
+
+    function currentMember() {
+      let deferred = $q.defer();
+
+      let found;
+
+      $localForage
+        .getItem('currentMember')
+        .then((member) => {
+          if (member) {
+            return deferred.resolve(member);
+          } else {
+            return Member.getCurrent().$promise;
+          }
+        })
+        .then((member) => {
+          if (!member)
+            return;
+
+          found = member;
+
+          return $localForage.setItem('currentMember', member);
+        })
+        .then((res) => {
+          return deferred.resolve(found);
+        })
+        .catch(deferred.reject);
+      
+      return deferred.promise;
+    }
 
     function getGuid() {
       function s4() {

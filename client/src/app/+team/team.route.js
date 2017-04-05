@@ -8,31 +8,40 @@
   /* @ngInject */
   function RouteConfig($stateProvider) {
 
+    const VIEWS = {
+      'main@': {
+        templateUrl: 'app/+team/team.html',
+        controller: 'TeamController',
+        controllerAs: 'vm'
+      }
+    };
+
+    const RESOLVER = {
+      member: memberResolver,
+      client: clientResolver
+    };
+
     $stateProvider
       .state({
         name: 'team',
         url: '/team',
-        views: {
-          'main@': {
-            templateUrl: 'app/+team/team.html',
-            controller: 'TeamController',
-            controllerAs: 'vm'
-          }
-        },
-        resolve: {
-          member: memberResolver
-        }
+        views: VIEWS,
+        resolve: RESOLVER
       });
      
   }
 
   /* @ngInject */
-  function memberResolver($q, Member) {
+  function clientResolver(Deep) {
+    return Deep.getClient();
+  }
+
+  /* @ngInject */
+  function memberResolver($q, Widgets) {
     let deferred = $q.defer();
     
-    Member
-      .getCurrent()
-      .$promise
+     Widgets
+      .currentMember()
       .then(deferred.resolve)
       .catch(deferred.reject);
 

@@ -12,18 +12,18 @@
     $scope, 
     $stateParams,
     $localForage, 
-    $timeout, 
-    member, 
+    $timeout,
+    client,
+    member,
     stream,
     previous,
-    host, 
-    Deep,
+    host,
     Widgets,
     Offline,
     Dialog
   ) {
     let vm = this;
-    let client = Deep.getClient();
+
     let record = client.record.getRecord(`streams/${$stateParams.username}`);
 
     vm.stream = stream;
@@ -51,6 +51,7 @@
       $scope.$evalAsync(() => vm.channel = value);
     });
 
+    // Handles our offline player check
     Offline.on('down', () => {
       if (vm.selectedPlayer !== 'rtmp') return;
 
@@ -80,7 +81,7 @@
 
       //we time this out to give our hero animation time to finish
       vm.streamInit = true;
-    }, previous.url ? 800 : 100);
+    }, previous.url ? 800 : 50);
 
     if ($scope.$on) {
       $scope.$on('$destroy', function() {
@@ -95,8 +96,6 @@
         if (player) {
           $localForage.setItem('selectedPlayer', player);
         }
-
-        console.log('player', player);
       });
     }
   }

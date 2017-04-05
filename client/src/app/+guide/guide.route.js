@@ -27,12 +27,11 @@
   }
 
   /* @ngInject */
-  function memberResolver($q, Member) {
+  function memberResolver($q, Widgets) {
     let deferred = $q.defer();
     
-    Member
-      .getCurrent()
-      .$promise
+    Widgets
+      .currentMember()
       .then(deferred.resolve)
       .catch(deferred.reject);
 

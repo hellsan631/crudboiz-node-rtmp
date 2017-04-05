@@ -29,8 +29,6 @@
         .create(vm.member)
         .$promise
         .then(function(res) {
-          console.log(res);
-
           return Dialog.success('Signed Up', 'Successfully signed up!');
         })
         .then(function(res) {

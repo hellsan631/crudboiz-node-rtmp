@@ -9,12 +9,7 @@
   function Controller($rootScope, $scope, $localForage, Member, Channel, member) {
     var vm = this;
 
-    vm.mode = 'info';
     let init = false;
-
-    vm.changeMode = function(mode) {
-      vm.mode = mode;
-    };
 
     vm.member = member;
 

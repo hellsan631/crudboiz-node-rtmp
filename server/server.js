@@ -98,7 +98,6 @@ function mountDeepstream(app) {
   );
 
   deepstream.set('port', '6020');
-  //deepstream.set('host', '127.0.0.1');
 
   deepstream.on('error', (err) => {
     raygun.send(err);

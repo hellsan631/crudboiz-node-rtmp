@@ -72,9 +72,8 @@
       loadCurrentMember();
 
       function loadCurrentMember() {
-        Member
-          .getCurrent()
-          .$promise
+        Widgets
+          .currentMember()
           .then((member) => {
             sm.member = member;
             sm.profileImage = Widgets.getProfileImage(member);
