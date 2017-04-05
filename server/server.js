@@ -13,6 +13,7 @@ if (env === 'development') {
 
 let deepclient = false;
 let alreadyInit = false;
+let connectedUsers = {};
 let bootCheck = {
   deep: false,
   lb: false
@@ -86,6 +87,7 @@ function mountApp(app, boot) {
 function mountDeepstream(app) {
   const DeepStream = require('deepstream.io');
   const DeepMongo  = require('deepstream.io-storage-mongodb');
+  const EventEmitter = require( 'events' ).EventEmitter;
   
   const deepstream = new DeepStream();
 
@@ -106,6 +108,42 @@ function mountDeepstream(app) {
   deepstream.on('started', () => {
     initDeepClient(app);
   });
+
+  class AuthHandler extends EventEmitter {
+    constructor() {
+      // Extend EventEmitter
+      super();
+
+      // Or start with false if you need to do some initialisation first
+      // and call this.emit( 'ready' ); a bit later
+      this.type = 'none';
+      this.isReady = true;
+    }
+
+    isValidUser(connectionData, authData, callback) {
+      if (!authData.username) return callback(new Error('No Username Found'));
+
+      console.log(connectionData);
+
+      var username = authData.username;
+
+      if (connectedUsers[username] === undefined && username !== 'localhost') {
+        connectedUsers[username] = true;
+        callback(true, { username: authData.username || 'OPEN' });
+      } else {
+        callback(true, { username: authData.username || 'OPEN' });
+      }
+
+      if (app._updateDeepstreamConnections)
+        app._updateDeepstreamConnections();
+    }
+
+    onClientDisconnect( username ) {
+      delete connectedUsers[username];
+    }
+  }
+
+  deepstream.set('authenticationHandler', new AuthHandler);
   
   deepstream.start();
 
@@ -131,9 +169,15 @@ function initDeepClient(app) {
 
   const deepClient = require('deepstream.io-client-js');
 
-  deepclient = deepClient(`localhost:6020`).login();
+  deepclient = deepClient(`localhost:6020`).login({username: 'localhost'});
 
   app.deepclient = deepclient;
+
+  app._updateDeepstreamConnections = () => {
+    app.deepclient
+      .record.getRecord('crudboiz')
+      .set('connected', connectedUsers);
+  };
 
   setInterval(() => {
     checkLiveStreams(app);

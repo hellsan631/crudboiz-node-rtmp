@@ -15,7 +15,7 @@
           class="rtmp-container"
         >
           <video
-            id="rtmp-player"
+            id="rtmp-player-{{ ::dm.stream.name }}"
             class="video-js"
             controls
             preload="auto"
@@ -48,7 +48,7 @@
 
       let dm = scope.dm;
 
-      let playerElement = element.find('#rtmp-player');
+      let playerElement = element.find(`video.video-js`);
       let playerParent  = element.parent().parent();
 
       resizePlayer();
@@ -116,20 +116,22 @@
     });
 
     function initPlayer() {
-      streamPlayer = videojs('rtmp-player', {
-        techOrder: ['flash'],
-        fluid: true,
-        sources: [source],
+      setTimeout(() => {
+        streamPlayer = videojs(`rtmp-player-${dm.stream.name}`, {
+          techOrder: ['flash'],
+          fluid: true,
+          sources: [source],
+        });
+
+        initEvents(streamPlayer); 
+
+        if (!dm.member || dm.stream.name !== dm.member.username) {
+          streamPlayer
+            .persistvolume({ namespace: 'crudboiz-rtmp-volume' });
+        } else {
+          streamPlayer.muted(true);
+        }
       });
-
-      initEvents(streamPlayer); 
-
-      if (!dm.member || dm.stream.name !== dm.member.username) {
-        streamPlayer
-          .persistvolume({ namespace: 'crudboiz-rtmp-volume' });
-      } else {
-        streamPlayer.muted(true);
-      }
     }
 
     function initEvents(player) {
@@ -148,10 +150,8 @@
           Dialog
             .confirm(
               'Switch to HLS Player?',
-              `
-                It looks like flash isn't supported in your browser.
-                <small>If you'd like to continue with flash, consider switching browsers to Firefox or Microsoft Edge.</small>
-              `
+              `It looks like flash isn't supported in your browser.
+              <small>If you'd like to continue with flash, consider switching browsers to Firefox or Microsoft Edge.</small>`
             )
             .then((confirm) => {
               if (!confirm) return;
