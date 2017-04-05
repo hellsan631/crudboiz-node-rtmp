@@ -10,8 +10,6 @@
   /* @ngInject */
   function Controller($scope, $timeout, client, streamList, Deep) {
     let vm = this;
-
-    var t0 = performance.now();
  
     let streams = client.record.getList('streams');
 
@@ -59,9 +57,6 @@
 
       client.record.snapshot(streamId, (err, data) => {
         vm.streamList[streamId] = data;
-
-        var t1 = performance.now();
-        console.log("Call took " + (t1 - t0) + " milliseconds.");
       });
 
       channel.whenReady(() => {

@@ -4,6 +4,8 @@ const env       = process.env.NODE_ENV || 'development';
 
 const loopback   = require('loopback');
 const boot       = require('loopback-boot');
+const compression   = require('compression');
+const path          = require('path');
 
 let keys = require('./datasources.production');       
 
@@ -25,6 +27,40 @@ const raygun = new Raygun.Client().init({
 });
 
 let app = module.exports = loopback();
+
+
+// request pre-processing middleware
+app.use(compression({ filter: shouldCompress }));
+
+//filter out non-compressable calls
+function shouldCompress(req, res) {
+
+  if(typeof req.originalUrl === 'string'){
+    if(req.originalUrl.indexOf("api") > -1) {
+      return false;
+    }
+    if(req.originalUrl.indexOf("png") > -1) {
+      return false;
+    }
+    if(req.originalUrl.indexOf("jpg") > -1) {
+      return false;
+    }
+    if(req.originalUrl.indexOf("gif") > -1) {
+      return false;
+    }
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res);
+}
+
+//add cache control
+app.use(function (req, res, next) {
+  if (req.url.match(/^\/(css|js|img|font|png|jpg)\/.+/)) {
+    res.setHeader('Cache-Control', 'public, max-age=86400000');
+  }
+  next();
+});
 
 mountApp(app, boot);
 
@@ -122,8 +158,6 @@ function mountDeepstream(app) {
 
     isValidUser(connectionData, authData, callback) {
       if (!authData.username) return callback(new Error('No Username Found'));
-
-      console.log(connectionData);
 
       var username = authData.username;
 
