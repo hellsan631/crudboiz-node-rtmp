@@ -8,7 +8,7 @@
     .controller('ChannelsController', Controller);
 
   /* @ngInject */
-  function Controller($scope, $timeout, client, streamList, Deep) {
+  function Controller($scope, $timeout, $localForage, Deep, client, streamList) {
     let vm = this;
  
     let streams = client.record.getList('streams');
@@ -16,7 +16,7 @@
     let streamIds = [];
     let cleanup = [];
 
-    vm.streamList = {};
+    vm.streamList = streamList;
     vm.liveList = (list, offline) => {
       let parsed = Deep.liveList(list, offline);
 
@@ -24,8 +24,6 @@
 
       return parsed.result;
     };
-
-    streamList.forEach(subscribeStream);
 
     cleanup.push(streams);
 
@@ -57,6 +55,8 @@
 
       client.record.snapshot(streamId, (err, data) => {
         vm.streamList[streamId] = data;
+
+        $localForage.setItem('channelList', vm.streamList);
       });
 
       channel.whenReady(() => {
@@ -68,6 +68,8 @@
             .subscribe('info', function(value) {
               $scope.$evalAsync(() => {
                 vm.streamList[streamId].info = value;
+
+                $localForage.setItem('channelList', vm.streamList);
               });
             });
             
@@ -75,6 +77,8 @@
             .subscribe('channel', function(value) {
               $scope.$evalAsync(() => {
                 vm.streamList[streamId].channel = value;
+
+                $localForage.setItem('channelList', vm.streamList);
               });
             });
         });
