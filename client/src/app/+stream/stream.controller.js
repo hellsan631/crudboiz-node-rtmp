@@ -40,6 +40,8 @@
           vm.selectedPlayer = member.player;
         }
 
+        vm.selectedPlayer = vm.selectedPlayer || 'rtmp';
+
         watchPlayer();
       });
 
