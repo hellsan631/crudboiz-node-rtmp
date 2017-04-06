@@ -54,14 +54,6 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
-//add cache control
-app.use(function (req, res, next) {
-  if (req.url.match(/^\/(css|js|img|font|png|jpg)\/.+/)) {
-    res.setHeader('Cache-Control', 'public, max-age=86400000');
-  }
-  next();
-});
-
 mountApp(app, boot);
 
 function mountApp(app, boot) {
