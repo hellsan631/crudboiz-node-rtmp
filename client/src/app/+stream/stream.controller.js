@@ -66,14 +66,20 @@
 
           Dialog
             .confirm(
-              'Switch to HLS Player?',
-              'There seems to be a problem with your internet connection, do you want to switch to the more stable HLS player when you reconnect?'
+              'Switch to HTML5 Player?',
+              'There seems to be a problem with your internet connection, do you want to switch to the more stable HTML5 player when you reconnect?'
             )
             .then((confirm) => {
               if (!confirm) return;
 
               Offline.on('up', () => {
-                $scope.$evalAsync(() => vm.selectedPlayer = 'hls');
+                $scope.$evalAsync(() => {
+                  vm.selectedPlayer = 'rtmp';
+                  
+                  $timeout(() => {
+                    vm.selectedPlayer = 'hls';
+                  });
+                });
               });
             });
         });

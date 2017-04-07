@@ -17,6 +17,7 @@
     let cleanup = [];
 
     vm.streamList = streamList;
+    
     vm.liveList = (list, offline) => {
       let parsed = Deep.liveList(list, offline);
 

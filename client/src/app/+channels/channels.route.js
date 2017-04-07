@@ -34,52 +34,14 @@
   /* @ngInject */
   function listResolver($q, $localForage, Deep) {
     let deferred = $q.defer();
-    let streamList = {};
-    let promises = [];
 
     $localForage
       .getItem('channelList')
       .then((list) => {
         if (list) return deferred.resolve(list);
 
-        runDeep();
+        else deferred.resolve([]);
       });
-
-    function runDeep() {
-      Deep
-        .getClient()
-        .then((client) => {
-          let streams = client.record.getList('streams');
-
-          streams.whenReady((list) => {
-            let enteries = list.getEntries();
-
-            enteries.forEach((streamId) => {
-              promises.push(addPromise(streamId));
-            });
-
-            Promise
-              .all(promises)
-              .then(() => {
-                $localForage.setItem('channelList', streamList);
-
-                deferred.resolve(streamList);
-              });
-          });
-
-          function addPromise(streamId) {
-            return new Promise(function(resolve) {
-              client.record.snapshot(streamId, (err, data) => {
-                streamList[streamId] = data;
-
-                resolve(data);
-              });
-            });
-          }
-        });
-    }
-
-    
     
     return deferred.promise;
   }

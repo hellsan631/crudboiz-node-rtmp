@@ -248,7 +248,9 @@ function checkLiveStreams(app) {
 
             let statistics = JSON.parse(JSON.stringify(list[i].statistics));
 
+            // Cleanup the list statistics
             delete list[i].meta;
+            delete list[i].statistics;
 
             // Here we are setting the data for the above record
             let record = app.deepclient.record.getRecord(recordId);
