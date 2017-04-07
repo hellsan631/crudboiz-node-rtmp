@@ -41,7 +41,11 @@
         .then((res) => {
           return deferred.resolve(found);
         })
-        .catch(deferred.reject);
+        .catch((err) => {
+          $localForage.removeItem('currentMember');
+
+          deferred.reject(err);
+        });
       
       return deferred.promise;
     }

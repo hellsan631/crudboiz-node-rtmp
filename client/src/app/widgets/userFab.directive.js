@@ -100,6 +100,9 @@
           return $localForage.setItem('lastLogin', false);
         })
         .then(() => {
+          return $localForage.removeItem('currentMember');
+        })
+        .then(() => {
            $state.reload();
         });
     };
