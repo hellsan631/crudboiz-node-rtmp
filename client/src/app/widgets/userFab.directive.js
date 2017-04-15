@@ -86,7 +86,7 @@
   }
 
   /* @ngInject */
-  function Controller($localForage, Widgets, Member, $state) {
+  function Controller($rootScope, $localForage, Widgets, Member, $state) {
     var sm = this;
 
     sm.logout = () => {
@@ -103,7 +103,8 @@
           return $localForage.removeItem('currentMember');
         })
         .then(() => {
-           $state.reload();
+          $rootScope.$broadcast('loginEvent');
+          $state.reload();
         });
     };
   }
