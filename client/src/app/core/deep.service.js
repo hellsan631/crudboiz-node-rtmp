@@ -6,7 +6,7 @@
    .factory('Deep', Deep);
 
   /* @ngInject */
-  function Deep($localForage, $q, $window, deepstream) {
+  function Deep($localForage, $q, $window, deepstream, Raven) {
     return {
       getClient: getClient,
       liveList: liveList,
@@ -39,7 +39,18 @@
       $localForage
         .getItem('uuid')
         .then((uuid) => {
+
+          if (!uuid) {
+            uuid = uuid();
+
+            $localForage.setItem('uuid', uuid);
+          }
+
           let client = deepstream(location).login({ username: uuid });
+
+          client.on( 'error', (error) => {
+            Raven.captureException(error);
+          });
 
           deferred.resolve(client);
         });

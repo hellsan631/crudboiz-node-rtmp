@@ -17,7 +17,6 @@
     };
 
     const RESOLVER = {
-      member: memberResolver,
       client: clientResolver
     };
 
