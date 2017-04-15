@@ -55,13 +55,7 @@ user-fab {
     @include materialBounce(all, 800ms);
 
     @media #{$medium-and-down} {
-      top: 18px;
-      right: 0em;
-      font-size: 0.9em;
-
-      &:hover {
-        right: 3.5em;
-      }
+      display:none;
     }
   }
 }

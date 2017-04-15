@@ -44,7 +44,7 @@
                 <textarea 
                   ng-model="dm.channel.description" 
                   class="materialize-textarea"
-                  placeholder="Descirption"
+                  placeholder="Description"
                 >
                 </textarea>
               </div>

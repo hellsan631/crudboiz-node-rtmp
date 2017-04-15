@@ -11,10 +11,11 @@
     $httpProvider,
     $locationProvider,
     $urlRouterProvider,
-    $uiViewScrollProvider) {
+    $uiViewScrollProvider
+  ) {
 
     //Performance Improvements
-    $compileProvider.debugInfoEnabled(true);
+    $compileProvider.debugInfoEnabled(false);
 
     $httpProvider.useApplyAsync(true);
     $httpProvider.interceptors.push('httpLoader');

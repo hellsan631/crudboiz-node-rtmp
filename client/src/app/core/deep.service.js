@@ -48,8 +48,14 @@
 
           let client = deepstream(location).login({ username: uuid });
 
-          client.on( 'error', (error) => {
-            Raven.captureException(error);
+          client.on( 'error', (error, event, topic) => {
+            Raven.captureMessage('Deepstream Error', { 
+              extra: {
+                error: error,
+                event: event,
+                topic: topic
+              }
+            });
           });
 
           deferred.resolve(client);
@@ -59,20 +65,24 @@
     }
 
     function liveList(list, offline = false) {
-      var result = {};
+      var result = [];
       let foundLive = false;
       let noneLive = true;
 
-      angular.forEach(list, (stream, key) => {
-        if (!stream.info) return;
+      for (let key in list) {
+        if (list.hasOwnProperty(key)) {
+          let stream = list[key];
 
-        if (stream.info.active && !offline) {
-          result[key] = stream;
-          foundLive = true;
-        } else if (!stream.info.active && offline) {
-          result[key] = stream;
+          if (stream.info) {
+            if (stream.info.active && !offline) {
+              result.push(stream);
+              foundLive = true;
+            } else if (!stream.info.active && offline) {
+              result.push(stream);
+            }
+          }
         }
-      });
+      }
 
       if (!foundLive && !offline) {
         noneLive = true;

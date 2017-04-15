@@ -60,10 +60,15 @@
     setCurrentMember();
 
     function setCurrentMember() {
+      console.log('member');
+
       Widgets
         .currentMember()
         .then((member) => {
           dm.member = member;
+        })
+        .catch(() => {
+          dm.member = false;
         });
     }
 

@@ -17,11 +17,15 @@
     let cleanup = [];
 
     vm.streamList = streamList;
+
+    console.log(streamList);
     
-    vm.liveList = (list, offline) => {
+    vm.liveList = (list, offline = false) => {
       let parsed = Deep.liveList(list, offline);
 
       vm.noneLive = parsed.noneLive;
+
+      console.log(offline, parsed.result.length);
 
       return parsed.result;
     };
