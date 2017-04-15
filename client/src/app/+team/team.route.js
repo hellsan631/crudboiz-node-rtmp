@@ -34,17 +34,4 @@
   function clientResolver(Deep) {
     return Deep.getClient();
   }
-
-  /* @ngInject */
-  function memberResolver($q, Widgets) {
-    let deferred = $q.defer();
-    
-     Widgets
-      .currentMember()
-      .then(deferred.resolve)
-      .catch(deferred.reject);
-
-    return deferred.promise;
-
-  }
 })();

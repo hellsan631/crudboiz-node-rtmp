@@ -60,6 +60,9 @@
         )
         .$promise
         .then(() => {
+          return $localForage.setItem('currentMember', vm.member);
+        })
+        .then(() => {
           $rootScope.$broadcast('loginEvent');
         });
     }
