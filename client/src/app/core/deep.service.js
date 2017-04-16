@@ -49,7 +49,7 @@
           let client = deepstream(location).login({ username: uuid });
 
           client.on( 'error', (error, event, topic) => {
-            Raven.captureMessage('Deepstream Error', { 
+            Raven.captureMessage(`DS - ${event}`, { 
               extra: {
                 error: error,
                 event: event,
