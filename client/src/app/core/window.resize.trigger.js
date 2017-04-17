@@ -26,7 +26,7 @@
         windowSize.height = window.innerHeight;
         windowSize.width  = window.innerWidth;
       }
-    }, 16);
+    }, 32);
 
   });
 

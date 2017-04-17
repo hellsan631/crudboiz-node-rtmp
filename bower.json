@@ -28,7 +28,8 @@
     "ngEmbed": "ng-embed#^2.1.1",
     "randomcolor": "^0.4.4",
     "ng-file-upload": "^12.2.13",
-    "offline": "^0.7.18"
+    "offline": "^0.7.18",
+    "clipboard": "^1.6.1"
   },
   "resolutions": {
     "angular": "1.5.11",
