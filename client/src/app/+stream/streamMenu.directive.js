@@ -19,10 +19,10 @@
 
         <div class="switch">
           <label>
-            Flash
+            <span class="hide-on-small-only">Flash</span>
             <input type="checkbox" ng-model="dm.html">
             <span class="lever"></span>
-            HTML5
+            <span class="hide-on-small-only">HTML5</span>
           </label>
         </div>
       `,

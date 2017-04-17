@@ -1,3 +1,5 @@
+@import "../../css/scss/partials/functions";
+
 stream-menu {
   display: block;
   position: absolute;
@@ -33,6 +35,10 @@ stream-menu {
     border-radius: 10px;
 
     background: rgba(255,255,255,0.6);
+
+    @media #{$small-and-down} {
+      padding-bottom: 1.2em;
+    }
     
 
     label {

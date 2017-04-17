@@ -27,12 +27,12 @@
       <div class="row">
         <div class="col s1 right-align">
           <div
-            class="stream-icon" 
+            class="stream-icon hide-on-small-only"
             ng-style="{ backgroundImage: 'url(' + vm.host.profileImage + ')' }" 
           >
           </div>
         </div>
-        <div class="col s11 no-padding">
+        <div class="col s11">
           <div class="col s12 no-padding stream-menu-container">
             <h5 class="left">{{ vm.channel.title || vm.stream.name }}</h5>
             <stream-menu stream="vm.stream" player="vm.selectedPlayer"></stream-menu>
@@ -44,7 +44,7 @@
             <span class="game">An Anonomoose User</span>
           </div>
         </div>
-        <div class="col s12">
+        <div class="col s12 hide-on-small-only">
           <p 
             class="flow-text"
             ng-bind="vm.channel.description"
