@@ -1,4 +1,5 @@
 @import "../../css/scss/partials/functions";
+@import "../../css/scss/partials/colors";
 
 channel-card {
   display:block;
@@ -23,8 +24,6 @@ channel-card {
       margin: -2em 0;
     }
   }
-
-  
 
   .viewer-count {
     vertical-align: middle;

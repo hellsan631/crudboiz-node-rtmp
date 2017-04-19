@@ -11,7 +11,7 @@
       restrict: 'E',
       template: `
         <nav class="anim-slide-above-fade">
-          <div class="nav-wrapper grey darken-3">
+          <div class="nav-wrapper primary-background">
             <div class="container">
               
               <ul id="nav-mobile" class="left">

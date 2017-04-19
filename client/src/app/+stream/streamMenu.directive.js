@@ -17,6 +17,14 @@
           </span>
         </div>
 
+        <action-button
+          ng-if="dm.stream.active && dm.member.username === dm.stream.name"
+          button-style="primary-action btn-small live-alert"
+          default-message="Live Alert"
+          ng-click="dm.goLive()"
+        >
+        </action-button>
+
         <div class="switch">
           <label>
             <span class="hide-on-small-only">Flash</span>
@@ -29,7 +37,8 @@
       scope: {},
       bindToController: {
         player: '=',
-        stream: '<'
+        stream: '<',
+        member: '<'
       },
       controller: Controller,
       controllerAs: 'dm'
@@ -37,8 +46,14 @@
   }
 
   /* @ngInject */
-  function Controller($scope, $timeout) {
+  function Controller($scope, $timeout, Widgets) {
     let dm = this;
+
+    dm.goLive = () => {
+      Widgets.liveAlert(dm.member.username);
+    };
+
+    console.log(dm.stream);
 
     let player = JSON.parse(JSON.stringify(dm.player || ''));
     

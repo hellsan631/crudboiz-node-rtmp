@@ -15,5 +15,5 @@ module.exports = (Live) => {
       returns: { arg: 'body', type: 'object', root: true }
     }
   );
-
-}
+  
+};

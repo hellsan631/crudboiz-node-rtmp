@@ -1,3 +1,5 @@
+@import "../../css/scss/partials/colors";
+
 top-bar {
   display: block;
   position: absolute;
@@ -16,7 +18,11 @@ top-bar {
     }
 
     &.active {
-      background: #666 !important;
+      background: $primary-color-action !important;
     }
+  }
+
+  nav {
+    box-shadow: none;
   }
 }

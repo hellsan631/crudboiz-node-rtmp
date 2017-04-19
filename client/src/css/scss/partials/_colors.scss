@@ -1,12 +1,20 @@
 /* colors.scss */
-$primary-color-action: #f8d131;
-$secondary-color-action: #5f5f5f;
+
+$background:#346689;
+$highlights: #fe9900;
+$secondary-highlights: #0196da;
+
+$primary-color-action: $highlights;
+$secondary-color-action: $background;
 $primary-color-dark: #212121;
-$primary-color-light: #F1F1F1;
+$primary-color-light: $secondary-highlights;
 $disabled-color: #DFDFDF;
 
-$primary-color-blue: #30363f;
-$primary-color-purple: #6f4f96;
-$primary-color-red: #f12a27;
+$primary-color-blue: $background;
+$primary-color-purple: $secondary-highlights;
+$primary-color-red: $highlights;
+
+$primary-color-background: $background;
+$primary-color-light-background: #f1f1f1;
 
 $white-background: #e2e4e5;

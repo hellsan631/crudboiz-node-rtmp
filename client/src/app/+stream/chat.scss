@@ -4,7 +4,7 @@ chat {
   display: block;
   position: relative;
   width: 100%;
-  background: rgba(#fff, 0.4);
+  background: rgba(#fff, 0.6);
 
   box-shadow: big-shadow(2, 6, rgba(0,0,0,0.05));
 
@@ -94,6 +94,27 @@ chat {
     .input-field {
       margin: 0 !important;
       padding: 0 !important;
+    }
+
+    .btn-floating {
+      position: absolute;
+      right: 10px;
+      top: 3px;
+      opacity: 0.5;
+      
+      width: 42px;
+      height: 42px;
+
+      i {
+        line-height: 42px;
+        font-size: 1.6em;
+      }
+
+      box-shadow:none !important;
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
     textarea {

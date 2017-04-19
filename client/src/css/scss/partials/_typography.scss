@@ -20,8 +20,101 @@
   }
 }
 
+.primary-background {
+  color: #fff !important;
+  background-color: $primary-color-background !important;
+
+  .input-field label:not(.select) {
+    color: #a69695;
+
+    &.active {
+      color: #fff;
+    }
+  }
+
+  input:not([type]),
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=url],
+  input[type=time],
+  input[type=date],
+  input[type=datetime-local],
+  input[type=tel],
+  input[type=number],
+  input[type=search],
+  textarea.materialize-textarea {
+    background-color: $primary-color-light-background;
+    border: 2px solid $primary-color-light-background;
+    border-bottom: 2px solid rgba($primary-color-action, 0.3);
+    border-radius: 4px;
+    height: 4em;
+    padding-left:1.75em;
+    width: calc(100% - 1.75em - 4px);
+    margin-bottom: 2.1em;
+
+    &:focus:not([readonly]){
+      border-bottom: 2px solid #e2e2e2;
+      box-shadow: none;
+    }
+  }
+}
+
+.primary-light-background {
+  color: #333 !important;
+  background-color: $primary-color-light-background !important;
+
+  .input-field label:not(.select) {
+    color: #fff;
+
+    &.active {
+      color: #333;
+    }
+  }
+
+  input:not([type]),
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=url],
+  input[type=time],
+  input[type=date],
+  input[type=datetime-local],
+  input[type=tel],
+  input[type=number],
+  input[type=search],
+  textarea.materialize-textarea {
+    background-color: $primary-color-background !important;
+    border: 2px solid $primary-color-background;
+    border-bottom: 2px solid rgba($primary-color-action, 0.3);
+    box-shadow: 0 0 0px 1000px $primary-color-background inset !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+
+    &:focus:not([readonly]){
+      border-bottom: 2px solid #e2e2e2;
+    }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: 0 0 0px 1000px $primary-color-background inset;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+}
+
+
+
 .primary-action-text {
   color: $primary-color-action !important;
+}
+
+.secondary-action-text {
+  color: $primary-color-light !important;
 }
 
 .secondary-action {

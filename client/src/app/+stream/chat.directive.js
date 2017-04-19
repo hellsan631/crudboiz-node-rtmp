@@ -52,6 +52,12 @@
             autocapitalize="off"
           >
           </textarea>
+
+          <a 
+            ng-click="sm.addChat()"
+            class="btn-floating btn-large primary-action waves-effect waves-light">
+            <i class="material-icons">send</i>
+          </a>
         </div>
       `,
       scope: {},
@@ -186,6 +192,8 @@
           addChat();
         }
       };
+
+      sm.addChat = addChat;
 
       if ($scope.$on) {
         $scope.$on('$destroy', function() {
