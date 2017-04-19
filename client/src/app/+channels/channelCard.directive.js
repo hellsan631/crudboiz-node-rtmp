@@ -16,7 +16,7 @@
             <img 
               class="poster hero" 
               hero-id="poster{{ ::dm.stream.info.name }}" 
-              ng-src="{{ ::dm.stream.info.poster }}"
+              ng-src="{{ ::dm.poster }}"
             />
             <span class="card-title">
               {{ dm.stream.channel.title }}
@@ -56,6 +56,12 @@
         background: dm.stream.channel.color,
         color: Elements.textColor(dm.stream.channel.color)
       };
+    }
+
+    if (dm.stream.info.active) {
+      dm.poster = `${dm.stream.info.poster}?${Math.floor(Date.now() / 1000)}`;
+    } else {
+      dm.poster = dm.stream.info.poster;
     }
 
     $scope.$watchCollection('dm.stream.channel', (channel) => {

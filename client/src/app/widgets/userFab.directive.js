@@ -15,7 +15,7 @@
         <div class="user-fab-container">
           <!-- Dropdown Trigger -->
           <a
-            class="dropdown-button btn-floating btn-large"
+            class="dropdown-button btn-floating btn-large primary-action"
             style="background-image: url({{ sm.profileImage }})"
             data-activates="userFabDropdown"
             href="javascript:void(0);"
