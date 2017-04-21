@@ -40,7 +40,7 @@
       .then((list) => {
         if (list) return deferred.resolve(list);
 
-        else deferred.resolve([]);
+        else deferred.resolve({});
       });
     
     return deferred.promise;

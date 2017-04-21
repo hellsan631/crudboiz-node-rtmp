@@ -16,7 +16,9 @@
     let streamIds = [];
     let cleanup = [];
 
-    vm.streamList = streamList;
+    vm.streamList = JSON.parse(JSON.stringify(streamList));
+
+    streamList = {};
     
     vm.liveList = (list, offline = false) => {
       let parsed = Deep.liveList(list, offline);
@@ -47,42 +49,50 @@
     }
 
     function subscribeStream(streamId) {
-      if (streamIds.includes(streamId))
+      if (streamIds.includes(streamId)) {
         return;
-      else
+      } else {
         streamIds.push(streamId);
+      }
+
+      if (!vm.streamList[streamId]) {
+        vm.streamList[streamId] = {};
+      }
+
+      streamList[streamId] = {};
 
       let channel = client.record.getRecord(streamId);
 
-      client.record.snapshot(streamId, (err, data) => {
-        vm.streamList[streamId] = data;
-
-        $localForage.setItem('channelList', vm.streamList);
-      });
-
       channel.whenReady(() => {
-        $scope.$evalAsync(() => {
+        cleanup.push(channel);
 
-          cleanup.push(channel);
+        channel
+          .subscribe('info', function(value) {
+            $scope.$evalAsync(() => {
+              vm.streamList[streamId].info = value;
 
-          channel
-            .subscribe('info', function(value) {
-              $scope.$evalAsync(() => {
-                vm.streamList[streamId].info = value;
+              setTimeout(function() {
+                streamList[streamId].info = value;
 
-                $localForage.setItem('channelList', vm.streamList);
+                $localForage
+                  .setItem('channelList', streamList);
               });
             });
-            
-          channel
-            .subscribe('channel', function(value) {
-              $scope.$evalAsync(() => {
-                vm.streamList[streamId].channel = value;
+          }, true);
+          
+        channel
+          .subscribe('channel', function(value) {
+            $scope.$evalAsync(() => {
+              vm.streamList[streamId].channel = value;
 
-                $localForage.setItem('channelList', vm.streamList);
+              setTimeout(function() {
+                streamList[streamId].channel = value;
+
+                $localForage
+                  .setItem('channelList', streamList);
               });
             });
-        });
+          }, true);
       });
     }
   }

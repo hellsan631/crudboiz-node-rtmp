@@ -2,6 +2,10 @@ div.signup-container {
   position: absolute;
   width: 100%;
   overflow: hidden;
+
+  .card-panel {
+    padding: 0 3em !important;
+  }
 }
 
 .signup-form form {
