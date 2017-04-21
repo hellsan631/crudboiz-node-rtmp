@@ -73,7 +73,7 @@
         cell_size: cellSize,
         variance: 0.8,
         stroke_width: 1,
-        x_colors: ['#fff', '#fff', '#eaeaea', '#346689', '#346689']
+        x_colors: ['#fff',  '#1262a1', '#0d646b', '#0f1217']
       }).svg(); // Render as SVG.
 
       _mapPolygons(pattern);
