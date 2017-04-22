@@ -273,6 +273,7 @@ function checkLiveStreams(app) {
 
       pastList.forEach((recordId) => {
         let streamActive = false;
+        let record = app.deepclient.record.getRecord(recordId);
 
         for (let i = 0; i < active.length; i++) {
           if (`streams/${active[i].name}` === recordId) {
@@ -281,9 +282,15 @@ function checkLiveStreams(app) {
           }
         }
 
-        app.deepclient
-          .record.getRecord(recordId)
-          .set('info.active', streamActive);
+        record.whenReady(record => {
+          let currentActive = record.get('info.active');
+
+          if (currentActive !== streamActive) {
+            record
+              .set('info.active', streamActive)
+              .set('info.lastOnline', new Date());
+          }
+        });
 
         if (!streamActive) {
           activeList.removeEntry(recordId);

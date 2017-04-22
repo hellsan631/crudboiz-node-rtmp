@@ -28,7 +28,7 @@
     </div>
     <channel-card
       class="col s12 m6 l4"
-      ng-repeat="stream in vm.liveList(vm.streamList, true)"
+      ng-repeat="stream in vm.liveList(vm.streamList, true) | orderBy:'lastOnline'"
       stream="stream"
     >
     </channel-card>
