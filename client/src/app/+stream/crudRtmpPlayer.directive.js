@@ -100,7 +100,7 @@
     let streamPlayer;
     let onlineState = Offline.state;
 
-    let clearInterval = $interval(() => setBackgroundShadow(2000), 6000);
+    let clearInterval = $interval(() => setBackgroundShadow(3000), 5000);
 
     if ($scope.$on) {
       $scope.$on('$destroy', function() {
