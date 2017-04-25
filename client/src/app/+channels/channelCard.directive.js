@@ -38,7 +38,7 @@
       `,
       scope: {},
       bindToController: {
-        stream: '<'
+        stream: '='
       },
       controller: Controller,
       controllerAs: 'dm'
@@ -63,6 +63,14 @@
     } else {
       dm.poster = dm.stream.info.poster;
     }
+
+    $scope.$watch('dm.stream.info.lastOnline', (lastOnline) => {
+      if (typeof lastOnline === 'string') {
+        dm.stream.info.lastOnline = new Date(lastOnline);
+      } else if (!lastOnline) {
+        dm.stream.info.lastOnline = new Date('2015/12/12');
+      }
+    });
 
     $scope.$watchCollection('dm.stream.channel', (channel) => {
       if (channel && channel.color) {

@@ -78,7 +78,6 @@
                   .setItem('channelList', streamList);
               });
             });
-            console.log(value);
           }, true);
           
         channel
