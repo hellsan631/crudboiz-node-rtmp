@@ -4,7 +4,6 @@ const env       = process.env.NODE_ENV || 'development';
 
 const loopback   = require('loopback');
 const boot       = require('loopback-boot');
-const compression   = require('compression');
 const path          = require('path');
 
 let keys = require('./datasources.production');       
@@ -27,32 +26,6 @@ const raygun = new Raygun.Client().init({
 });
 
 let app = module.exports = loopback();
-
-
-// request pre-processing middleware
-app.use(compression({ filter: shouldCompress }));
-
-//filter out non-compressable calls
-function shouldCompress(req, res) {
-
-  if(typeof req.originalUrl === 'string'){
-    if(req.originalUrl.indexOf("api") > -1) {
-      return false;
-    }
-    if(req.originalUrl.indexOf("png") > -1) {
-      return false;
-    }
-    if(req.originalUrl.indexOf("jpg") > -1) {
-      return false;
-    }
-    if(req.originalUrl.indexOf("gif") > -1) {
-      return false;
-    }
-  }
-
-  // fallback to standard filter function
-  return compression.filter(req, res);
-}
 
 mountApp(app, boot);
 
