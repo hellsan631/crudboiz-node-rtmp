@@ -21,7 +21,7 @@
 }
 
 .primary-background {
-  color: #fff !important;
+  color: #fff;
   background-color: $primary-color-background !important;
 
   .input-field label:not(.select) {
@@ -52,6 +52,7 @@
     padding-left:1.75em;
     width: calc(100% - 1.75em - 4px);
     margin-bottom: 2.1em;
+    color: #333 !important;
 
     &:focus:not([readonly]){
       border-bottom: 2px solid #e2e2e2;
