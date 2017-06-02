@@ -6,7 +6,7 @@
    .factory('Widgets', Widgets);
 
   /* @ngInject */
-  function Widgets($q, $http, $localForage, Member) {
+  function Widgets($q, $http, $localForage, Member, Dialog) {
 
     const WEBHOOK_KEY = `rS6XnhcjDS6ZxU6-CjEIWpp2T-I8AQxE_VCB1aULJVwbfDeLBluRugFGTv19_rEE8jMo`;
     const WEBHOOK_URL = `https://discordapp.com/api/webhooks/304021524325728257/${WEBHOOK_KEY}`;
@@ -35,14 +35,14 @@
           var now = new Date();
           var limit = new Date(alert);
 
-          limit.setMinutes( now.getMinutes() - 15 );
+          limit.setMinutes( now.getMinutes() - 1 );
 
           if (typeof alert === 'string') {
             try {
               alert = new Date(alert);
             } catch (e) {
               deferred.reject(
-                new Error('You need to wait 15 minuets between sending alerts')
+                new Error('You need to wait 1 minuet between sending alerts')
               );
             }
           }
@@ -52,10 +52,14 @@
           }
 
           deferred.reject(
-            new Error('You need to wait 15 minuets between sending alerts')
+            new Error('You need to wait 1 minuet between sending alerts')
           );
         })
         .then(() => {
+          deferred.resolve(true);
+        })
+        .catch((err) => {
+          console.log(err);
           deferred.resolve(true);
         });
 
@@ -76,7 +80,7 @@
         .then((res) => {
           deferred.resolve(res.data);
         })
-        .catch(deferred.reject);
+        .catch(Dialog.genericError);
 
       return deferred.promise;
     }

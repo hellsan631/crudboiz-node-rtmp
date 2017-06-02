@@ -53,8 +53,6 @@
       Widgets.liveAlert(dm.member.username);
     };
 
-    console.log(dm.stream);
-
     let player = JSON.parse(JSON.stringify(dm.player || ''));
     
     dm.html = player === 'hls';
