@@ -26,35 +26,6 @@
       
       $localForage
         .getItem('lastAlert')
-        .then((alert) => {
-
-          if (!alert) {
-            return $localForage.setItem('lastAlert', new Date());
-          }
-
-          var now = new Date();
-          var limit = new Date(alert);
-
-          limit.setMinutes( now.getMinutes() - 1 );
-
-          if (typeof alert === 'string') {
-            try {
-              alert = new Date(alert);
-            } catch (e) {
-              deferred.reject(
-                new Error('You need to wait 1 minuet between sending alerts')
-              );
-            }
-          }
-
-          if (alert > limit) {
-            deferred.resolve(true);
-          }
-
-          deferred.reject(
-            new Error('You need to wait 1 minuet between sending alerts')
-          );
-        })
         .then(() => {
           deferred.resolve(true);
         })
