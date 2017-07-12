@@ -19,20 +19,15 @@
               ng-src="{{ ::dm.poster }}"
             />
             <span class="card-title">
-              {{ dm.stream.channel.title }}
-              <span class="game">{{ dm.stream.channel.game }}</span>
-            </span>
-          </div>
-          <div class="card-content" 
-            ng-style="dm.cardStyle">
-            {{ ::dm.stream.info.name }}
+              {{ ::dm.stream.info.name }}
 
-            <div ng-if="dm.stream.info.active" class="right">
-              <i class="material-icons">visibility</i> 
-              <span class="viewer-count">
-                {{ dm.stream.info.viewerCount }}
-              </span>
-            </div>
+              <div ng-if="dm.stream.info.active" class="right">
+                <i class="material-icons">visibility</i> 
+                <span class="viewer-count">
+                  {{ dm.stream.info.viewerCount }}
+                </span>
+              </div>
+            </span>
           </div>
         </div>
       `,

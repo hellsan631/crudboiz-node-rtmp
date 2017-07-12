@@ -37,12 +37,11 @@ channel-card {
     .card-image .card-title {
       width: 100%;
       font-size: 1.2em;
-      padding-top: 2em;
-      background: linear-gradient(to top, rgba(#000,1) 0%,rgba(#444,0.8) 33%, rgba(#fff,0.0) 100%);
+      padding-bottom: 2em;
+      background: linear-gradient(to bottom, rgba(#000,1) 0%,rgba(#444,0.5) 33%, rgba(#fff,0.0) 100%);
 
-      small {
-        font-size: 0.8em;
-      }
+      font-weight: 400;
+      top:0;
     }
   }
 }
