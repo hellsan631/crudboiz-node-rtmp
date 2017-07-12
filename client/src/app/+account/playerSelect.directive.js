@@ -52,6 +52,22 @@
               <label for="dash">Dash<br/><small>(html5, lower latency)</small></label>
             </div>
           </div>
+          <div class="row">
+            <div class="col s12 center-align">
+              <hr/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center-align">
+              <input 
+                type="checkbox" 
+                id="mood"
+                class="filled-in"
+                ng-model="dm.member.enableMoodLighting"
+              />
+              <label for="mood">Mood Lighting (experimental)</label>
+            </div>
+          </div>
         </div>
       `,
       scope: {},

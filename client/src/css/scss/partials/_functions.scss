@@ -51,9 +51,9 @@ $interval-size: $range / $intervals !default;
 
 @function big-shadow($px: 2, $count: 6, $color: rgba(0,0,0,0.1)) {
   $i: 2;
-  $value: '0 #{pow($px, $i)}px #{pow($px, $i)}px #{$color}';
+  $value: '0 #{pow($px, $i)}px #{pow($px, $i) + $px}px #{$color}';
   @while $i <= $count {
-    $value: '#{$value} , 0 #{pow($px, $i)}px #{pow($px, $i)}px #{$color}';
+    $value: '#{$value} , 0 #{pow($px, $i)}px #{pow($px, $i) + $px}px #{$color}';
     $i: $i + 1;
   }
 

@@ -31,7 +31,9 @@ channel-card {
     padding-right: 0;
   }
 
-  .card {    
+  .card {
+    box-shadow: none;
+     
     .card-image .card-title {
       width: 100%;
       font-size: 1.2em;

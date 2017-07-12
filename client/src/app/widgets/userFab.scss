@@ -2,19 +2,21 @@
 @import "../../css/scss/partials/colors";
 
 user-fab {
-  position: relative;
+  position: fixed;
   display: block;
-  z-index: 1001;
+  z-index: 1002;
+  bottom: 5em;
+  left: 5em;
+
 
  .user-fab-container {
     position: absolute;
     top: 0;
-    right: 1em;
+    right: 0;
     z-index: 1001;
 
     @media #{$small-and-down} {
-      top: 2px;
-      right: 0.4em;
+      
     }
   }
 
@@ -36,7 +38,7 @@ user-fab {
   }
 
   .dropdown-content {
-    margin-top: 60px;
+    //margin-top: 60px;
     min-width: 160px;
 
     a{
@@ -45,14 +47,7 @@ user-fab {
   }
 
   .spend-amount {
-    position: absolute;
-    top: 23px;
-    right: 4em;
-    color: #fff;
-    text-align: right;
-    display: block;
-
-    @include materialBounce(all, 800ms);
+    display: none;
 
     @media #{$medium-and-down} {
       display:none;

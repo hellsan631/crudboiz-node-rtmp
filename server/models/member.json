@@ -12,6 +12,14 @@
     "player": {
       "type": "string",
       "default": "rtmp"
+    },
+    "partner": {
+      "type": "boolean",
+      "default": "false"
+    },
+    "enableMoodLighting": {
+      "type": "boolean",
+      "default": "false"
     }
   },
   "validations": [],

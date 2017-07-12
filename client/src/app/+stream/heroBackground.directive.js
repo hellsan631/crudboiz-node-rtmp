@@ -55,7 +55,7 @@
 
       setTimeout(() => {
         element.addClass('init');
-      }, 100);
+      }, 500);
 
       function resize() {
         let width = element.innerWidth();

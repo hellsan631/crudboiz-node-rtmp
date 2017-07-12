@@ -2,19 +2,44 @@
 
 top-bar {
   display: block;
-  position: absolute;
+  position: fixed;
   top:0;
   left:0;
-  right:0;
+  bottom:0;
   z-index: 1000;
+  width: 100px;
+
+  nav {
+    height: auto;
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width: auto;
+  }
 
   .nav-wrapper {
     position: relative;
   }
 
   li {
+    width: 100%;
+    text-align: center;
+
     a {
       color: #fff;
+      padding: 0;
+
+      i {
+        padding-top: 0.2em;
+        padding-bottom:0;
+        margin-bottom: -1em;
+      }
+
+      span {
+        font-size: 0.8em;
+      }
+      
     }
 
     &.active {

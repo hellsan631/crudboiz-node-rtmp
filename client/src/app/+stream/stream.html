@@ -1,68 +1,75 @@
-<div class="row">
-  <div class="col s12 m12 l9">
-    <div class="stream-container">
-      <div class="row player-area">
-        <hero-background
-          ng-if="!vm.streamInit || !vm.stream.active"
-          class="animate-fade"
-          stream="vm.stream"
-        >
-        </hero-background>
-        <div ng-if="vm.streamInit && vm.stream.active">
-          <crud-hls-player
-            ng-if="vm.selectedPlayer === 'hls'"
-            stream="vm.stream"
-            member="vm.member"
-          >
-          </crud-hls-player>
-          <crud-rtmp-player
-            ng-if="vm.selectedPlayer === 'rtmp'"
-            stream="vm.stream"
-            member="vm.member"
-            player="vm.selectedPlayer"
-          >
-          </crud-rtmp-player>
-        </div>       
-      </div>
-      <div class="row">
-        <div class="col s1 right-align">
-          <div
-            class="stream-icon hide-on-small-only"
-            ng-style="{ backgroundImage: 'url(' + vm.host.profileImage + ')' }" 
-          >
-          </div>
-        </div>
-        <div class="col s11">
-          <div class="col s12 no-padding stream-menu-container">
-            <h5 class="left">{{ vm.channel.title || vm.stream.name }}</h5>
-            <stream-menu stream="vm.stream" member="vm.member" player="vm.selectedPlayer"></stream-menu>
-          </div>
-          <div class="col s12 no-padding stream-info" ng-if="::vm.channel.username">
-            <span class="username" ng-bind="vm.channel.username"></span> {{ vm.stream.active ? 'is' : 'was' }} playing <span class="game" ng-bind="vm.channel.game"></span>
-          </div>
-          <div class="col s12 no-padding stream-info" ng-if="!vm.channel.username">
-            <span class="game">An Anonomoose User</span>
-          </div>
-        </div>
-        <div class="col s12 hide-on-small-only">
-          <p 
-            class="flow-text"
-            ng-bind="vm.channel.description"
-          >
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m12 l3">
-    <div class="stream-container">
-      <chat
-        ng-if="::vm.streamInit"
-        stream-name="vm.stream.name"
+<div class="stream-container">
+  <div class="row player-area">
+    <hero-background
+      ng-if="!vm.streamInit || !vm.stream.active"
+      class="animate-fade"
+      stream="vm.stream"
+    >
+    </hero-background>
+    <div ng-if="vm.streamInit && vm.stream.active">
+      <crud-hls-player
+        ng-if="vm.selectedPlayer === 'hls'"
+        stream="vm.stream"
         member="vm.member"
       >
-      </chat>
+      </crud-hls-player>
+      <crud-rtmp-player
+        ng-if="vm.selectedPlayer === 'rtmp'"
+        stream="vm.stream"
+        member="vm.member"
+        player="vm.selectedPlayer"
+      >
+      </crud-rtmp-player>
+    </div>       
+  </div>
+  <div class="row lower-area">
+    
+    <div class="col s12">
+      <div class="icon-area">
+        <div
+          class="stream-icon hide-on-small-only"
+          ng-style="{ backgroundImage: 'url(' + vm.host.profileImage + ')' }" 
+        >
+        </div>
+      </div>
+      <div class="title-area">
+        <div class="col s12 no-padding stream-menu-container">
+          <h5 class="left">{{ vm.channel.title || vm.stream.name }}</h5>
+          <stream-menu 
+            stream="vm.stream" 
+            member="vm.member" 
+            player="vm.selectedPlayer"
+          >
+          </stream-menu>
+        </div>
+        <hr class="seperator" />
+        <div 
+          class="col s12 no-padding stream-info" 
+          ng-if="::vm.channel.username"
+        >
+          <span class="username" ng-bind="vm.channel.username"></span> {{ vm.stream.active ? 'is' : 'was' }} playing <span class="game" ng-bind="vm.channel.game"></span>
+        </div>
+        <div class="col s12 no-padding stream-info" ng-if="!vm.channel.username">
+          <span class="game">An Anonomoose User</span>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 hide-on-small-only">
+      <p 
+        class="flow-text"
+        ng-bind="vm.channel.description"
+      >
+      </p>
     </div>
   </div>
+</div>
+
+<div class="chat-container">
+  <chat
+    ng-if="::vm.streamInit"
+    stream-name="vm.stream.name"
+    member="vm.member"
+  >
+  </chat>
 </div>
 

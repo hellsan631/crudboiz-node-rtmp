@@ -10,22 +10,28 @@
     return {
       restrict: 'E',
       template: `
-        <nav class="anim-slide-above-fade">
+        <nav class="anim-slide-right-fade">
           <div class="nav-wrapper primary-background">
-            <div class="container">
-              
-              <ul id="nav-mobile" class="left">
-                <li ui-sref-active="active">
-                  <a ui-sref="channels">Channels</a>
-                </li>
-                <li ui-sref-active="active">
-                  <a ui-sref="team">Team</a>
-                </li>
-                <li ng-if="dm.member" ui-sref-active="active">
-                  <a ui-sref="guide">Guide</a>
-                </li>
-              </ul>
-            </div>
+            <ul id="nav-mobile" class="left">
+              <li ui-sref-active="active">
+                <a ui-sref="channels">
+                  <i class="material-icons">live_tv</i>
+                  <span>Channels</span>
+                </a>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="team">
+                  <i class="material-icons">group</i>
+                  <span>Team</span>
+                </a>
+              </li>
+              <li ng-if="dm.member" ui-sref-active="active">
+                <a ui-sref="guide">
+                  <i class="material-icons">event_note</i>
+                  <span>Guide</span>
+                </a>
+              </li>
+            </ul>
 
           </div>
         </nav>

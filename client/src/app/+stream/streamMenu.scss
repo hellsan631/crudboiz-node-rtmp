@@ -4,7 +4,7 @@ stream-menu {
   display: block;
   position: absolute;
   top:0;
-  right: 2em;
+  right: 0em;
 
   .dropdown-content {
     min-width: 160px;
@@ -37,11 +37,8 @@ stream-menu {
     display: inline-block;
     vertical-align: middle;
 
-    margin-top: 0.5em;
-    padding: 1em;
-    border-radius: 10px;
-
-    background: rgba(255,255,255,0.6);
+    //margin-top: 0.5em;
+    //padding: 1em;
 
     @media #{$small-and-down} {
       padding-bottom: 1.2em;

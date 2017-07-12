@@ -33,6 +33,12 @@
       }
     });
 
+    $scope.$watch('vm.member.enableMoodLighting', (mood, old) => {
+      if (typeof mood !== 'undefined') {
+        updateMember();
+      }
+    });
+
     $scope.$watch('vm.member.color', (color) => {
       if (color && init) {
         updateMember();

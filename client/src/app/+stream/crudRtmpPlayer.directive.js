@@ -185,6 +185,8 @@
     setBackgroundShadow();
 
     function setBackgroundShadow(timeout = 1000) {
+      if (!dm.member.enableMoodLighting) return;
+      
       Elements
         .delightfulShadow(dm.stream.poster)
         .then((shadow) => {

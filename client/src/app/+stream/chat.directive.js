@@ -16,17 +16,34 @@
               ng-repeat="message in sm.messages track by message.id"
               class="message"
             >
-              <div class="avatar" ng-if="::message.host">
-                <img class="responsive-img" src="images/host.png" />
+              <div class="col s12">
+                <div class="avatar" ng-if="::message.host">
+                  <img class="responsive-img" src="images/host.png" />
+                </div>
+                <span 
+                  style="color: {{ ::message.color }}" 
+                  class="username"
+                >
+                  {{ ::message.username }}
+                </span>
+                <span 
+                  ng-if="sm.displayDate < message.timestamp"
+                  class="date"
+                >
+                  {{ ::message.timestamp | date:'shortTime' }}
+                </span>
+                <span 
+                  ng-if="sm.displayDate > message.timestamp"
+                  class="date"
+                >
+                  {{ ::message.timestamp | date:'short' }}
+                </span>
+                <span 
+                  class="text"
+                  ng-bind-html="::message.text | embed"
+                >
+                </span>
               </div>
-              <span 
-                style="color: {{ ::message.color }}" 
-                class="username">{{ ::message.username }}:</span> 
-              <span 
-                class="text"
-                ng-bind-html="::message.text | embed"
-              >
-              </span>
             </div>
           </div>
           <div 
@@ -78,16 +95,6 @@
       
       let scrollTrackerInit = false;
       let scrollContent;
-
-      resize();
-
-      $(window).on('window:resize', resize);
-
-      if (scope.$on) {
-        scope.$on('$destroy', function() {
-          $(window).off('window:resize', resize);
-        });
-      }
 
       sm.scrollBottom = function(timer = 1000) {
         if (!scrollContent)
@@ -174,8 +181,14 @@
       .getClient()
       .then(initClient);
 
+    sm.displayDate = new Date();
+
+    sm.displayDate.setDate(
+      sm.displayDate.getDate() - 1
+    );
+
     function initClient(client) {
-       sm.messages = [];
+      sm.messages = [];
       sm.addChat = addChat;
 
       let record = client.record.getRecord(`streams/${sm.streamName}`);
@@ -227,7 +240,7 @@
       }
 
       function syncChat(value) {
-        sm.messages = value;
+        sm.messages = filterChat(value);
 
         if (!firstLoad) {
           firstLoad = true;
@@ -249,9 +262,19 @@
           }
         }
       }
-    }
 
-    
+      function filterChat(messages) {
+        let filterDate = new Date();
+
+        filterDate.setDate(
+          filterDate.getDate() - 5
+        );
+
+        return messages.filter((message) => {
+          return new Date(message.timestamp) > filterDate;
+        });
+      }
+    } 
 
   }
 })();

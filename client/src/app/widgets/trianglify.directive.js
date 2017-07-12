@@ -72,9 +72,10 @@
         height: $window.innerHeight,
         cell_size: cellSize,
         variance: 0.8,
-        stroke_width: 1,
-        x_colors: ['#fff',  '#1262a1', '#0d646b', '#0f1217']
+        stroke_width: 2,
+        x_colors: ['#43CBFF',  '#9708CC']
       }).svg(); // Render as SVG.
+
 
       _mapPolygons(pattern);
     }
