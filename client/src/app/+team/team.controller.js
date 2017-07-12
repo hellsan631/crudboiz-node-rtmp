@@ -40,7 +40,7 @@
     //@HACK We need to wait for rest of the stream list to sync up
     $timeout(() => {
       vm.tempList = vm.liveList(vm.streamList);
-    }, 500);
+    }, 100);
 
     if ($scope.$on) {
       $scope.$on('$destroy', function() {
