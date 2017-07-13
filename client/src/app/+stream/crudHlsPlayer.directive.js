@@ -11,7 +11,12 @@
     var directive = {
       restrict: 'E',
       template: `
-        <div class="crud-player" ng-style="dm.shadowStyle"></div>
+        <div 
+          class="crud-player"
+          ng-style="dm.shadowStyle"
+          ng-class="!dm.member.enableMoodLighting ? 'stream-shadow' : ''"
+        >
+        </div>
       `,
       scope: {},
       bindToController: {

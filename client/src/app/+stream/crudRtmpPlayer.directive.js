@@ -13,6 +13,7 @@
         <div 
           ng-style="dm.shadowStyle"
           class="rtmp-container"
+          ng-class="!dm.member.enableMoodLighting ? 'stream-shadow' : ''"
         >
           <video
             id="rtmp-player-{{ ::dm.stream.name }}"

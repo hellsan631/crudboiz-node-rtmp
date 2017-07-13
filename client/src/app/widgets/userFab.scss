@@ -16,6 +16,11 @@ user-fab {
     left: 60px;
   }
 
+  @media #{$retna-and-up} {
+    left: 75px;
+    bottom: 4em;
+  }
+
  .user-fab-container {
     position: absolute;
     top: 0;
