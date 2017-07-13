@@ -34,6 +34,13 @@
       </div>
       <div class="title-area">
         <div class="col s12 no-padding stream-menu-container">
+          <div ng-if="vm.stream.active" class="view-count">
+            <i class="material-icons">visibility</i> 
+            <span class="viewer-count">
+              {{ vm.stream.viewerCount }}
+            </span>
+          </div> 
+          <br/>
           <h5 class="left">{{ vm.channel.title || vm.stream.name }}</h5>
           <stream-menu 
             stream="vm.stream" 

@@ -2,9 +2,7 @@
 
 stream-menu {
   display: block;
-  position: absolute;
-  top:0;
-  right: 0em;
+  float:right;
 
   .dropdown-content {
     min-width: 160px;

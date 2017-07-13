@@ -1,11 +1,14 @@
 <div class="container extra-padding-top channel-container">
   <div class="row">
-    <div class="col s12">
-      <h5 class="white-text">Live Streams</h5>
+    <div class="row" ng-if="!vm.noneLive">
+      <div class="col s12">
+      </div>
     </div>
     <channel-card
-      class="col s12 m6"
-      ng-repeat="stream in vm.liveList(vm.streamList)"
+      class="col s12"
+      ng-class="liveStreams.length > 1 ? 'm6' : ''"
+
+      ng-repeat="stream in vm.liveList(vm.streamList) as liveStreams"
       stream="stream"
     >
     </channel-card>

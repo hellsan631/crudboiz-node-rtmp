@@ -33,6 +33,22 @@ channel-card {
 
   .card {
     box-shadow: none;
+
+    .partner-logo {
+      position: absolute;
+      z-index: 1000;
+      bottom: 10px;
+      right: 10px;
+      top: auto;
+      left: auto;
+
+      img {
+        width: 50px !important;
+        height: auto;
+
+        opacity: 0.5;
+      }
+    }
      
     .card-image .card-title {
       width: 100%;

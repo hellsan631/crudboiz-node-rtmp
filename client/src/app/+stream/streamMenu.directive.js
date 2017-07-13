@@ -10,21 +10,6 @@
     return {
       restrict: 'E',
       template: `
-        <div ng-if="dm.stream.active" class="view-count">
-          <i class="material-icons">visibility</i> 
-          <span class="viewer-count">
-            {{ dm.stream.viewerCount }}
-          </span>
-        </div>
-
-        <action-button
-          ng-if="dm.stream.active && dm.member.username === dm.stream.name"
-          button-style="primary-action btn-small live-alert"
-          default-message="Live Alert"
-          ng-click="dm.goLive()"
-        >
-        </action-button>
-
         <div class="switch">
           <label>
             <span class="hide-on-small-only">Flash</span>

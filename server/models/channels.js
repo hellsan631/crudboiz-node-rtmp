@@ -105,17 +105,7 @@ module.exports = (Channel) => {
     let goodClients = [];
 
     for (let i = 0; i < stream.client.length; i++) {
-      if (
-        stream.client[i].address === '127.0.0.1' || 
-        stream.client[i].address === 'localhost' ||
-        stream.client[i].address === '0.0.0.0' ||
-        typeof stream.client[i].publishing === 'string' ||
-        stream.client[i].swfurl.includes('rtmp://')
-      ) {
-        //dont do anything
-      } else {
-        goodClients.push(stream.client[i]);
-      }
+      goodClients.push(stream.client[i]);
     }
 
     stream.client = goodClients;
