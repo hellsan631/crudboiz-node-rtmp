@@ -5,6 +5,7 @@ crud-rtmp-player {
   position: relative;
   width: 100%;
   min-height: 400px;
+  z-index: 100;
 
   .video-js .vjs-big-play-button {
     font-size: 3em;
@@ -20,8 +21,8 @@ crud-rtmp-player {
   }
 
   .rtmp-container {
-    //position: absolute;
-    z-index: 1;
+    position: relative;
+    z-index: 100;
     width: 100%;
     height: 100%;
     display: block;
@@ -30,8 +31,8 @@ crud-rtmp-player {
   }
   
   #rtmp-player {
-    //position: absolute;
-    z-index: 1;
+    position: relative;
+    z-index: 100;
     width: 100%;
     height: 100%;
     display: block;

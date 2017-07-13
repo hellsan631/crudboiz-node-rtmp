@@ -10,6 +10,11 @@
   margin: 0px;
   position: relative;
 
+  .player-area{
+    position: relative;
+    z-index: 1;
+  }
+
   .player-area::after {
     background: #f1f1f1;
     position: fixed;
@@ -66,8 +71,8 @@
 
 .player-area {
   position: relative;
-  margin: 40px;
-  margin-top: 24px;
+  margin: 2% 15%;
+  margin-bottom: 10px;
   padding: 0;
 }
 
