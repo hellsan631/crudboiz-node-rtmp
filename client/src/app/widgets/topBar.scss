@@ -1,4 +1,5 @@
 @import "../../css/scss/partials/colors";
+@import "../../css/scss/partials/functions";
 
 top-bar {
   display: block;
@@ -8,6 +9,10 @@ top-bar {
   bottom:0;
   z-index: 1000;
   width: 100px;
+
+  @media #{$large-and-down} {
+    width: 80px;
+  }
 
   nav {
     height: auto;

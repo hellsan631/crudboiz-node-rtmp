@@ -26,18 +26,7 @@
                 >
                   {{ ::message.username }}
                 </span>
-                <span 
-                  ng-if="sm.displayDate < message.timestamp"
-                  class="date"
-                >
-                  {{ ::message.timestamp | date:'shortTime' }}
-                </span>
-                <span 
-                  ng-if="sm.displayDate > message.timestamp"
-                  class="date"
-                >
-                  {{ ::message.timestamp | date:'short' }}
-                </span>
+                
                 <span 
                   class="text"
                   ng-bind-html="::message.text | embed"
@@ -72,8 +61,8 @@
 
           <a 
             ng-click="sm.addChat()"
-            class="btn-floating btn-large primary-action waves-effect waves-light">
-            <i class="material-icons">send</i>
+            class="btn-floating primary-action waves-effect waves-light">
+            <i class="material-icons small">send</i>
           </a>
         </div>
       `,

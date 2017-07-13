@@ -9,6 +9,18 @@
   display:block;
   margin: 0px;
   position: relative;
+  padding-right: 420px;
+  padding-left: 30px;
+
+  @media #{$large-and-down} {
+    padding-right: 330px;
+    padding-left: 10px;
+  }
+
+  @media #{$small-and-down} {
+    padding-right: 20px;
+    padding-left: 0px;
+  }
 
   .player-area{
     position: relative;
@@ -18,15 +30,19 @@
   .player-area::after {
     background: #f1f1f1;
     position: fixed;
-    top: 30%;
-    bottom: -10%;
-    left:-10%;
-    right:-10%;
-    width: 120%;
+    top: 40%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     height: 100%;
     z-index: 0;
 
     border-top: 1px solid #999;
+
+    @media #{$large-and-down} {
+      
+    }
   }
 
   .icon-area {
@@ -37,6 +53,10 @@
   .title-area {
     width: calc(100% - 144px);
     display: inline-block;
+
+    @media #{$small-and-down} {
+      width: calc(100%);
+    }
 
     .seperator {
       width: 100%;
@@ -53,9 +73,23 @@
 }
 
 .chat-container {
-  position: relative;
+  position: fixed;
   width: auto;
   display:block;
+
+  z-index: 100;
+  top:0;
+  right:0;
+  bottom:0;
+  width: 390px;
+
+  @media #{$large-and-down} {
+    width: 300px;
+  }
+
+  @media #{$small-and-down} {
+    display:none;
+  }
 }
 
 .stream-icon {
@@ -71,7 +105,7 @@
 
 .player-area {
   position: relative;
-  margin: 2% 15%;
+  margin: 2% 0;
   margin-bottom: 10px;
   padding: 0;
 }

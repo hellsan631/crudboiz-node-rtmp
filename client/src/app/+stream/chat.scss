@@ -3,7 +3,7 @@
 chat {
   display: block;
   position: relative;
-  min-height: 200px;
+  height: 100%;
   width: 100%;
   background: rgba(#fff, 1.0);
   border-top: 1px solid #ccc;
@@ -18,6 +18,10 @@ chat {
   -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
+
+  textarea.materialize-textarea {
+    border-bottom: none;
+  }
 
   .message-box {
     width:100%;
@@ -113,7 +117,7 @@ chat {
     .btn-floating {
       position: absolute;
       right: 10px;
-      top: 3px;
+      top: 13px;
       opacity: 1;
       
       width: 42px;

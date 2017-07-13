@@ -7,3 +7,15 @@
     padding-top: 0em;
   }
 }
+
+.extra-padding {
+  padding: 3em 2em;
+
+  margin: 8em 0;
+}
+
+.channel-container {
+  @media #{$small-and-down} {
+    padding-right: 20px;
+  }
+}

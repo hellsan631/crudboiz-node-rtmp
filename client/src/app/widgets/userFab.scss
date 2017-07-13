@@ -8,6 +8,13 @@ user-fab {
   bottom: 5em;
   left: 5em;
 
+  @media #{$large-and-down} {
+    left: 65px;
+  }
+
+  @media #{$small-and-down} {
+    left: 60px;
+  }
 
  .user-fab-container {
     position: absolute;
