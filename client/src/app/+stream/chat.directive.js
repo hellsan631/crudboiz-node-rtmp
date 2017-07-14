@@ -24,7 +24,7 @@
                   style="color: {{ ::message.color }}" 
                   class="username"
                 >
-                  {{ ::message.username }}
+                  {{ ::message.username }}:
                 </span>
                 
                 <span 
