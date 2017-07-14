@@ -28,6 +28,20 @@
     padding-left: 0px;
   }
 
+  .partner-logo {
+    position: absolute;
+    z-index: 1000;
+    right: -18px;
+    top: -18px;
+
+    img {
+      width: 50px !important;
+      height: auto;
+
+      opacity: 1;
+    }
+  }
+
   .view-count {
     display: inline-block;
     padding-right: 1em;
@@ -120,7 +134,8 @@
 
 .stream-icon {
   //border-radius: 50%;
-  overflow: hidden;
+  position: relative;
+  //overflow: hidden;
 
   width: 110px;
   height: 110px;

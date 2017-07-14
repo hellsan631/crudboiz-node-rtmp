@@ -34,6 +34,19 @@
                 </span>
               </div>
             </div>
+            <div 
+              ng-if="!sm.messages.length"
+              class="message"
+            >
+              <div class="col s12 center-align">
+                <span 
+                  style="color: #ccc" 
+                  class="username cen"
+                >
+                  No Recent Chat History
+                </span>
+              </div>
+            </div>
           </div>
           <div 
             ng-if="sm.scroll.current !== sm.scroll.max"

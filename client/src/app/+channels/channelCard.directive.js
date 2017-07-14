@@ -18,16 +18,6 @@
               hero-id="poster{{ ::dm.stream.info.name }}" 
               ng-src="{{ ::dm.poster }}"
             />
-            <div 
-              class="partner-logo hint--left"
-              aria-label="Crudboiz Partner"
-              ng-if="dm.stream.info.name === 'LNB'"
-            >
-              <img 
-                src="images/lnb-partner-logo.png"
-                alt="Crudboiz Partner"
-              />
-            </div>
 
             <span class="card-title">
               {{ ::dm.stream.info.name }}
@@ -39,6 +29,16 @@
                 </span>
               </div>
             </span>
+          </div>
+          <div
+            class="partner-logo hint--right"
+            aria-label="Crudboiz Partner"
+            ng-if="dm.stream.info.name === 'LNB'"
+          >
+            <img 
+              src="images/lnb-partner-logo.png"
+              alt="Crudboiz Partner"
+            />
           </div>
         </div>
       `,

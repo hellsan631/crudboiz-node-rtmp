@@ -30,6 +30,17 @@
           class="stream-icon hide-on-small-only"
           ng-style="{ backgroundImage: 'url(' + vm.host.profileImage + ')' }" 
         >
+
+          <div
+            class="partner-logo hint--right"
+            aria-label="Crudboiz Partner"
+            ng-if="vm.stream.name === 'LNB'"
+          >
+            <img 
+              src="images/lnb-partner-logo.png"
+              alt="Crudboiz Partner"
+            />
+          </div>
         </div>
       </div>
       <div class="title-area">
@@ -39,7 +50,7 @@
             <span class="viewer-count">
               {{ vm.stream.viewerCount }}
             </span>
-          </div> 
+          </div>
           <br/>
           <h5 class="left">{{ vm.channel.title || vm.stream.name }}</h5>
           <stream-menu 

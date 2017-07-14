@@ -6,9 +6,9 @@
     </div>
     <channel-card
       class="col s12"
-      ng-class="liveStreams.length > 1 ? 'm6' : ''"
+      ng-class="vm.liveList(vm.streamList).length > 1 ? 'm6' : ''"
 
-      ng-repeat="stream in vm.liveList(vm.streamList) as liveStreams"
+      ng-repeat="stream in vm.liveList(vm.streamList)"
       stream="stream"
     >
     </channel-card>
