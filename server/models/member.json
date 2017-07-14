@@ -20,6 +20,10 @@
     "enableMoodLighting": {
       "type": "boolean",
       "default": "false"
+    },
+    "enablePrivateMode": {
+      "type": "boolean",
+      "default": "false"
     }
   },
   "validations": [],

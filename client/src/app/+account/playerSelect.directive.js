@@ -26,7 +26,7 @@
                 type="radio"
                 id="rtmp"
               />
-              <label for="rtmp">RTMP<br/><small>(flash, lowest latency)</small></label>
+              <label for="rtmp">Flash<br/><small>(lowest latency)</small></label>
             </div>
             <div class="col s4">
               <input 
@@ -37,7 +37,7 @@
                 type="radio"
                 id="hls"
               />
-              <label for="hls">HLS<br/><small>(html5, high latency)</small></label>
+              <label for="hls">HTLM5<br/><small>(high latency)</small></label>
             </div>
             <div class="col s4">
               <input 
@@ -49,7 +49,7 @@
                 id="dash"
                 disabled="disabled"
               />
-              <label for="dash">Dash<br/><small>(html5, lower latency)</small></label>
+              <label for="dash">Dash<br/><small>(lower latency)</small></label>
             </div>
           </div>
           <div class="row">
@@ -66,6 +66,22 @@
                 ng-model="dm.member.enableMoodLighting"
               />
               <label for="mood">Mood Lighting (experimental)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center-align">
+              <hr/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center-align">
+              <input 
+                type="checkbox" 
+                id="mood"
+                class="filled-in"
+                ng-model="dm.member.enablePrivateMode"
+              />
+              <label for="mood">Private Mode</label>
             </div>
           </div>
         </div>

@@ -45,7 +45,11 @@
         source: dm.stream.hlsUrl,
         poster: Widgets.getFreshUrl(dm.stream.poster),
         autoPlay: false,
-        width: '100%'
+        width: '100%',
+        mediacontrol: {
+          seekbar: "#E113D3",
+          buttons: "#66B2FF"
+        }
       });
 
       player.on(Clappr.Events.PLAYER_PLAY, function() {

@@ -39,6 +39,12 @@
       }
     });
 
+    $scope.$watch('vm.member.enablePrivateMode', (mode, old) => {
+      if (typeof mode !== 'undefined') {
+        updateMember();
+      }
+    });
+
     $scope.$watch('vm.member.color', (color) => {
       if (color && init) {
         updateMember();
