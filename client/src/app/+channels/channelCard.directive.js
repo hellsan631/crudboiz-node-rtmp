@@ -32,12 +32,12 @@
           </div>
           <div
             class="partner-logo hint--right"
-            aria-label="Crudboiz Partner"
+            aria-label="Sassmaster"
             ng-if="dm.stream.info.name === 'LNB'"
           >
             <img 
               src="images/lnb-partner-logo.png"
-              alt="Crudboiz Partner"
+              alt="Sassmaster"
             />
           </div>
         </div>

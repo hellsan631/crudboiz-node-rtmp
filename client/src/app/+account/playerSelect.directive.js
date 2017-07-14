@@ -77,11 +77,11 @@
             <div class="col s12 center-align">
               <input 
                 type="checkbox" 
-                id="mood"
+                id="private"
                 class="filled-in"
                 ng-model="dm.member.enablePrivateMode"
               />
-              <label for="mood">Private Mode</label>
+              <label for="private">Private Mode</label>
             </div>
           </div>
         </div>

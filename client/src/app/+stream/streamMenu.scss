@@ -47,14 +47,14 @@ stream-menu {
       color: #444;
       
       .lever:after {
-        background: #1976D2;
+        background: #F6416C;
       }
 
       input[type=checkbox]:checked + .lever {
-        background: #FF8A65;
+        background: #43CBFF;
 
         &:after {
-          background: #E64A19;
+          background: #43CBFF;
         }
       }
     }

@@ -26,6 +26,7 @@ module.exports = (Live) => {
         }
       })
       .catch((err) => {
+        console.log(err);
         next();
       });
 
@@ -45,10 +46,12 @@ module.exports = (Live) => {
       };
 
       request(options)
-        .then(function (parsedBody) {
+        .then(function (res) {
+          console.log('body', res);
           next();
         })
         .catch(function (err) {
+          console.log(err);
           next();
         });
     }

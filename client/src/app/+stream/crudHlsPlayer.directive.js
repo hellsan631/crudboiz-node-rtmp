@@ -47,8 +47,8 @@
         autoPlay: false,
         width: '100%',
         mediacontrol: {
-          seekbar: "#E113D3",
-          buttons: "#66B2FF"
+          seekbar: '#43CBFF',
+          buttons: '#43CBFF'
         }
       });
 
