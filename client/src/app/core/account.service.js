@@ -11,8 +11,18 @@
       getDefaultUser: getDefaultUser,
       setAuthVerified: setAuthVerified,
       isAuthVerified: isAuthVerified,
-      getDefaultStream: getDefaultStream
+      getDefaultStream: getDefaultStream,
+      partnerImage: getPartnerImage
     };
+
+    function getPartnerImage(name) {
+      switch (name) {
+        case 'LNB':
+          return '';
+        default:
+          return false;
+      }
+    }
 
     function getDefaultUser() {
       return {

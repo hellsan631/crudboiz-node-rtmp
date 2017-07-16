@@ -76,6 +76,9 @@
         })
         .then(() => {
           $rootScope.$broadcast('loginEvent');
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   }

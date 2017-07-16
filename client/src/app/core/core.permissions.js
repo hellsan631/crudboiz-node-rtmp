@@ -6,11 +6,27 @@
     .run(PermissionsConfig);
 
   /* @ngInject */
-  function PermissionsConfig(PermPermissionStore, LoopBackAuth) {
+  function PermissionsConfig(PermPermissionStore, LoopBackAuth, $localForage, Member) {
     PermPermissionStore
       .definePermission(
         'isLoggedIn', 
-        () => { return LoopBackAuth.currentUserId ? true : false; }
+        () => { 
+          return new Promise((resolve, reject) => {
+            Member
+              .getCurrent()
+              .$promise
+              .then((member) => {
+                return $localForage.setItem('currentMember', member);
+              })
+              .then(resolve)
+              .catch(() => {
+                $localForage
+                  .removeItem('currentMember')
+                  .then(reject);
+              });
+            
+          }); 
+        }
       );
   }
 

@@ -104,7 +104,7 @@
         })
         .then(() => {
           $rootScope.$broadcast('loginEvent');
-          //$state.reload();
+          $state.reload();
         });
     };
   }
