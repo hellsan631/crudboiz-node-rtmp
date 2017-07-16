@@ -27,7 +27,7 @@ module.exports = (Live) => {
       })
       .catch((err) => {
         console.log(err);
-        next();
+        return sendDiscordAlert();
       });
 
     function sendDiscordAlert() {
