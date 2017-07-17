@@ -17,6 +17,10 @@
     "rtmpKey": {
       "type":"string",
       "index": { "unique": true }
+    },
+    "private": {
+      "type": "boolean",
+      "default": "false"
     }
   },
   "hidden": ["rtmpKey"],

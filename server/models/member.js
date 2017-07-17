@@ -21,6 +21,7 @@ module.exports = (Member) => {
       .findOne({ where: { memberId: ctx[accessor].id } })
       .then((channel) => {
         channel.color = ctx[accessor].color;
+        channel.private = ctx[accessor].enablePrivateMode || false;
 
         return channel.save();
       })

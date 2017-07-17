@@ -7,7 +7,7 @@
     <channel-card
       class="col s12"
       ng-class="vm.liveList(vm.streamList).length > 1 ? 'm6' : ''"
-
+      ng-if="!stream.channel.private"
       ng-repeat="stream in vm.liveList(vm.streamList)"
       stream="stream"
     >
@@ -36,6 +36,7 @@
     <channel-card
       class="col s12 m6 l4"
       ng-repeat="stream in vm.liveList(vm.streamList, true) | orderBy:'-info.lastOnline'"
+      ng-if="!stream.channel.private"
       stream="stream"
     >
     </channel-card>
