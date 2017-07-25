@@ -17,6 +17,7 @@
     };
 
     const RESOLVER = {
+      streamList: listResolver,
       client: clientResolver
     };
 
@@ -28,6 +29,21 @@
         resolve: RESOLVER
       });
      
+  }
+
+  /* @ngInject */
+  function listResolver($q, $localForage) {
+    let deferred = $q.defer();
+
+    $localForage
+      .getItem('channelList')
+      .then((list) => {
+        if (list) return deferred.resolve(list);
+
+        else deferred.resolve({});
+      });
+    
+    return deferred.promise;
   }
 
   /* @ngInject */
