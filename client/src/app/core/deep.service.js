@@ -75,8 +75,10 @@
 
           if (stream.info) {
             if (stream.info.active && !offline) {
-              result.push(stream);
-              foundLive = true;
+              if(stream.channel && !stream.channel.private) {
+                result.push(stream);
+                foundLive = true;
+              }
             } else if (!stream.info.active && offline) {
               result.push(stream);
             }

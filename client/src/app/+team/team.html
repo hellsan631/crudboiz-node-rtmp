@@ -8,7 +8,6 @@
           multiple 
           watch
           ng-options="stream.channel.username for stream in vm.liveList(vm.streamList)"
-          ng-if="!stream.channel.private"
         >
           <option disabled>Select Channels</option>
         </select>

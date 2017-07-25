@@ -55,7 +55,7 @@
       player.on(Clappr.Events.PLAYER_PLAY, function() {
         scope.$evalAsync(() => dm.playerLoaded = true);
 
-        if (dm.stream.name === dm.member.username) {
+        if (dm.member && dm.stream.name === dm.member.username) {
           player.mute();
         }
       });
@@ -103,7 +103,7 @@
       setBackgroundShadow();
 
       function setBackgroundShadow(timeout) {
-        if (!dm.member.enableMoodLighting) return;
+        if (!dm.member || !dm.member.enableMoodLighting) return;
 
         Elements
           .delightfulShadow(dm.stream.poster)
