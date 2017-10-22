@@ -147,19 +147,11 @@
       player.on('error', function(e) {
         console.log(e);
 
-        if (e.code === 4) {
-          Dialog
-            .confirm(
-              'Switch to HLS Player?',
-              `It looks like flash isn't supported in your browser.
-              <small>If you'd like to continue with flash, consider switching browsers to Firefox or Microsoft Edge.</small>`
-            )
-            .then((confirm) => {
-              if (!confirm) return;
-
-              $scope.$evalAsync(() => dm.player = 'hls');
-            });
-        }
+        Dialog
+          .error(
+            'Problem with flash',
+            `To fix this, click the (i) icon near the website url and under the flash dropdown select "always allow flash", then reload the page. If this doesn't work, consider switching browsers or using the HTML5 player.`
+          );
       });
      
       player.on('playing', function() {
