@@ -13,6 +13,8 @@
 
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+      <link href="//vjs.zencdn.net/5.11/video-js.min.css" rel="stylesheet">
+
       <!-- bower:css -->
       <link rel="stylesheet" href="vendor/materialize/bin/materialize.css">
       <link rel="stylesheet" href="vendor/animate.css/animate.css">
@@ -27,16 +29,15 @@
       <link rel="stylesheet" href="css/styles.css">
       <link rel="stylesheet" href="css/+account/account.css">
       <link rel="stylesheet" href="css/+account/memberPhoto.css">
-      <link rel="stylesheet" href="css/+guide/guide.css">
-      <link rel="stylesheet" href="css/+login/login.css">
       <link rel="stylesheet" href="css/+channels/channelCard.css">
       <link rel="stylesheet" href="css/+channels/channels.css">
+      <link rel="stylesheet" href="css/+guide/guide.css">
+      <link rel="stylesheet" href="css/+login/login.css">
       <link rel="stylesheet" href="css/+signup/signup.css">
       <link rel="stylesheet" href="css/+stream/backButton.css">
       <link rel="stylesheet" href="css/+stream/chat.css">
       <link rel="stylesheet" href="css/+stream/crudDashPlayer.css">
       <link rel="stylesheet" href="css/+stream/crudHlsPlayer.directive.css">
-      <link rel="stylesheet" href="css/+stream/crudPlayer.directive.css">
       <link rel="stylesheet" href="css/+stream/crudRtmpPlayer.css">
       <link rel="stylesheet" href="css/+stream/heroBackground.css">
       <link rel="stylesheet" href="css/+stream/stream.css">
@@ -50,7 +51,6 @@
       <link rel="stylesheet" href="css/widgets/topBar.css">
       <link rel="stylesheet" href="css/widgets/trianglify.css">
       <link rel="stylesheet" href="css/widgets/userFab.css">
-      <link rel="stylesheet" href="app/blocks/videojs/video-js.css">
       <!-- endinject -->
   </head>
 
@@ -73,6 +73,8 @@
     >
     </ui-view>
     
+    <script src="//vjs.zencdn.net/5.11/video.min.js"></script>
+
     <!-- bower:js -->
     <script src="vendor/es6-promise/es6-promise.js"></script>
     <script src="vendor/jquery/dist/jquery.js"></script>
@@ -108,9 +110,6 @@
     <!-- endinject -->
 
     <!-- inject:js -->
-    <script src="app/blocks/videojs/3video.js"></script>
-    <script src="app/blocks/videojs/2videojs-flash.js"></script>
-    <script src="app/blocks/videojs/1video.me.js"></script>
     <script src="app/blocks/logger/logger.module.js"></script>
     <script src="app/blocks/logger/logger.service.js"></script>
     <script src="app/blocks/logger/logger.constants.js"></script>
@@ -154,12 +153,6 @@
     <script src="app/+team/teamView.directive.js"></script>
     <script src="app/+team/team.route.js"></script>
     <script src="app/+team/team.controller.js"></script>
-    <script src="app/+login/login.module.js"></script>
-    <script src="app/+login/newPasswordForm.directive.js"></script>
-    <script src="app/+login/loginForm.directive.js"></script>
-    <script src="app/+login/login.routes.js"></script>
-    <script src="app/+login/login.controller.js"></script>
-    <script src="app/+login/forgotForm.directive.js"></script>
     <script src="app/+stream/stream.module.js"></script>
     <script src="app/+stream/streamMenu.directive.js"></script>
     <script src="app/+stream/stream.route.js"></script>
@@ -174,6 +167,12 @@
     <script src="app/+signup/validateEmail.directive.js"></script>
     <script src="app/+signup/signup.route.js"></script>
     <script src="app/+signup/signup.controller.js"></script>
+    <script src="app/+login/login.module.js"></script>
+    <script src="app/+login/newPasswordForm.directive.js"></script>
+    <script src="app/+login/loginForm.directive.js"></script>
+    <script src="app/+login/login.routes.js"></script>
+    <script src="app/+login/login.controller.js"></script>
+    <script src="app/+login/forgotForm.directive.js"></script>
     <script src="app/+guide/guide.module.js"></script>
     <script src="app/+guide/guide.route.js"></script>
     <script src="app/+guide/guide.controller.js"></script>
@@ -190,7 +189,6 @@
     <script src="app/+account/account.controller.js"></script>
     <script src="app/app.module.js"></script>
     <!-- endinject -->
-
   </body>
 
 </html>
