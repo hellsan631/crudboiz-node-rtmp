@@ -45,7 +45,7 @@ module.exports = function(server) {
   //add cache control
   router.use(function (req, res, next) {
     if (/css|js|img|font|png|jpg/.test(req.url)) {
-      res.setHeader('Cache-Control', 'public, max-age=86400000');
+      res.header('Cache-Control', 'public, max-age=86400000');
     }
     next();
   });

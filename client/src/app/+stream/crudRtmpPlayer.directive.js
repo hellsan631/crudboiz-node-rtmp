@@ -18,9 +18,9 @@
           <video
             id="rtmp-player-{{ ::dm.stream.name }}"
             class="video-js"
-            controls
             preload="auto"
             poster="{{ ::dm.stream.poster }}"
+            controls
           >
             <p class="vjs-no-js">
               To view this video please enable JavaScript, and consider upgrading to a
@@ -93,6 +93,7 @@
     let timeout = 0;
     
     let init = false;
+
     let source = {
       src: dm.stream.rtmpUrl,
       type: 'rtmp/flv',
