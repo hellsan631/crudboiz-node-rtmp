@@ -1,4 +1,7 @@
-<div class="stream-container">
+<div 
+  class="stream-container"
+  ng-class="vm.minimized"
+>
   <div class="row player-area">
     <hero-background
       ng-if="!vm.streamInit || !vm.stream.active"
@@ -82,7 +85,11 @@
   </div>
 </div>
 
-<div class="chat-container">
+<div class="chat-container" ng-class="vm.minimized">
+  <i 
+    class="minimize-chat material-icons"
+    ng-click="vm.minimizeChat()"
+  >{{ !vm.minimized ? 'chevron_right' : 'chevron_left'}}</i>
   <chat
     ng-if="::vm.streamInit"
     stream-name="vm.stream.name"

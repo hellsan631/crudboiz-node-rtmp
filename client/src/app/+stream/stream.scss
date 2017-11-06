@@ -14,6 +14,12 @@
 
   z-index: 100;
 
+  &.minimized {
+    margin-top: -2em;
+    padding-right: 80px;
+    padding-left: 60px;
+  }
+
   @media #{$retna-and-up} {
     font-size: 75%;
   }
@@ -116,6 +122,23 @@
   position: fixed;
   width: auto;
   display:block;
+
+  &.minimized {
+    width: 30px;
+
+    .send-message {
+      display:none;
+    }
+  }
+
+  .minimize-chat {
+    position: absolute;
+    left: -0.7em;
+    top: 1em;
+    z-index: 102;
+    background: #fff;
+    border-radius: 3px;
+  }
 
   z-index: 100;
   top:0;

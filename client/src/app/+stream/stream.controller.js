@@ -30,6 +30,18 @@
     vm.member = member;
     vm.host   = host;
     vm.host.profileImage = Widgets.getProfileImage(vm.host);
+    vm.minimized = false;
+
+    vm.minimizeChat = () => {
+      if (!vm.minimized)
+        vm.minimized = 'minimized';
+      else
+        vm.minimized = false;
+
+      setTimeout(() => {
+        $(window).trigger('window:resize');
+      }, 64);
+    };
 
     $localForage
       .getItem('selectedPlayer')
