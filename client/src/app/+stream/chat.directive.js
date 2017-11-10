@@ -98,6 +98,8 @@
       let scrollTrackerInit = false;
       let scrollContent;
 
+      resize();
+
       sm.scrollBottom = function(timer = 1000) {
         if (!scrollContent)
           return $timeout(() => sm.scrollBottom(timer), 120);
@@ -109,14 +111,14 @@
 
       function resize() {
         setTimeout(() => {
-          let height = 400;
+          let height = '100%';
 
           if ($window.innerWidth > 1100) {
-            height = playerArea.innerHeight();
+            //height = playerArea.innerHeight();
           }
           
           element.css('height', height);
-          messageBox.css('height', height - 71);
+          messageBox.css('height', `calc(${height} - 71px)`);
 
           if (scrollContent) {
             messageBox.TrackpadScrollEmulator('recalculate');
@@ -130,7 +132,7 @@
             scrollTracker();
 
             //this 100 ms is important to allow the scroll pad emupaltor dom to sync up
-          }, 100);
+          }, 200);
         });
       }
 
