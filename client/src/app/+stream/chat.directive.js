@@ -160,7 +160,7 @@
                 scope.$evalAsync(() => {
                   sm.scroll = {
                     current: currentPosition,
-                    max: scrollHeight
+                    max: scrollHeight - 50
                   };
 
                   scrollInterval = false;
