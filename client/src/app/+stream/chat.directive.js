@@ -159,8 +159,8 @@
               requestAnimationFrame(() => {
                 scope.$evalAsync(() => {
                   sm.scroll = {
-                    current: currentPosition,
-                    max: scrollHeight - 50
+                    current: currentPosition + 50,
+                    max: scrollHeight
                   };
 
                   scrollInterval = false;
