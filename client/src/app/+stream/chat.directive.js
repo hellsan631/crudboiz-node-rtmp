@@ -49,7 +49,7 @@
             </div>
           </div>
           <div 
-            ng-if="sm.scroll.current !== sm.scroll.max"
+            ng-if="sm.scroll.current <= sm.scroll.max"
             ng-click="sm.scrollBottom()"
             ng-class="sm.bounceAlert ? 'bounce' : ''"
             class="animate-events more-content center-align"
@@ -159,7 +159,7 @@
               requestAnimationFrame(() => {
                 scope.$evalAsync(() => {
                   sm.scroll = {
-                    current: currentPosition + 50,
+                    current: currentPosition + 200,
                     max: scrollHeight
                   };
 
@@ -255,7 +255,7 @@
           });
 
         } else {
-          if (sm.scroll && sm.scroll.current === sm.scroll.max) {
+          if (sm.scroll && sm.scroll.current <= sm.scroll.max) {
             requestAnimationFrame(() => {
               sm.scrollBottom(200);
             });
