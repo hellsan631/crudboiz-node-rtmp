@@ -30,6 +30,12 @@ chat {
     position: relative;
     height: 100%;
 
+    .avatar {
+      display: inline-block;
+      vertical-align: middle;
+      margin-bottom: -17px;
+    }
+
     .message {
       position: relative;
       display: block;
