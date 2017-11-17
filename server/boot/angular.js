@@ -43,10 +43,24 @@ module.exports = function(server) {
   }
 
   //add cache control
-  router.use(function (req, res, next) {
-    if (/css|js|img|font|png|jpg/.test(req.url)) {
-      res.setHeader('Cache-Control', 'public, max-age=86400000');
+  router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  
+    const url = req.originalUrl;
+  
+    if (
+      !url.includes('api') && 
+      !url.includes('html')
+    ) {
+      res.header('Cache-Control', 'public, max-age=86400');
+    } else if (
+      url.includes('api') || 
+      url.includes('html')
+    ) {
+      res.header('Cache-Control', 'public, max-age=0');
     }
+    
     next();
   });
 
