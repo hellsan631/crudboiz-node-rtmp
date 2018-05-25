@@ -16,7 +16,7 @@ module.exports = (Live) => {
       )
       .then((member) => {
         if (!member) {
-          return next(new Error('This Key is not valid'));
+          return next();
         }
 
         if (!member.enablePrivateMode) {
