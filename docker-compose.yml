@@ -1,0 +1,20 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: "node server/server.js"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+  nginx:
+    image: jasonrivers/nginx-rtmp
+    ports:
+      - "8080:8080"
+      - "1935:1935"
+  mongo:
+    image: mongo
+    restart: always
+  deepstream:
+    image: "deepstreamio/deepstream.io"
+    
