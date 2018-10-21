@@ -4,12 +4,12 @@ const env       = process.env.NODE_ENV || 'development';
 
 const loopback   = require('loopback');
 const boot       = require('loopback-boot');
-const path          = require('path');
+const path       = require('path');
 
 let keys = require('./datasources.production');       
 
 if (env === 'development') {
-  keys = require('./datasources.local');
+  keys = require('./datasources.json');
 }
 
 let deepclient = false;
@@ -20,10 +20,10 @@ let bootCheck = {
   lb: false
 };
 
-const Raygun = require('raygun');
-const raygun = new Raygun.Client().init({
-  apiKey: keys.raygun.token
-});
+// const Raygun = require('raygun');
+// const raygun = new Raygun.Client().init({
+//   apiKey: keys.raygun.token
+// });
 
 let app = module.exports = loopback();
 
@@ -40,7 +40,7 @@ function mountApp(app, boot) {
 
   let opts = {
     onError: function (err, req, res) {
-      raygun.send(err);
+//      raygun.send(err);
 
       console.log(err);
     }
@@ -69,7 +69,7 @@ function mountApp(app, boot) {
 
       mountDeepstream(app);
       
-      mountRaygun(app);
+//      mountRaygun(app);
     });
   };
 
@@ -103,7 +103,7 @@ function mountDeepstream(app) {
   deepstream.set('port', '6020');
 
   deepstream.on('error', (err) => {
-    raygun.send(err);
+//    raygun.send(err);
   });
 
   deepstream.on('started', () => {
@@ -149,17 +149,17 @@ function mountDeepstream(app) {
   app.deepstream = deepstream;
 }
 
-function mountRaygun(app) {
-  app.get('remoting').errorHandler = {
-    handler: function(error, req, res, next) {
-      raygun.send(error);
+// function mountRaygun(app) {
+//   app.get('remoting').errorHandler = {
+//     handler: function(error, req, res, next) {
+//       raygun.send(error);
       
-      //delegate the task down the line
-      next();
-    },
-    disableStackTrace: env !== 'production'
-  };
-}
+//       //delegate the task down the line
+//       next();
+//     },
+//     disableStackTrace: env !== 'production'
+//   };
+// }
 
 function initDeepClient(app) {
   if (alreadyInit) return;
