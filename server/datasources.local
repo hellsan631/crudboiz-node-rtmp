@@ -1,8 +1,7 @@
 {
   "db": {
     "name": "db",
-    "connector": "memory",
-    "url": "mongodb://localhost:27017"
+    "connector": "memory"
   },
   "storage": {
     "name": "storage",
