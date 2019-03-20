@@ -59,7 +59,7 @@
     Widgets
       .currentMember()
       .then(deferred.resolve)
-      .catch(deferred.reject);
+      .catch(() => deferred.resolve(false));
 
     return deferred.promise;
   }
