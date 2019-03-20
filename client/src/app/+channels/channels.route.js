@@ -18,7 +18,8 @@
 
     const RESOLVER = {
       client: clientResolver,
-      streamList: listResolver
+      streamList: listResolver,
+      member: getMember,
     };
 
     $stateProvider
@@ -50,4 +51,17 @@
   function clientResolver(Deep) {
     return Deep.getClient();
   }
+  
+   /* @ngInject */
+  function getMember($q, Widgets, Member) {
+    var deferred = $q.defer();
+
+    Widgets
+      .currentMember()
+      .then(deferred.resolve)
+      .catch(deferred.reject);
+
+    return deferred.promise;
+  }
+
 })();
