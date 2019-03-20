@@ -8,8 +8,10 @@
     .controller('ChannelsController', Controller);
 
   /* @ngInject */
-  function Controller($scope, $timeout, $localForage, Deep, client, streamList) {
+  function Controller($scope, $timeout, $localForage, Deep, client, streamList, member) {
     let vm = this;
+    
+    vm.member = member;
  
     let streams = client.record.getList('streams');
 
